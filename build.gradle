@@ -19,6 +19,7 @@ sourceSets.main.resources {
 }
 
 repositories {
+    maven { url = "https://api.modrinth.com/maven" }
 }
 
 base {
@@ -76,6 +77,7 @@ configurations {
 }
 
 dependencies {
+    implementation "maven.modrinth:slag-n-embers:1.21.1-1.2a"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

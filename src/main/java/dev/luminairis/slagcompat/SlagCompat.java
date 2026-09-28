@@ -8,11 +8,11 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
 
-@Mod(SlagnCompat.MODID)
-public class SlagnCompat {
+@Mod(SlagCompat.MODID)
+public class SlagCompat {
     public static final String MODID = "slagcompat";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public SlagnCompat(IEventBus modEventBus, ModContainer modContainer) {
+    public SlagCompat(IEventBus modEventBus, ModContainer modContainer) {
     }
 }
