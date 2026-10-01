@@ -38,3 +38,10 @@ Adding more mod compatibility to Slag n' Embers!
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="slag"
+    type="required"
+    versionRange="[1.2a,)"
+    ordering="NONE"
+    side="BOTH"

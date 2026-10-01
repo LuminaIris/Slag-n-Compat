@@ -6,6 +6,7 @@
     }
   ],
   "id": "slag:refined_obsidian",
+  "molten_fluid": "slagcompat:molten_refined_obsidian",
   "repair_ingredient": {
     "tag": "c:ingots/refined_obsidian"
   },

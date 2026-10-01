@@ -1,5 +1,6 @@
 package dev.luminairis.slagcompat;
 
+import dev.lopyluna.slag.content.utils.EmbersRegistration;
 import dev.lopyluna.slag.content.utils.Registration;
 import dev.luminairis.slagcompat.compat.fluids.AllCompatFluids;
 import dev.luminairis.slagcompat.datagen.CompatDatagen;

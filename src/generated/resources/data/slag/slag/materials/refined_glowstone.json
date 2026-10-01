@@ -6,6 +6,7 @@
     }
   ],
   "id": "slag:refined_glowstone",
+  "molten_fluid": "slagcompat:molten_refined_glowstone",
   "repair_ingredient": {
     "tag": "c:ingots/refined_glowstone"
   },
