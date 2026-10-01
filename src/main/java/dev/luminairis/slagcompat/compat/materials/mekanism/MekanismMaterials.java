@@ -3,6 +3,7 @@ package dev.luminairis.slagcompat.compat.materials.mekanism;
 import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.register.AllTags;
 import dev.lopyluna.slag.register.AllTraits;
+import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -37,5 +38,7 @@ public class MekanismMaterials extends CompatMaterial {
             .modLoaded("mekanism")
             .register());
 
-    public static void registerMekanismMaterials() {}
+    public static void registerMekanismMaterials() {
+        SlagCompat.LOGGER.info("Registering materials for mod: Mekanism");
+    }
 }

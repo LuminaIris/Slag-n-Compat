@@ -2,6 +2,7 @@ package dev.luminairis.slagcompat.datagen;
 
 import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.register.AllRegistries;
+import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
@@ -29,6 +30,6 @@ public class CompatMaterialDatagen extends DatapackBuiltinEntriesProvider {
 
     @Override
     public @NotNull String getName() {
-        return "Slag Compat Material Datagen";
+        return SlagCompat.NAME + " Material Datagen";
     }
 }

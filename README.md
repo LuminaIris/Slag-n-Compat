@@ -9,10 +9,10 @@ Mod Compatibility
 -------
 | **Mod**           | **Materials**                                                   | **Traits** | **Status**  |
 |-------------------|-----------------------------------------------------------------|------------|-------------|
-| Mekanism          | Refined obsidian, refined glowstone                             |            | In Progress |
-| Ice and Fire      | Fire dragonsteel, ice dragonsteel, lightning dragonsteel        |            | In Progress |
-| Better Nether     | Cincinnacite, nether ruby                                       |            | In Progress |
-| Better End        | Thallasium, terminite, aeternium                                |            | In Progress |
-| Twilight Forest   | Ironwood, steeleaf, knightmetal, fiery                          |            | In Progress |
-| Irons Spellbooks  | Arcane, mithril, pyrium                                         |            | In progress |
-| Eternal Starlight | Deepsilver, starlit diamond, aethersent, golem steel, unrealium |            | In progress |
+| Mekanism          | Refined Obsidian, Refined Glowstone                             |            | In Progress |
+| Ice and Fire      | Fire Dragonsteel, Ice Dragonsteel, Lightning Dragonsteel        |            | In Progress |
+| Better Nether     | Cincinnacite, Nether Ruby                                       |            | In Progress |
+| Better End        | Thallasium, Terminite, Aeternium                                |            | In Progress |
+| Twilight Forest   | Ironwood, Steeleaf, Knightmetal, Fiery                          |            | In Progress |
+| Irons Spellbooks  | Arcane, Mithril, Pyrium                                         |            | In progress |
+| Eternal Starlight | Deepsilver, Starlit Diamond, Aethersent, Golem Steel, Unrealium |            | In progress |
