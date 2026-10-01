@@ -3,6 +3,7 @@ package dev.luminairis.slagcompat.compat.materials.mekanism;
 import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.register.AllTags;
 import dev.lopyluna.slag.register.AllTraits;
+import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -13,7 +14,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 public class MekanismMaterials extends CompatMaterial {
 
     public static final MaterialType REFINED_OBSIDIAN = register(new MaterialType.Builder("refined_obsidian", () -> Ingredient.of(AllTags.itemC("ingots/refined_obsidian"))).setSortOrder(1000)
-//    public static final MaterialType REFINED_OBSIDIAN = register(new MaterialType.Builder("refined_obsidian", () -> Ingredient.of(MekanismItems.REFINED_OBSIDIAN_INGOT)).setSortOrder(1000)
             .trait(AllTraits.ATTACK_DAMAGE, 9f)
             .trait(AllTraits.DURABILITY, 1024f)
             .trait(AllTraits.MINING_TIER, 5)
@@ -22,9 +22,20 @@ public class MekanismMaterials extends CompatMaterial {
             .trait(AllTraits.ARMOR, 7.5f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
             .setTexture("metal")
+            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("mekanism")
             .register());
-    public static final MaterialType REFINED_GLOWSTONE = null;
+    public static final MaterialType REFINED_GLOWSTONE = register(new MaterialType.Builder("refined_glowstone", () -> Ingredient.of(AllTags.itemC("ingots/refined_glowstone"))).setSortOrder(1010)
+            .trait(AllTraits.ATTACK_DAMAGE, 4.5f)
+            .trait(AllTraits.DURABILITY, 40f)
+            .trait(AllTraits.MINING_TIER, 3)
+            .trait(AllTraits.MINING_SPEED, 15f)
+            .trait(AllTraits.ENCHANTABILITY, 24)
+            .trait(AllTraits.ARMOR, 5f)
+            .setTexture("shiny")
+            .moltenFluid(MekanismFluids.MOLTEN_REFINED_GLOWSTONE::getSource)
+            .modLoaded("mekanism")
+            .register());
 
     public static void registerMekanismMaterials() {}
 }

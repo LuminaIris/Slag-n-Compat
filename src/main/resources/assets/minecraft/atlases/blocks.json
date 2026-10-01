@@ -1,0 +1,9 @@
+{
+  "sources": [
+    { "type": "single", "resource": "slag:fluid/molten_refined_obsidian_flow" },
+    { "type": "single", "resource": "slag:fluid/molten_refined_obsidian_still" },
+
+    { "type": "single", "resource": "slag:fluid/molten_refined_glowstone_flow" },
+    { "type": "single", "resource": "slag:fluid/molten_refined_glowstone_still" }
+  ]
+}

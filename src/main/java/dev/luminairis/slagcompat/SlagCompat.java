@@ -1,8 +1,10 @@
 package dev.luminairis.slagcompat;
 
 import dev.lopyluna.slag.content.utils.Registration;
+import dev.luminairis.slagcompat.compat.fluids.AllCompatFluids;
 import dev.luminairis.slagcompat.datagen.CompatDatagen;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.EventPriority;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
@@ -19,6 +21,7 @@ public class SlagCompat {
 
     public SlagCompat(IEventBus modEventBus, ModContainer modContainer) {
         REG.registerEventListeners(modEventBus);
+        AllCompatFluids.register();
         AllCompatMaterials.register();
         modEventBus.addListener(EventPriority.LOWEST, CompatDatagen::gatherData);
     }
