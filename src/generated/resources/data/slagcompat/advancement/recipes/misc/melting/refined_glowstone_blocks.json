@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:storage_blocks/refined_glowstone"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_refined_glowstone_blocks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:storage_blocks/refined_glowstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/refined_glowstone_blocks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_refined_glowstone_blocks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/refined_glowstone_blocks"
+    ]
+  }
+}

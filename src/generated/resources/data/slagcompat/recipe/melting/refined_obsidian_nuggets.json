@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/refined_obsidian"
+      }
+    }
+  ],
+  "type": "slag:melting",
+  "ingredient": {
+    "tag": "c:nuggets/refined_obsidian"
+  },
+  "ingredients": [],
+  "result": [
+    {
+      "amount": 8,
+      "id": "slagcompat:molten_refined_obsidian"
+    }
+  ]
+}

@@ -25,7 +25,7 @@ public class MekanismMaterials extends CompatMaterial {
             .setTexture("metal")
             .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("mekanism")
-            .register());
+            .register(), false);
     public static final MaterialType REFINED_GLOWSTONE = register(new MaterialType.Builder("refined_glowstone", () -> Ingredient.of(AllTags.itemC("ingots/refined_glowstone"))).setSortOrder(1010)
             .trait(AllTraits.ATTACK_DAMAGE, 4.5f)
             .trait(AllTraits.DURABILITY, 40f)
@@ -36,7 +36,7 @@ public class MekanismMaterials extends CompatMaterial {
             .setTexture("shiny")
             .moltenFluid(MekanismFluids.MOLTEN_REFINED_GLOWSTONE::getSource)
             .modLoaded("mekanism")
-            .register());
+            .register(), false);
 
     public static void registerMekanismMaterials() {
         SlagCompat.LOGGER.info("Registering materials for mod: Mekanism");
