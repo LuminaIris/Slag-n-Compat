@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "slag:cast_only",
+      "tier": 3.0
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": {
+      "tag": "c:ingots/refined_glowstone"
+    },
+    "R": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "R",
+    "M"
+  ],
+  "result": {
+    "components": {
+      "slag:material_type": "slag:refined_glowstone",
+      "slag:part_type": "slag:guard"
+    },
+    "count": 1,
+    "id": "slag:dynamic_part"
+  }
+}

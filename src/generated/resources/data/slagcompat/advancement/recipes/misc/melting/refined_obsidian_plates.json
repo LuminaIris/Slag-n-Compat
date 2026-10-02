@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:plates/refined_obsidian"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_refined_obsidian_plates": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:plates/refined_obsidian"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/refined_obsidian_plates"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_refined_obsidian_plates"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/refined_obsidian_plates"
+    ]
+  }
+}

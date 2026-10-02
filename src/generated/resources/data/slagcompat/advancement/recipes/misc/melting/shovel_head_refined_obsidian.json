@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_melter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "slag:melter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/shovel_head_refined_obsidian"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_melter"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/shovel_head_refined_obsidian"
+    ]
+  }
+}

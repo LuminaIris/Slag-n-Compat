@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:storage_blocks/refined_obsidian"
+      }
+    }
+  ],
+  "type": "slag:basin_casting",
+  "ingredient": {
+    "amount": 648,
+    "fluid": "slagcompat:molten_refined_obsidian"
+  },
+  "result": {
+    "tag": "c:storage_blocks/refined_obsidian"
+  }
+}
