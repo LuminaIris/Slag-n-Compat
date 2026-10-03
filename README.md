@@ -14,6 +14,6 @@ Mod Compatibility
 | Better Nether     | Cincinnacite, Nether Ruby                                       |             | In Progress |
 | Better End        | Thallasium, Terminite, Aeternium                                |             | In Progress |
 | Twilight Forest   | Ironwood, Steeleaf, Knightmetal, Fiery                          |             | In Progress |
-| Irons Spellbooks  | Arcane, Mithril, Pyrium                                         |             | In progress |
-| Eternal Starlight | Deepsilver, Starlit Diamond, Aethersent, Golem Steel, Unrealium |             | In progress |
-| Allthemodium      | Allthemodium, Vibranium, Unobtainium                            | Unbreakable | In progress |
+| Irons Spellbooks  | Arcane, Mithril, Pyrium                                         |             | In Progress |
+| Eternal Starlight | Deepsilver, Starlit Diamond, Aethersent, Golem Steel, Unrealium |             | In Progress |
+| Allthemodium      | Allthemodium, Vibranium, Unobtainium                            | Unbreakable | In Progress |
