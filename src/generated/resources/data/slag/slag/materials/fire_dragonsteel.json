@@ -1,0 +1,44 @@
+{
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ],
+  "id": "slag:fire_dragonsteel",
+  "repair_ingredient": {
+    "tag": "c:ingots/fire_dragonsteel"
+  },
+  "sort_order": 1050,
+  "texture": "metal",
+  "traits": [
+    {
+      "trait": "slag:attack_damage",
+      "value": 9.0
+    },
+    {
+      "trait": "slag:durability",
+      "value": 1024.0
+    },
+    {
+      "trait": "slag:mining_tier",
+      "value": 5.0
+    },
+    {
+      "trait": "slag:mining_speed",
+      "value": 8.0
+    },
+    {
+      "trait": "slag:enchantability",
+      "value": 5.0
+    },
+    {
+      "trait": "slag:armor",
+      "value": 7.5
+    },
+    {
+      "trait": "slag:armor_toughness",
+      "value": 2.0
+    }
+  ]
+}

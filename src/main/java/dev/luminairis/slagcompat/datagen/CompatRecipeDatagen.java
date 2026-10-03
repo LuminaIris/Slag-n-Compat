@@ -6,13 +6,13 @@ import dev.lopyluna.slag.content.conditions.CastOnlyCondition;
 import dev.lopyluna.slag.content.datagen.BasinCastingRecipeBuilder;
 import dev.lopyluna.slag.content.datagen.MeltingRecipeBuilder;
 import dev.lopyluna.slag.content.datagen.TableCastingRecipeBuilder;
-import dev.lopyluna.slag.content.items.dynamic_part.DynamicPartItem;
 import dev.lopyluna.slag.content.types.Incompatible;
 import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.content.types.PartType;
 import dev.lopyluna.slag.register.*;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
+import dev.luminairis.slagcompat.compat.materials.allthemodium.AllthemodiumMaterials;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -25,7 +25,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-
+import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -40,7 +40,7 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput recipeOutput) {
+    protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
         for (MaterialType m : AllCompatMaterials.ALL_COMPAT_MATERIALS) {
             genRecipesForMaterial(m, recipeOutput);
         }
@@ -115,11 +115,13 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
             item.setPartType(stack, part);
 
             // part crafting with paper
-            buildPattern(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, stack), part)
-                    .define('M', material.repairMaterials.get())
-                    .define('R', Items.PAPER)
-                    .unlockedBy("has_paper", has(Items.PAPER))
-                    .save(paperOutput, SlagEmbers.loc(SlagCompat.MODID, "crafting/parts/" + partID + "_" + matID));
+            if (material.moltenFluid.get() == null || !ONE_INGOT_COMPAT_FLUIDS.contains(material.moltenFluid.get())) {
+                buildPattern(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, stack), part)
+                        .define('M', material.repairMaterials.get())
+                        .define('R', Items.PAPER)
+                        .unlockedBy("has_paper", has(Items.PAPER))
+                        .save(paperOutput, SlagEmbers.loc(SlagCompat.MODID, "crafting/parts/" + partID + "_" + matID));
+            }
 
             // casting + melting
             var molten = material.moltenFluid.get();

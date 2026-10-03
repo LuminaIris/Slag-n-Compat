@@ -1,6 +1,8 @@
 package dev.luminairis.slagcompat.compat.materials;
 
 import dev.lopyluna.slag.content.types.MaterialType;
+import dev.luminairis.slagcompat.compat.materials.allthemodium.AllthemodiumMaterials;
+import dev.luminairis.slagcompat.compat.materials.iceandfire.IceAndFireMaterials;
 import dev.luminairis.slagcompat.compat.materials.mekanism.MekanismMaterials;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,5 +15,7 @@ public class AllCompatMaterials {
 
     public static void register() {
         MekanismMaterials.registerMekanismMaterials();
+        AllthemodiumMaterials.registerAllthemodiumMaterials();
+        IceAndFireMaterials.registerIceAndFireMaterials();
     }
 }

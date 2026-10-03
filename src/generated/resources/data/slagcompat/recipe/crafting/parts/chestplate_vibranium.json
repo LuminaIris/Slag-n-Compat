@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": {
+      "tag": "c:ingots/vibranium"
+    },
+    "R": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "R R",
+    "MMM",
+    "MMM"
+  ],
+  "result": {
+    "components": {
+      "minecraft:unbreakable": {
+        "show_in_tooltip": false
+      },
+      "slag:material_type": "slag:vibranium",
+      "slag:part_type": "slag:chestplate"
+    },
+    "count": 1,
+    "id": "slag:dynamic_part"
+  }
+}
