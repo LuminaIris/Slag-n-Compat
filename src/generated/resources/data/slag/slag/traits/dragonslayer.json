@@ -1,0 +1,23 @@
+{
+  "color": "#E6A895",
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ],
+  "effects": [
+    {
+      "type": "slagcompat:bonus_damage_effect",
+      "bonus_damage": 4.0,
+      "bonus_damage_type": "iceandfire:bonus",
+      "target_types": [
+        "iceandfire:fire_dragon",
+        "iceandfire:ice_dragon",
+        "iceandfire:lightning_dragon"
+      ]
+    }
+  ],
+  "id": "slag:dragonslayer",
+  "sort_order": 1010
+}

@@ -1,0 +1,17 @@
+{
+  "color": "#ADD8E6",
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ],
+  "effects": [
+    {
+      "type": "slagcompat:on_hit_effect",
+      "hit_effect": "ice_imbued"
+    }
+  ],
+  "id": "slag:ice_imbued",
+  "sort_order": 1030
+}

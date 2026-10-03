@@ -5,11 +5,13 @@ import dev.lopyluna.slag.register.AllTags;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
+import dev.luminairis.slagcompat.compat.traits.AllCompatTraits;
 import net.minecraft.world.item.crafting.Ingredient;
 
 /**
  * IAF Materials: Fire, Ice, and Lightning Dragonsteel
  */
+@SuppressWarnings("unused")
 public class IceAndFireMaterials extends CompatMaterial {
     // TODO: update stats on these guys
     public static MaterialType FIRE_DRAGONSTEEL = register(new MaterialType.Builder("fire_dragonsteel", () -> Ingredient.of(AllTags.itemC("ingots/fire_dragonsteel"))).setSortOrder(sortOrder)
@@ -20,6 +22,8 @@ public class IceAndFireMaterials extends CompatMaterial {
             .trait(AllTraits.ENCHANTABILITY, 5f)
             .trait(AllTraits.ARMOR, 7.5f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
+            .trait(AllCompatTraits.DRAGONSLAYER)
+            .trait(AllCompatTraits.FIRE_IMBUED)
             .setTexture("metal")
 //            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("iceandfire")
@@ -33,6 +37,8 @@ public class IceAndFireMaterials extends CompatMaterial {
             .trait(AllTraits.ENCHANTABILITY, 5f)
             .trait(AllTraits.ARMOR, 7.5f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
+            .trait(AllCompatTraits.DRAGONSLAYER)
+            .trait(AllCompatTraits.ICE_IMBUED)
             .setTexture("metal")
 //            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("iceandfire")
@@ -46,12 +52,14 @@ public class IceAndFireMaterials extends CompatMaterial {
             .trait(AllTraits.ENCHANTABILITY, 5f)
             .trait(AllTraits.ARMOR, 7.5f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
+            .trait(AllCompatTraits.DRAGONSLAYER)
+            .trait(AllCompatTraits.LIGHTNING_IMBUED)
             .setTexture("metal")
 //            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("iceandfire")
             .register(), false);
 
     public static void registerIceAndFireMaterials() {
-        SlagCompat.LOGGER.info("Registering materials for mod: Ice and Fire");
+        SlagCompat.LOGGER.info("Registering materials for mod: Ice and Fire CE");
     }
 }

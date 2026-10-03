@@ -22,6 +22,7 @@ repositories {
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://api.modrinth.com/maven" }
     maven { url = "https://mvn.devos.one/snapshots" }
+    maven { url = "https://cursemaven.com" }
 }
 
 base {
@@ -90,6 +91,7 @@ dependencies {
     implementation("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
     // optional compatibility
+    implementation "curse.maven:iceandfire-ce-1040076:8929517"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

@@ -2,6 +2,8 @@ package dev.luminairis.slagcompat;
 
 import dev.lopyluna.slag.content.utils.Registration;
 import dev.luminairis.slagcompat.compat.fluids.AllCompatFluids;
+import dev.luminairis.slagcompat.compat.traits.AllCompatTraitEffects;
+import dev.luminairis.slagcompat.compat.traits.AllCompatTraits;
 import dev.luminairis.slagcompat.datagen.CompatDatagen;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
 import net.neoforged.bus.api.EventPriority;
@@ -20,8 +22,10 @@ public class SlagCompat {
 
     public SlagCompat(IEventBus modEventBus, ModContainer modContainer) {
         REG.registerEventListeners(modEventBus);
+        AllCompatTraitEffects.register(modEventBus);
         AllCompatFluids.register();
         AllCompatMaterials.register();
+        AllCompatTraits.register();
         modEventBus.addListener(EventPriority.LOWEST, CompatDatagen::gatherData);
     }
 }

@@ -39,6 +39,8 @@
     {
       "trait": "slag:armor_toughness",
       "value": 2.0
-    }
+    },
+    "slag:dragonslayer",
+    "slag:ice_imbued"
   ]
 }
