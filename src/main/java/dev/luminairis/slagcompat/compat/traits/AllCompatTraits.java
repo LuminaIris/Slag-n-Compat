@@ -4,11 +4,9 @@ import dev.lopyluna.slag.content.traits.TraitType;
 import dev.luminairis.slagcompat.compat.traits.general.GeneralTraits;
 import dev.luminairis.slagcompat.compat.traits.iceandfire.IceAndFireTraits;
 import net.neoforged.fml.ModList;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("unused")
 public class AllCompatTraits {
     public static List<TraitType> compatTraits = new ArrayList<>();
 

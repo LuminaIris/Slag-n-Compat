@@ -2,7 +2,7 @@ package dev.luminairis.slagcompat;
 
 import dev.lopyluna.slag.content.utils.Registration;
 import dev.luminairis.slagcompat.compat.fluids.AllCompatFluids;
-import dev.luminairis.slagcompat.compat.traits.AllCompatTraitEffects;
+import dev.luminairis.slagcompat.compat.traits.effects.AllCompatTraitEffects;
 import dev.luminairis.slagcompat.compat.traits.AllCompatTraits;
 import dev.luminairis.slagcompat.datagen.CompatDatagen;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;

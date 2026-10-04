@@ -1,10 +1,8 @@
-package dev.luminairis.slagcompat.compat.traits;
+package dev.luminairis.slagcompat.compat.traits.effects;
 
 import com.mojang.serialization.MapCodec;
 import dev.lopyluna.slag.content.traits.TraitEffect;
 import dev.luminairis.slagcompat.SlagCompat;
-import dev.luminairis.slagcompat.compat.traits.effects.BonusDamageEffect;
-import dev.luminairis.slagcompat.compat.traits.effects.OnHitEffect;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;

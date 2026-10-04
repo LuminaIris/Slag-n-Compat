@@ -7,7 +7,6 @@ import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.traits.CompatTrait;
 import dev.luminairis.slagcompat.compat.traits.effects.BonusDamageEffect;
 import dev.luminairis.slagcompat.compat.traits.effects.OnHitEffect;
-
 import java.util.List;
 
 @SuppressWarnings("unused")
