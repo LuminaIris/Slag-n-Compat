@@ -81,7 +81,7 @@ configurations {
 
 dependencies {
     // required: slag n' embers
-    implementation("maven.modrinth:slag-n-embers:1.21.1-1.2a") { transitive = false }
+    implementation "maven.modrinth:slag-n-embers:1.21.1-1.2a"
     // required: registrate
     jarJar(implementation("com.tterrag.registrate:Registrate:${registrate_version}"))
 
@@ -91,7 +91,10 @@ dependencies {
     implementation "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     // optional compatibility
-    implementation "curse.maven:iceandfire-ce-1040076:8929517"
+    compileOnly "maven.modrinth:mekanism:10.7.19.85"
+    compileOnly "curse.maven:allthemodium-364466:9040574"
+    compileOnly "curse.maven:iceandfire-ce-1040076:8929517"
+    compileOnly "curse.maven:the-twilight-forest-227639:7797302"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

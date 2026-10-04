@@ -6,6 +6,7 @@ import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
+import mekanism.common.tags.MekanismTags;
 import net.minecraft.world.item.crafting.Ingredient;
 
 /**
@@ -14,7 +15,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 @SuppressWarnings("unused")
 public class MekanismMaterials extends CompatMaterial {
 
-    public static final MaterialType REFINED_OBSIDIAN = register(new MaterialType.Builder("refined_obsidian", () -> Ingredient.of(AllTags.itemC("ingots/refined_obsidian"))).setSortOrder(sortOrder)
+    public static final MaterialType REFINED_OBSIDIAN = register(new MaterialType.Builder("refined_obsidian", () -> Ingredient.of(MekanismTags.Items.INGOTS_REFINED_OBSIDIAN)).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 9f)
             .trait(AllTraits.DURABILITY, 4096f)
             .trait(AllTraits.MINING_TIER, 5)
@@ -27,7 +28,7 @@ public class MekanismMaterials extends CompatMaterial {
             .modLoaded("mekanism")
             .register(), false);
 
-    public static final MaterialType REFINED_GLOWSTONE = register(new MaterialType.Builder("refined_glowstone", () -> Ingredient.of(AllTags.itemC("ingots/refined_glowstone"))).setSortOrder(sortOrder)
+    public static final MaterialType REFINED_GLOWSTONE = register(new MaterialType.Builder("refined_glowstone", () -> Ingredient.of(MekanismTags.Items.INGOTS_REFINED_GLOWSTONE)).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 6f)
             .trait(AllTraits.DURABILITY, 40f)
             .trait(AllTraits.MINING_TIER, 3)

@@ -7,7 +7,7 @@
   ],
   "id": "slag:fire_dragonsteel",
   "repair_ingredient": {
-    "tag": "c:ingots/fire_dragonsteel"
+    "item": "iceandfire:dragonsteel_fire_ingot"
   },
   "sort_order": 1050,
   "texture": "metal",

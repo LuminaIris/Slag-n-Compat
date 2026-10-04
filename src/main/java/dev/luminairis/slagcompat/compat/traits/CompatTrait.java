@@ -8,7 +8,7 @@ public class CompatTrait {
 
     protected static TraitType register(TraitType.Builder builder) {
         TraitType trait = builder.sortOrder(order).register();
-        AllCompatTraits.compatTraits.add(trait);
+        AllCompatTraits.COMPAT_TRAITS.add(trait);
         order += 10;
         return AllDynamicTypes.registerTrait(trait);
     }

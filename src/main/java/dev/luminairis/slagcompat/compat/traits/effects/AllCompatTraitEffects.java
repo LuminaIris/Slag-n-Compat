@@ -6,11 +6,11 @@ import dev.luminairis.slagcompat.SlagCompat;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import java.util.function.Supplier;
 
 import static dev.lopyluna.slag.register.AllTraitEffects.REGISTRY_KEY;
 
-import java.util.function.Supplier;
-
+@SuppressWarnings("unused")
 public class AllCompatTraitEffects {
     private static final DeferredRegister<MapCodec<? extends  TraitEffect>> EFFECTS = DeferredRegister.create(REGISTRY_KEY, SlagCompat.MODID);
 

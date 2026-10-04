@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllCompatTraits {
-    public static List<TraitType> compatTraits = new ArrayList<>();
+    public static final List<TraitType> COMPAT_TRAITS = new ArrayList<>();
 
     public static void register() {
         GeneralTraits.register();

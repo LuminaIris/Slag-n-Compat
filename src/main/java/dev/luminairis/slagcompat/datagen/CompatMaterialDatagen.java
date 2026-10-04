@@ -17,7 +17,7 @@ import java.util.concurrent.CompletableFuture;
 public class CompatMaterialDatagen extends DatapackBuiltinEntriesProvider {
 
     private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-            .add(AllRegistries.MATERIAL_TYPE_REGISTRY_KEY, b -> { for (var material : AllCompatMaterials.ALL_COMPAT_MATERIALS) registerMaterial(b, material); });
+            .add(AllRegistries.MATERIAL_TYPE_REGISTRY_KEY, b -> { for (var material : AllCompatMaterials.COMPAT_MATERIALS) registerMaterial(b, material); });
 
     private static void registerMaterial(BootstrapContext<MaterialType> bootstrap, MaterialType material) {
         var key = ResourceKey.create(AllRegistries.MATERIAL_TYPE_REGISTRY_KEY, material.id);

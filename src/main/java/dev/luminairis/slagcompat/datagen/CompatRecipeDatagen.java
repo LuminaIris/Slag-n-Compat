@@ -12,7 +12,6 @@ import dev.lopyluna.slag.content.types.PartType;
 import dev.lopyluna.slag.register.*;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
-import dev.luminairis.slagcompat.compat.materials.allthemodium.AllthemodiumMaterials;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -41,7 +40,7 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
-        for (MaterialType m : AllCompatMaterials.ALL_COMPAT_MATERIALS) {
+        for (MaterialType m : AllCompatMaterials.COMPAT_MATERIALS) {
             genRecipesForMaterial(m, recipeOutput);
         }
     }

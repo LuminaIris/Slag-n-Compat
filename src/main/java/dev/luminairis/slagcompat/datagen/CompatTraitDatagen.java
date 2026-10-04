@@ -17,7 +17,7 @@ import java.util.concurrent.CompletableFuture;
 public class CompatTraitDatagen extends DatapackBuiltinEntriesProvider {
 
     private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-            .add(AllRegistries.TRAIT_TYPE_REGISTRY_KEY, b -> { for (var trait : AllCompatTraits.compatTraits) registerTrait(b, trait); });
+            .add(AllRegistries.TRAIT_TYPE_REGISTRY_KEY, b -> { for (var trait : AllCompatTraits.COMPAT_TRAITS) registerTrait(b, trait); });
 
     private static void registerTrait(BootstrapContext<TraitType> bootstrap, TraitType trait) {
         var key = ResourceKey.create(AllRegistries.TRAIT_TYPE_REGISTRY_KEY, trait.id);

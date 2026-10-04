@@ -45,3 +45,32 @@ Adding more mod compatibility to Slag n' Embers!
     versionRange="[1.2a,)"
     ordering="NONE"
     side="BOTH"
+
+# optional mod compat
+[[dependencies.${mod_id}]]
+    modId="mekanism"
+    type="optional"
+    versionRange="[10.7.15.81,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="allthemodium"
+    type="optional"
+    versionRange="[2.6.1,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="iceandfire"
+    type="optional"
+    versionRange="[1.0,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="twilightforest"
+    type="optional"
+    versionRange="[4.6.2856,)"
+    ordering="NONE"
+    side="BOTH"

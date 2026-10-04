@@ -9,7 +9,7 @@
   "category": "equipment",
   "key": {
     "M": {
-      "tag": "c:ingots/fire_dragonsteel"
+      "item": "iceandfire:dragonsteel_fire_ingot"
     },
     "R": {
       "item": "minecraft:paper"
