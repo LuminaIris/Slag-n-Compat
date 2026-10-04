@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": {
+      "tag": "c:ingots/allthemodium"
+    },
+    "R": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "MM",
+    " R",
+    " R"
+  ],
+  "result": {
+    "components": {
+      "minecraft:unbreakable": {
+        "show_in_tooltip": false
+      },
+      "slag:material_type": "slag:allthemodium",
+      "slag:part_type": "slag:hoe_head"
+    },
+    "count": 1,
+    "id": "slag:dynamic_part"
+  }
+}

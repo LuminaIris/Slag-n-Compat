@@ -9,7 +9,7 @@
   "repair_ingredient": {
     "tag": "c:ingots/fire_dragonsteel"
   },
-  "sort_order": 1020,
+  "sort_order": 1050,
   "texture": "metal",
   "traits": [
     {
