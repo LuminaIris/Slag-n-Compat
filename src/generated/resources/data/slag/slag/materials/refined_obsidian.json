@@ -19,7 +19,7 @@
     },
     {
       "trait": "slag:durability",
-      "value": 1024.0
+      "value": 4096.0
     },
     {
       "trait": "slag:mining_tier",

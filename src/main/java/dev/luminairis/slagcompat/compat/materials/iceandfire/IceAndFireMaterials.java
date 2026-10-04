@@ -6,6 +6,7 @@ import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import dev.luminairis.slagcompat.compat.traits.AllCompatTraits;
+import dev.luminairis.slagcompat.compat.traits.iceandfire.IceAndFireTraits;
 import net.minecraft.world.item.crafting.Ingredient;
 
 /**
@@ -15,51 +16,51 @@ import net.minecraft.world.item.crafting.Ingredient;
 public class IceAndFireMaterials extends CompatMaterial {
     // TODO: update stats on these guys
     public static MaterialType FIRE_DRAGONSTEEL = register(new MaterialType.Builder("fire_dragonsteel", () -> Ingredient.of(AllTags.itemC("ingots/fire_dragonsteel"))).setSortOrder(sortOrder)
-            .trait(AllTraits.ATTACK_DAMAGE, 9f)
-            .trait(AllTraits.DURABILITY, 1024f)
-            .trait(AllTraits.MINING_TIER, 5)
+            .trait(AllTraits.ATTACK_DAMAGE, 32f)
+            .trait(AllTraits.DURABILITY, 3250f)
+            .trait(AllTraits.MINING_TIER, 6)
             .trait(AllTraits.MINING_SPEED, 8f)
-            .trait(AllTraits.ENCHANTABILITY, 5f)
-            .trait(AllTraits.ARMOR, 7.5f)
-            .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
-            .trait(AllCompatTraits.DRAGONSLAYER)
-            .trait(AllCompatTraits.FIRE_IMBUED)
+            .trait(AllTraits.ENCHANTABILITY, 13f)
+            .trait(AllTraits.ARMOR, 10f)
+            .trait(AllTraits.ARMOR_TOUGHNESS, 3f)
+            .trait(IceAndFireTraits.DRAGONSLAYER)
+            .trait(IceAndFireTraits.FIRE_IMBUED)
             .setTexture("metal")
 //            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("iceandfire")
             .register(), false);
 
     public static MaterialType ICE_DRAGONSTEEL = register(new MaterialType.Builder("ice_dragonsteel", () -> Ingredient.of(AllTags.itemC("ingots/ice_dragonsteel"))).setSortOrder(sortOrder)
-            .trait(AllTraits.ATTACK_DAMAGE, 9f)
-            .trait(AllTraits.DURABILITY, 1024f)
-            .trait(AllTraits.MINING_TIER, 5)
+            .trait(AllTraits.ATTACK_DAMAGE, 28f)
+            .trait(AllTraits.DURABILITY, 6500f)
+            .trait(AllTraits.MINING_TIER, 6)
             .trait(AllTraits.MINING_SPEED, 8f)
-            .trait(AllTraits.ENCHANTABILITY, 5f)
-            .trait(AllTraits.ARMOR, 7.5f)
-            .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
-            .trait(AllCompatTraits.DRAGONSLAYER)
-            .trait(AllCompatTraits.ICE_IMBUED)
+            .trait(AllTraits.ENCHANTABILITY, 13f)
+            .trait(AllTraits.ARMOR, 14f)
+            .trait(AllTraits.ARMOR_TOUGHNESS, 6f)
+            .trait(IceAndFireTraits.DRAGONSLAYER)
+            .trait(IceAndFireTraits.ICE_IMBUED)
             .setTexture("metal")
 //            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("iceandfire")
             .register(), false);
 
     public static MaterialType LIGHTNING_DRAGONSTEEL = register(new MaterialType.Builder("lightning_dragonsteel", () -> Ingredient.of(AllTags.itemC("ingots/lightning_dragonsteel"))).setSortOrder(sortOrder)
-            .trait(AllTraits.ATTACK_DAMAGE, 9f)
-            .trait(AllTraits.DURABILITY, 1024f)
-            .trait(AllTraits.MINING_TIER, 5)
-            .trait(AllTraits.MINING_SPEED, 8f)
-            .trait(AllTraits.ENCHANTABILITY, 5f)
-            .trait(AllTraits.ARMOR, 7.5f)
+            .trait(AllTraits.ATTACK_DAMAGE, 38f)
+            .trait(AllTraits.DURABILITY, 4096f)
+            .trait(AllTraits.MINING_TIER, 6)
+            .trait(AllTraits.MINING_SPEED, 16f)
+            .trait(AllTraits.ENCHANTABILITY, 13f)
+            .trait(AllTraits.ARMOR, 8f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
-            .trait(AllCompatTraits.DRAGONSLAYER)
-            .trait(AllCompatTraits.LIGHTNING_IMBUED)
+            .trait(IceAndFireTraits.DRAGONSLAYER)
+            .trait(IceAndFireTraits.LIGHTNING_IMBUED)
             .setTexture("metal")
 //            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("iceandfire")
             .register(), false);
 
-    public static void registerIceAndFireMaterials() {
+    public static void register() {
         SlagCompat.LOGGER.info("Registering materials for mod: Ice and Fire CE");
     }
 }

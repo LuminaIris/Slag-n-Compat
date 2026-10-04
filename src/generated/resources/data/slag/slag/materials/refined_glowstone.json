@@ -15,7 +15,7 @@
   "traits": [
     {
       "trait": "slag:attack_damage",
-      "value": 4.5
+      "value": 6.0
     },
     {
       "trait": "slag:durability",
@@ -27,7 +27,7 @@
     },
     {
       "trait": "slag:mining_speed",
-      "value": 15.0
+      "value": 30.0
     },
     {
       "trait": "slag:enchantability",
@@ -35,7 +35,7 @@
     },
     {
       "trait": "slag:armor",
-      "value": 5.0
+      "value": 3.0
     }
   ]
 }

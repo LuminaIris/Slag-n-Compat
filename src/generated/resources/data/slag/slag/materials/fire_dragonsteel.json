@@ -9,20 +9,20 @@
   "repair_ingredient": {
     "tag": "c:ingots/fire_dragonsteel"
   },
-  "sort_order": 1050,
+  "sort_order": 1020,
   "texture": "metal",
   "traits": [
     {
       "trait": "slag:attack_damage",
-      "value": 9.0
+      "value": 32.0
     },
     {
       "trait": "slag:durability",
-      "value": 1024.0
+      "value": 3250.0
     },
     {
       "trait": "slag:mining_tier",
-      "value": 5.0
+      "value": 6.0
     },
     {
       "trait": "slag:mining_speed",
@@ -30,15 +30,15 @@
     },
     {
       "trait": "slag:enchantability",
-      "value": 5.0
+      "value": 13.0
     },
     {
       "trait": "slag:armor",
-      "value": 7.5
+      "value": 10.0
     },
     {
       "trait": "slag:armor_toughness",
-      "value": 2.0
+      "value": 3.0
     },
     "slag:dragonslayer",
     "slag:fire_imbued"

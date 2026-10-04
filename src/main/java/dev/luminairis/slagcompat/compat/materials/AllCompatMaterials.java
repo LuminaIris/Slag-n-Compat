@@ -4,6 +4,8 @@ import dev.lopyluna.slag.content.types.MaterialType;
 import dev.luminairis.slagcompat.compat.materials.allthemodium.AllthemodiumMaterials;
 import dev.luminairis.slagcompat.compat.materials.iceandfire.IceAndFireMaterials;
 import dev.luminairis.slagcompat.compat.materials.mekanism.MekanismMaterials;
+import net.neoforged.fml.ModList;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,8 +16,14 @@ public class AllCompatMaterials {
     public static final Map<String, Boolean> MATERIAL_HAS_RAW = new HashMap<>();
 
     public static void register() {
-        MekanismMaterials.registerMekanismMaterials();
-        AllthemodiumMaterials.registerAllthemodiumMaterials();
-        IceAndFireMaterials.registerIceAndFireMaterials();
+        if (ModList.get().isLoaded("mekanism")) {
+            MekanismMaterials.register();
+        }
+        if (ModList.get().isLoaded("allthemodium")) {
+            AllthemodiumMaterials.register();
+        }
+        if (ModList.get().isLoaded("iceandfire")) {
+            IceAndFireMaterials.register();
+        }
     }
 }

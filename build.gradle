@@ -81,14 +81,14 @@ configurations {
 
 dependencies {
     // required: slag n' embers
-    implementation "maven.modrinth:slag-n-embers:1.21.1-1.2a"
+    implementation("maven.modrinth:slag-n-embers:1.21.1-1.2a") { transitive = false }
     // required: registrate
     jarJar(implementation("com.tterrag.registrate:Registrate:${registrate_version}"))
 
     // jei
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-    implementation("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    implementation "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     // optional compatibility
     implementation "curse.maven:iceandfire-ce-1040076:8929517"

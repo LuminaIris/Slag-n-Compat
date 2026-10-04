@@ -1,6 +1,5 @@
 package dev.luminairis.slagcompat.datagen;
 
-import dev.lopyluna.slag.content.datagen.TraitDatagen;
 import dev.lopyluna.slag.content.traits.TraitType;
 import dev.lopyluna.slag.register.AllRegistries;
 import dev.luminairis.slagcompat.SlagCompat;
@@ -11,7 +10,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
-
 import javax.annotation.Nonnull;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
