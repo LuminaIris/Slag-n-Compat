@@ -1,0 +1,11 @@
+{
+  "color": "#F23800",
+  "effects": [
+    {
+      "type": "slagcompat:on_hit_effect",
+      "hit_effect": "ignite"
+    }
+  ],
+  "id": "slag:ignite",
+  "sort_order": 1000
+}

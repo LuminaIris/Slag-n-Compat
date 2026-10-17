@@ -11,9 +11,9 @@ public class AllCompatTraits {
     public static final List<TraitType> COMPAT_TRAITS = new ArrayList<>();
 
     public static void register() {
-        GeneralTraits.register();
         if (ModList.get().isLoaded("iceandfire")) {
             IceAndFireTraits.register();
         }
+        GeneralTraits.register();
     }
 }

@@ -41,6 +41,9 @@ public record OnHitEffect(HitEffect onHitEffect) implements TraitEffect {
     }
 
     public enum HitEffect implements StringRepresentable {
+        // GENERAL
+        IGNITE("ignite"),
+        // ICE AND FIRE
         FIRE_IMBUED("fire_imbued"),
         ICE_IMBUED("ice_imbued"),
         LIGHTNING_IMBUED("lightning_imbued");

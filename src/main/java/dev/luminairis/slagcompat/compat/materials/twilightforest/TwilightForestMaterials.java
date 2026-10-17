@@ -4,6 +4,7 @@ import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
+import dev.luminairis.slagcompat.compat.traits.general.GeneralTraits;
 import net.minecraft.world.item.crafting.Ingredient;
 import twilightforest.data.tags.ItemTagGenerator;
 
@@ -57,6 +58,8 @@ public class TwilightForestMaterials extends CompatMaterial {
             .trait(AllTraits.ENCHANTABILITY, 5f)
             .trait(AllTraits.ARMOR, 7.5f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
+            .trait(AllTraits.AUTO_SMELTING)
+            .trait(GeneralTraits.IGNITE)
             .setTexture("metal")
 //            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("twilightforest")
