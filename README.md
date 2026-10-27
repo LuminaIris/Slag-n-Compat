@@ -19,6 +19,7 @@ Materials
 | Iron's Spellbooks       | Arcane, Mithril, Pyrium                                         |                                                         | In Progress |
 | Mekanism                | Refined Obsidian, Refined Glowstone                             |                                                         | In Progress |
 | Twilight Forest         | Ironwood, Steeleaf, Knightmetal, Fiery                          | Ignite, Auto-smelting                                   | In Progress |
+
 Traits
 -------
 General
@@ -34,3 +35,4 @@ Ice and Fire: CE
 
 Other Compat
 -------
+TBD
