@@ -3,8 +3,11 @@ import tkinter as tk
 import tomllib
 from tkinter import ttk
 from pathlib import Path
-from PIL import Image, ImageTk
+from PIL import Image
 from vcolorpicker import getColor, rgb2hex
+from Utils import PaletteButton
+
+from scripts import Utils
 
 # ui components
 root: tk.Tk
@@ -70,7 +73,7 @@ def create_top_frame(parent: tk.Frame) -> tk.Frame:
     frame = tk.Frame(parent, highlightbackground="black", highlightcolor="black", highlightthickness=1)
     frame.place(relwidth=1, relheight=top_height)
 
-    new_asset_button = tk.Button(frame, name="new_asset_button", text="New Asset Set", command=new_asset_button_pressed)
+    new_asset_button = tk.Button(frame, name="new_asset_button", text="New Asset Set", command=new_asset_set)
     new_asset_button.place(relx=0.05, rely=0.2, relheight=0.6, relwidth=0.185)
 
     material_id_label = tk.Label(frame, name="material_id_label", text="Material ID")
@@ -80,16 +83,16 @@ def create_top_frame(parent: tk.Frame) -> tk.Frame:
 
     global save_tool
     save_tool = tk.IntVar()
-    save_tool_checkbox = tk.Checkbutton(frame, name="save_tool_checkbox", text="Tool", variable=save_tool)
-    save_tool_checkbox.place(relx=0.68, rely=0.2, relheight=0.2, relwidth=0.1)
+    save_tool_checkbox = tk.Checkbutton(frame, name="save_tool_checkbox", text="Save Tool?", variable=save_tool)
+    save_tool_checkbox.place(relx=0.65, rely=0.2, relheight=0.2, relwidth=0.1)
     global save_armor
     save_armor = tk.IntVar()
-    save_armor_checkbox = tk.Checkbutton(frame, name="save_armor_checkbox", text="Armor", variable=save_armor)
-    save_armor_checkbox.place(relx=0.68, rely=0.4, relheight=0.2, relwidth=0.1)
+    save_armor_checkbox = tk.Checkbutton(frame, name="save_armor_checkbox", text="Save Armor?", variable=save_armor)
+    save_armor_checkbox.place(relx=0.65, rely=0.4, relheight=0.2, relwidth=0.1)
     global save_fluid
     save_fluid = tk.IntVar()
-    save_fluid_checkbox = tk.Checkbutton(frame, name="save_fluid_checkbox", text="Fluid", variable=save_fluid)
-    save_fluid_checkbox.place(relx=0.68, rely=0.6, relheight=0.2, relwidth=0.1)
+    save_fluid_checkbox = tk.Checkbutton(frame, name="save_fluid_checkbox", text="Save Fluid?", variable=save_fluid)
+    save_fluid_checkbox.place(relx=0.65, rely=0.6, relheight=0.2, relwidth=0.1)
 
     save_button = tk.Button(frame, name="save_button", text="Save", command=save_assets)
     save_button.place(relx=0.765, rely=0.2, relheight=0.6, relwidth=0.185)
@@ -99,7 +102,7 @@ def create_top_frame(parent: tk.Frame) -> tk.Frame:
 def create_palette_builder(parent: tk.Frame) -> tk.Frame:
     frame = init_frame(parent)
 
-    palette_frame = tk.Frame(frame, name="palette_frame", bg="red")
+    palette_frame = tk.Frame(frame, name="palette_frame", highlightthickness=1, highlightcolor="black", highlightbackground="black")
     preview_frame = tk.Frame(frame, name="preview_frame", bg="green")
     reference_frame = tk.Frame(frame, name="reference_frame", bg="lightblue")
 
@@ -141,14 +144,37 @@ def init_frame(parent: tk.Frame) -> tk.Frame:
     return frame
 
 
-def new_asset_button_pressed() -> None:
+def new_asset_set() -> None:
     global builder_frame
+    global palettes
+    palettes = {
+        "Tool": [(255, 255, 255), (241, 241, 241), (228, 228, 228), (205, 205, 205), (180, 180, 180), (151, 151, 151), (108, 108, 108), (77, 77, 77)],
+        "Armor": [(254, 254, 254), (245, 245, 245), (234, 234, 234), (221, 221, 221), (203, 203, 203), (183, 183, 183), (161, 161, 161), (140, 140, 140), (116, 116, 116)],
+        "Fluid": [(244, 244, 244), (230, 230, 230), (211, 211, 211), (192, 192, 192), (174, 174, 174), (158, 158, 158), (136, 136, 136), (121, 121, 121), (105, 105, 105), (90, 90, 90)]
+    }
     builder_frame.destroy()
     builder_frame = create_palette_builder(main_frame)
 
 
 def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, palette_type: str) -> None:
-    print("building palette and preview")
+    global palettes
+    palette = palettes[palette_type]
+    for child in palette_frame.winfo_children():
+        child.destroy()
+    print(palette)
+    offset = 0.0
+    width = 1.0 / len(palette)
+    i = 0
+    for color in palette:
+        palette_button = PaletteButton(palette_frame, i, palette_type, name="palette_button_" + str(i), bg="#" + str(rgb2hex(color)), borderwidth=0)
+        palette_button.bind("<Button-1>", update_palette_color)
+        palette_button.place(relx=offset, relheight=1, relwidth=width)
+        offset += width
+        i += 1
+        # palette_button.pack()
+
+
+    image_frame = preview_frame
 
 
 def build_reference_frame(reference_frame: tk.Frame) -> None:
@@ -162,6 +188,14 @@ def update_selected_color(selected_color_button: tk.Button, new_color: tuple[int
     else:
         selected_color = new_color
     selected_color_button.configure(bg="#" + str(rgb2hex(selected_color)))
+
+
+def update_palette_color(event) -> None:
+    global selected_color
+    global palettes
+    palette_button: PaletteButton = event.widget
+    palette_button.configure(bg="#" + str(rgb2hex(selected_color)))
+    palettes[palette_button.palette_type][palette_button.index] = selected_color
 
 
 def save_assets() -> None:
