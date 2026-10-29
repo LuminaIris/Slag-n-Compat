@@ -3,3 +3,8 @@ tool_palette_save_location = "src/main/resources/assets/slag/textures/color_pale
 armor_palette_save_location = "src/main/resources/assets/slag/textures/color_palettes/armor"
 fluid_texture_save_location = "src/main/resources/assets/slag/textures/fluid"
 bucket_texture_save_location = "src/main/resources/assets/slagcompat/textures/item"
+
+[output.atlas]
+update_atlas_on_fluid_save = true
+atlas_save_location = "src/main/resources/assets/minecraft/atlases/blocks.json"
+mod_id = "slagcompat"

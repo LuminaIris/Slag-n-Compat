@@ -2,6 +2,7 @@ import os
 import tkinter as tk
 import tomllib
 from tkinter import ttk
+from tkinter.filedialog import askopenfilename
 from pathlib import Path
 from PIL import Image
 from vcolorpicker import getColor, rgb2hex
@@ -12,6 +13,7 @@ root: tk.Tk
 main_frame: tk.Frame
 top_frame: tk.Frame
 builder_frame: tk.Frame
+palette_buttons: list[PaletteButton] = []
 
 # ui variables
 material_id: tk.StringVar
@@ -27,6 +29,8 @@ tool_palette_save_location: str
 armor_palette_save_location: str
 fluid_texture_save_location: str
 bucket_texture_save_location: str
+atlas_save_location: str
+mod_id: str
 
 # important variables
 palettes: dict[str, list[tuple[int, int, int]]] = {}
@@ -174,10 +178,12 @@ def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, 
     offset = 0.0
     width = 1.0 / len(palette)
     i = 0
+    palette_buttons.clear()
     for color in palette:
-        palette_button = PaletteButton(palette_frame, i, palette_type, name="palette_button_" + str(i), bg="#" + str(rgb2hex(color)), activebackground="#" + str(rgb2hex(color)), borderwidth=0)
+        palette_button = PaletteButton(palette_frame, i, palette_type, name=palette_type.lower() + "_palette_button_" + str(i), bg="#" + str(rgb2hex(color)), activebackground="#" + str(rgb2hex(color)), borderwidth=0)
         palette_button.bind("<Button-1>", update_palette_color)
         palette_button.place(relx=offset, relheight=1, relwidth=width)
+        palette_buttons.append(palette_button)
         offset += width
         i += 1
 
@@ -185,66 +191,87 @@ def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, 
     global selected_style
     if palette_type == "Tool":
         # tool has both preview type and style type
-        tool_dropdown = ttk.Combobox(palette_frame, name="tool_dropdown", values=tool_types, state="readonly")
-        tool_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(palette_type, tool_dropdown.get()))
+        tool_dropdown = ttk.Combobox(preview_frame, name="tool_dropdown", values=tool_types, state="readonly")
+        tool_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(preview_frame, palette_type, tool_dropdown.get()))
         tool_dropdown.set("Sword")
+        tool_dropdown.place(relx=0.05, rely=0.93, relwidth=0.2, relheight=0.05)
         selected_preview = tool_types.index(tool_dropdown.get())
 
-        style_dropdown = ttk.Combobox(palette_frame, name="style_dropdown", values=texture_styles, state="readonly")
-        style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(style_dropdown.get()))
+        style_dropdown = ttk.Combobox(preview_frame, name="style_dropdown", values=texture_styles, state="readonly")
+        style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(preview_frame, palette_type, style_dropdown.get()))
         style_dropdown.set("Base")
+        style_dropdown.place(relx=0.3, rely=0.93, relwidth=0.2, relheight=0.05)
         selected_style = texture_styles.index(style_dropdown.get())
     elif palette_type == "Armor":
         # armor has only style type
-        style_dropdown = ttk.Combobox(palette_frame, name="style_dropdown", values=texture_styles, state="readonly")
-        style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(style_dropdown.get()))
+        style_dropdown = ttk.Combobox(preview_frame, name="style_dropdown", values=texture_styles, state="readonly")
+        style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(preview_frame, palette_type, style_dropdown.get()))
         style_dropdown.set("Base")
         selected_style = texture_styles.index(style_dropdown.get())
     elif palette_type == "Fluid":
         # fluid has only preview type
-        fluid_dropdown = ttk.Combobox(palette_frame, name="tool_dropdown", values=tool_types, state="readonly")
-        fluid_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(palette_type, tool_dropdown.get()))
+        fluid_dropdown = ttk.Combobox(preview_frame, name="tool_dropdown", values=tool_types, state="readonly")
+        fluid_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(preview_frame, palette_type, tool_dropdown.get()))
         fluid_dropdown.set("Still")
         selected_preview = fluid_types.index(fluid_dropdown.get())
     else:
-        error_label = tk.Label(palette_frame, text="Invalid palette type!")
+        error_label = tk.Label(preview_frame, text="Invalid palette type!")
         error_label.pack()
         return
 
+    image_frame = build_image_frame(preview_frame, palette_type)
+
+
+def build_image_frame(preview_frame: tk.Frame, palette_type: str) -> tk.Frame:
     image_frame = tk.Frame(preview_frame, name="image_frame")
     build_preview(image_frame, palette_type)
     image_frame.place(relwidth=0.9, relheight=0.9, relx=0.05, rely=0.02)
+    return image_frame
 
 
 def build_preview(preview_frame: tk.Frame, palette_type: str) -> None:
+    mapping: Mapping
+    image: Image.Image
     if palette_type == "Tool":
-        mapping = Mapping(Mapping.TOOL_IMAGE, Mapping.TOOL_PALETTE)
+        mapping = Mapping(Mapping.TOOL_IMAGE_TO_PALETTE)
         image = tool_images[tool_types[selected_preview]][texture_styles[selected_style]]
-        x_offset = 0
-        x_width = 1.0 / image.width
-        y_offset = 0
-        y_height = 1.0 / image.height
-        print(x_width, y_height)
-        for x in range(image.width):
-            for y in range(image.height):
-                r, g, b, a = image.getpixel((x, y))
-                # TODO: palette mapping stuff
-                if a != 0:
-                    print("#" + str(rgb2hex((r, g, b))))
-                    print(x_offset, y_offset)
-                    button = PreviewButton(preview_frame, 0, bg="#" + str(rgb2hex((r, g, b))), activebackground="#" + str(rgb2hex((r, g, b))), borderwidth=0)
-                    button.place(relx=x_offset, rely=y_offset, relwidth=x_width, relheight=y_height)
-                y_offset += y_height
-            x_offset += x_width
-            y_offset = 0
-
     elif palette_type == "Armor":
-        pass
+        mapping = Mapping(Mapping.ARMOR_IMAGE_TO_PALETTE)
     elif palette_type == "Fluid":
-        pass
+        mapping = Mapping(Mapping.FLUID_IMAGE_TO_PALETTE)
+        if fluid_types[selected_preview] == "Bucket":
+            mapping = Mapping(Mapping.BUCKET_IMAGE_TO_PALETTE)
+    else:
+        print("Invalid palette type!")
+        return
+    x_offset = 0
+    x_width = 1.0 / image.width
+    y_offset = 0
+    y_height = 1.0 / image.height
+
+    global preview_pixel_ids
+    preview_pixel_ids = {}
+    for x in range(image.width):
+        for y in range(image.height):
+            r, g, b, a = image.getpixel((x, y))
+            if a != 0:
+                palette_id = mapping.map((r, g, b))
+                color: tuple[int, int, int]
+                if palette_id == -1:
+                    color = (r, g, b)
+                else:
+                    color = palettes[palette_type][palette_id]
+                button = PreviewButton(preview_frame, palette_id, name="preview_pixel[{0},{1}]".format(x, y), bg="#" + str(rgb2hex(color)), activebackground="#" + str(rgb2hex(color)), borderwidth=0)
+                button.place(relx=x_offset, rely=y_offset, relwidth=x_width, relheight=y_height)
+                if not preview_pixel_ids.keys().__contains__(palette_id):
+                    preview_pixel_ids[palette_id] = []
+                preview_pixel_ids[palette_id].append(button)
+            y_offset += y_height
+        x_offset += x_width
+        y_offset = 0
 
 
-def change_selected(palette_type: str, amt: int) -> None:
+def change_selected(preview_frame: tk.Frame, palette_type: str, amt: int) -> None:
     global selected_preview
     if palette_type == "Tool":
         selected_preview += amt
@@ -260,9 +287,10 @@ def change_selected(palette_type: str, amt: int) -> None:
             selected_preview += len(fluid_types)
         elif selected_preview >= len(fluid_types):
             selected_preview -= len(fluid_types)
+    build_image_frame(preview_frame, palette_type)
 
 
-def set_selected(palette_type: str, value: str) -> None:
+def set_selected(preview_frame: tk.Frame, palette_type: str, value: str) -> None:
     global selected_preview
     if palette_type == "Tool":
         selected_preview = tool_types.index(value)
@@ -270,11 +298,13 @@ def set_selected(palette_type: str, value: str) -> None:
         print("Selected preview should never be changed when armor is selected!")
     elif palette_type == "Fluid":
         selected_preview = fluid_types.index(value)
+    build_image_frame(preview_frame, palette_type)
 
 
-def set_style(value: str) -> None:
+def set_style(preview_frame: tk.Frame, palette_type: str, value: str) -> None:
     global selected_style
     selected_style = texture_styles.index(value)
+    build_image_frame(preview_frame, palette_type)
 
 
 def build_reference_frame(reference_frame: tk.Frame) -> None:
@@ -291,11 +321,14 @@ def update_selected_color(selected_color_button: tk.Button, new_color: tuple[int
 
 
 def update_palette_color(event) -> None:
-    global selected_color
     global palettes
-    palette_button: PaletteButton = event.widget
+    index = event.widget.index
+    if index == -1: return
+    palette_button: PaletteButton = palette_buttons[index]
     palette_button.configure(bg="#" + str(rgb2hex(selected_color)), activebackground="#" + str(rgb2hex(selected_color)))
     palettes[palette_button.palette_type][palette_button.index] = selected_color
+    for pixel in preview_pixel_ids[index]:
+        pixel.configure(bg="#" + str(rgb2hex(selected_color)))
 
 
 def save_assets() -> None:
@@ -312,12 +345,16 @@ def main():
     global armor_palette_save_location
     global fluid_texture_save_location
     global bucket_texture_save_location
+    global atlas_save_location
+    global mod_id
     with open("config.toml", "rb") as f:
         config = tomllib.load(f)
         tool_palette_save_location = config["output"]["tool_palette_save_location"]
         armor_palette_save_location = config["output"]["armor_palette_save_location"]
         fluid_texture_save_location = config["output"]["fluid_texture_save_location"]
         bucket_texture_save_location = config["output"]["bucket_texture_save_location"]
+        atlas_save_location = config["output"]["atlas"]["atlas_save_location"]
+        mod_id = config["output"]["atlas"]["mod_id"]
 
     init_tool_images()
 
