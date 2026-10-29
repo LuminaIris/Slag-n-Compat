@@ -11,6 +11,11 @@ class PreviewButton(Button):
         self.index: int = index
         Button.__init__(self, master, {}, **kw)
 
+class ReferenceButton(Button):
+    def __init__(self, master=None, color: tuple[int, int, int] = (-1, -1, -1), **kw):
+        self.color: tuple[int, int, int] = color
+        Button.__init__(self, master, {}, **kw)
+
 class Mapping:
 
     TOOL_IMAGE_TO_PALETTE: str = "tool"

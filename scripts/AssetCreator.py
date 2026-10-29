@@ -6,13 +6,14 @@ from tkinter.filedialog import askopenfilename
 from pathlib import Path
 from PIL import Image
 from vcolorpicker import getColor, rgb2hex
-from Utils import PaletteButton, PreviewButton, Mapping
+from Utils import PaletteButton, PreviewButton, ReferenceButton, Mapping
 
 # ui components
 root: tk.Tk
 main_frame: tk.Frame
 top_frame: tk.Frame
 builder_frame: tk.Frame
+selected_color_button: tk.Button
 palette_buttons: list[PaletteButton] = []
 
 # ui variables
@@ -22,7 +23,8 @@ save_armor: tk.IntVar
 save_fluid: tk.IntVar
 selected_preview: int
 selected_style: int
-selected_reference: int
+selected_frame: int
+selected_reference: str
 
 # config attributes
 tool_palette_save_location: str
@@ -36,13 +38,17 @@ mod_id: str
 palettes: dict[str, list[tuple[int, int, int]]] = {}
 preview_pixel_ids: dict[int, list[PreviewButton]] = {}
 tool_images: dict[str, dict[str, Image.Image]] = {}
-reference_images: list[Image.Image] = []
+armor_images: dict[str, dict[str, Image.Image]] = {}
+fluid_images: dict[str, dict[int, Image.Image]] = {}
+fluid_frame_counts: dict[str, int] = {}
+reference_images: dict[str, Image.Image] = {}
 selected_color: tuple[int, int, int] = (255, 255, 255)
 
 # constants
 top_height = 0.13
 tool_types = ["Axe", "Boots", "Chestplate", "Graip", "Hammer", "Helmet", "Hoe", "Knife", "Leggings", "Mallet", "Mattock", "Maul", "Paxel", "Pickaxe", "Prybar", "Scythe", "Shovel", "Sword"]
-fluid_types = ["Still", "Flowing", "Bucket"]
+armor_types = ["layer_1", "layer_2"]
+fluid_types = ["Still", "Flow", "Bucket"]
 texture_styles = ["Base", "Metal", "Shiny", "Soft"]
 
 
@@ -73,6 +79,46 @@ def init_tool_images() -> None:
                 tool_images[tool] = {}
             tool_images[tool][style] = final
 
+
+def init_armor_images():
+    for layer in armor_types:
+        for style in texture_styles:
+            try:
+                img1_path = Path(__file__).parent / "resources" / "armor" / (style + "_" + layer + ".png")
+                img2_path = Path(__file__).parent / "resources" / "armor" / "plate" / (style + "_" + layer + ".png")
+                with Image.open(img1_path) as source:
+                    img1 = source.convert("RGBA")
+                with Image.open(img2_path) as source:
+                    img2 = source.convert("RGBA")
+                img1.alpha_composite(img2, dest=(0, 0))
+                if not armor_images.keys().__contains__(layer):
+                    armor_images[layer] = {}
+                armor_images[layer][style] = img1
+            except FileNotFoundError as e:
+                print("FileNotFoundError", e)
+
+def init_fluid_images():
+    for state in fluid_types:
+        try:
+            path: Path = Path(__file__)
+            match state:
+                case "Still":
+                    path = Path(__file__).parent / "resources" / "fluid" / "still.png"
+                case "Flow":
+                    path = Path(__file__).parent / "resources" / "fluid" / "flow.png"
+                case "Bucket":
+                    path = Path(__file__).parent / "resources" / "fluid" / "bucket.png"
+            image = Image.open(path).convert("RGBA")
+            for x in range(int(image.width / 16)):
+                for y in range(int(image.height / 16)):
+                    final = image.crop((x * 16, y * 16, (x + 1) * 16, (y + 1) * 16))
+                    frame_num = x * int(image.height / 16) + y
+                    if not fluid_images.keys().__contains__(state):
+                        fluid_images[state] = {}
+                    fluid_images[state][frame_num] = final
+                    fluid_frame_counts[state] = frame_num
+        except FileNotFoundError as e:
+            print("FileNotFoundError", e)
 
 
 def create_top_frame(parent: tk.Frame) -> tk.Frame:
@@ -112,16 +158,17 @@ def create_palette_builder(parent: tk.Frame) -> tk.Frame:
     frame = init_frame(parent)
 
     palette_frame = tk.Frame(frame, name="palette_frame", highlightthickness=1, highlightcolor="black", highlightbackground="black")
-    preview_frame = tk.Frame(frame, name="preview_frame")
-    reference_frame = tk.Frame(frame, name="reference_frame", bg="lightblue")
+    preview_frame = tk.Frame(frame, name="preview_frame", highlightthickness=1, highlightcolor="black", highlightbackground="black")
+    reference_frame = tk.Frame(frame, name="reference_frame", highlightthickness=1, highlightcolor="black", highlightbackground="black")
 
     palette_label = tk.Label(frame, name="palette_label", text="Palette:")
     palette_label.place(relx=0.2, rely=0.03, relheight=0.045, relwidth=0.08)
 
     selected_color_label = tk.Label(frame, name="selected_color_label", text="Selected Color:")
     selected_color_label.place(relx=0.7, rely=0.03, relheight=0.045, relwidth=0.1)
+    global selected_color_button
     selected_color_button = tk.Button(frame, name="selected_color_button")
-    selected_color_button.configure(command=lambda: update_selected_color(selected_color_button))
+    selected_color_button.configure(command=lambda: update_selected_color())
     selected_color_button.place(relx=0.81, rely=0.02, relheight=0.06, relwidth=0.06)
 
     palette_type_dropdown = ttk.Combobox(frame, name="palette_type_dropdown", values=["Tool", "Armor", "Fluid"], state="readonly")
@@ -171,10 +218,12 @@ def new_asset_set() -> None:
 
 
 def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, palette_type: str) -> None:
-    global palettes
-    palette = palettes[palette_type]
     for child in palette_frame.winfo_children():
         child.destroy()
+    for child in preview_frame.winfo_children():
+        child.destroy()
+    global palettes
+    palette = palettes[palette_type]
     offset = 0.0
     width = 1.0 / len(palette)
     i = 0
@@ -187,45 +236,65 @@ def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, 
         offset += width
         i += 1
 
+    preview_label = tk.Label(preview_frame, name="preview_label", text="Preview")
+    preview_label.place(relx=0.01, rely=0.005, relwidth=0.2, relheight=0.05)
+
     global selected_preview
     global selected_style
+    global selected_frame
     if palette_type == "Tool":
         # tool has both preview type and style type
         tool_dropdown = ttk.Combobox(preview_frame, name="tool_dropdown", values=tool_types, state="readonly")
-        tool_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(preview_frame, palette_type, tool_dropdown.get()))
+        tool_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(image_frame, palette_type, tool_dropdown.get()))
         tool_dropdown.set("Sword")
         tool_dropdown.place(relx=0.05, rely=0.93, relwidth=0.2, relheight=0.05)
         selected_preview = tool_types.index(tool_dropdown.get())
 
         style_dropdown = ttk.Combobox(preview_frame, name="style_dropdown", values=texture_styles, state="readonly")
-        style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(preview_frame, palette_type, style_dropdown.get()))
+        style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(image_frame, palette_type, style_dropdown.get()))
         style_dropdown.set("Base")
         style_dropdown.place(relx=0.3, rely=0.93, relwidth=0.2, relheight=0.05)
         selected_style = texture_styles.index(style_dropdown.get())
     elif palette_type == "Armor":
-        # armor has only style type
+        # armor has layer and style type
+        layer_dropdown = ttk.Combobox(preview_frame, name="layer_dropdown", values=armor_types, state="readonly")
+        layer_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(image_frame, palette_type, layer_dropdown.get()))
+        layer_dropdown.set("layer_1")
+        layer_dropdown.place(relx=0.05, rely=0.93, relwidth=0.2, relheight=0.05)
+        selected_preview = armor_types.index(layer_dropdown.get())
+
         style_dropdown = ttk.Combobox(preview_frame, name="style_dropdown", values=texture_styles, state="readonly")
-        style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(preview_frame, palette_type, style_dropdown.get()))
+        style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(image_frame, palette_type, style_dropdown.get()))
         style_dropdown.set("Base")
+        style_dropdown.place(relx=0.3, rely=0.93, relwidth=0.2, relheight=0.05)
         selected_style = texture_styles.index(style_dropdown.get())
     elif palette_type == "Fluid":
-        # fluid has only preview type
-        fluid_dropdown = ttk.Combobox(preview_frame, name="tool_dropdown", values=tool_types, state="readonly")
-        fluid_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(preview_frame, palette_type, tool_dropdown.get()))
+        # fluid has preview type and frame change buttons
+        fluid_dropdown = ttk.Combobox(preview_frame, name="tool_dropdown", values=fluid_types, state="readonly")
+        fluid_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(image_frame, palette_type, tool_dropdown.get()))
         fluid_dropdown.set("Still")
+        fluid_dropdown.place(relx=0.05, rely=0.93, relwidth=0.2, relheight=0.05)
         selected_preview = fluid_types.index(fluid_dropdown.get())
+
+        prev_frame_button = tk.Button(preview_frame, name="prev_frame_button", text="<", command=lambda: change_selected_frame(image_frame, palette_type, -1))
+        prev_frame_button.place(relx=0.025, rely = 0.465, relwidth=0.04, relheight=0.04)
+        next_frame_button = tk.Button(preview_frame, name="next_frame_button", text=">", command=lambda: change_selected_frame(image_frame, palette_type, 1))
+        next_frame_button.place(relx=0.935, rely=0.465, relwidth=0.04, relheight=0.04)
+        selected_frame = 0
+
     else:
         error_label = tk.Label(preview_frame, text="Invalid palette type!")
         error_label.pack()
         return
 
-    image_frame = build_image_frame(preview_frame, palette_type)
-
-
-def build_image_frame(preview_frame: tk.Frame, palette_type: str) -> tk.Frame:
     image_frame = tk.Frame(preview_frame, name="image_frame")
+    build_image_frame(image_frame, palette_type)
+    image_frame.place(relwidth=0.87, relheight=0.87, relx=0.065, rely=0.05)
+
+
+def build_image_frame(image_frame: tk.Frame, palette_type: str) -> tk.Frame:
+    image_frame.forget()
     build_preview(image_frame, palette_type)
-    image_frame.place(relwidth=0.9, relheight=0.9, relx=0.05, rely=0.02)
     return image_frame
 
 
@@ -237,10 +306,12 @@ def build_preview(preview_frame: tk.Frame, palette_type: str) -> None:
         image = tool_images[tool_types[selected_preview]][texture_styles[selected_style]]
     elif palette_type == "Armor":
         mapping = Mapping(Mapping.ARMOR_IMAGE_TO_PALETTE)
+        image = armor_images[armor_types[selected_preview]][texture_styles[selected_style]]
     elif palette_type == "Fluid":
         mapping = Mapping(Mapping.FLUID_IMAGE_TO_PALETTE)
         if fluid_types[selected_preview] == "Bucket":
             mapping = Mapping(Mapping.BUCKET_IMAGE_TO_PALETTE)
+        image = fluid_images[fluid_types[selected_style]][selected_frame]
     else:
         print("Invalid palette type!")
         return
@@ -262,6 +333,7 @@ def build_preview(preview_frame: tk.Frame, palette_type: str) -> None:
                 else:
                     color = palettes[palette_type][palette_id]
                 button = PreviewButton(preview_frame, palette_id, name="preview_pixel[{0},{1}]".format(x, y), bg="#" + str(rgb2hex(color)), activebackground="#" + str(rgb2hex(color)), borderwidth=0)
+                button.bind("<Button-1>", update_palette_color)
                 button.place(relx=x_offset, rely=y_offset, relwidth=x_width, relheight=y_height)
                 if not preview_pixel_ids.keys().__contains__(palette_id):
                     preview_pixel_ids[palette_id] = []
@@ -271,31 +343,12 @@ def build_preview(preview_frame: tk.Frame, palette_type: str) -> None:
         y_offset = 0
 
 
-def change_selected(preview_frame: tk.Frame, palette_type: str, amt: int) -> None:
-    global selected_preview
-    if palette_type == "Tool":
-        selected_preview += amt
-        if selected_preview < 0:
-            selected_preview += len(tool_types)
-        elif selected_preview >= len(tool_types):
-            selected_preview -= len(tool_types)
-    elif palette_type == "Armor":
-        print("Selected preview should never be changed when armor is selected!")
-    elif palette_type == "Fluid":
-        selected_preview += amt
-        if selected_preview < 0:
-            selected_preview += len(fluid_types)
-        elif selected_preview >= len(fluid_types):
-            selected_preview -= len(fluid_types)
-    build_image_frame(preview_frame, palette_type)
-
-
 def set_selected(preview_frame: tk.Frame, palette_type: str, value: str) -> None:
     global selected_preview
     if palette_type == "Tool":
         selected_preview = tool_types.index(value)
     elif palette_type == "Armor":
-        print("Selected preview should never be changed when armor is selected!")
+        selected_preview = armor_types.index(value)
     elif palette_type == "Fluid":
         selected_preview = fluid_types.index(value)
     build_image_frame(preview_frame, palette_type)
@@ -307,12 +360,91 @@ def set_style(preview_frame: tk.Frame, palette_type: str, value: str) -> None:
     build_image_frame(preview_frame, palette_type)
 
 
+def change_selected_frame(preview_frame: tk.Frame, palette_type: str, amt: int) -> None:
+    global selected_frame
+    if palette_type != "Fluid":
+        print("Selected frame should only be updated from fluid")
+        return
+    preview = fluid_types[selected_preview]
+    frame_count = fluid_frame_counts[preview]
+    selected_frame += amt
+    if selected_frame < 0: selected_frame += frame_count
+    if selected_frame >= frame_count: selected_frame -= frame_count
+    build_image_frame(preview_frame, palette_type)
+
+
 def build_reference_frame(reference_frame: tk.Frame) -> None:
-    print("building reference frame")
+    reference_label = tk.Label(reference_frame, name="reference_label", text="References")
+    reference_label.place(relx=0.01, rely=0.005, relwidth=0.2, relheight=0.05)
+    reference_dropdown = ttk.Combobox(reference_frame, name="reference_dropdown", values=list(reference_images.keys()), state="readonly")
+    reference_dropdown.bind("<<ComboboxSelected>>", lambda e: build_reference_image(image_frame, reference_dropdown.get()))
+    reference_dropdown.set(selected_reference)
+    reference_dropdown.place(relx=0.05, rely=0.93, relwidth=0.4, relheight=0.05)
+
+    new_reference_button = tk.Button(reference_frame, name="new_reference_button", text="New Reference", command=lambda: add_new_reference(image_frame, reference_dropdown))
+    new_reference_button.place(relx=0.5, rely=0.93, relwidth=0.2, relheight=0.05)
+
+    clear_references_button = tk.Button(reference_frame, name="clear_reference_button", text="Clear", command=lambda: clear_references(image_frame, reference_dropdown))
+    clear_references_button.place(relx=0.75, rely=0.93, relwidth=0.2, relheight=0.05)
+
+    image_frame = tk.Frame(reference_frame, name="image_frame")
+    image_frame.place(relwidth=0.87, relheight=0.87, relx=0.065, rely=0.05)
+    build_reference_image(image_frame, reference_dropdown.get())
+
+def build_reference_image(image_frame: tk.Frame, reference_name: str) -> None:
+    global selected_reference
+    selected_reference = reference_name
+    for child in image_frame.winfo_children():
+        child.destroy()
+    if reference_name == "<none>":
+        label = tk.Label(image_frame, text="No reference images", font=("Arial", 20))
+        label.pack(side="top", fill="both", expand=True)
+    elif reference_name not in reference_images.keys():
+        print("Unrecognized reference image!")
+    else:
+        image = reference_images[reference_name]
+        x_offset = 0
+        x_width = 1.0 / image.width
+        y_offset = 0
+        y_height = 1.0 / image.height
+
+        for x in range(image.width):
+            for y in range(image.height):
+                r, g, b, a = image.getpixel((x, y))
+                color = (r, g, b)
+                if a != 0:
+                    button = ReferenceButton(image_frame, color, name="reference_pixel[{0},{1}]".format(x, y), bg="#" + str(rgb2hex(color)), activebackground="#" + str(rgb2hex(color)), borderwidth=0)
+                    button.bind("<Button-1>", lambda e: update_selected_color(e.widget.color))
+                    button.place(relx=x_offset, rely=y_offset, relwidth=x_width, relheight=y_height)
+                y_offset += y_height
+            x_offset += x_width
+            y_offset = 0
 
 
-def update_selected_color(selected_color_button: tk.Button, new_color: tuple[int, int, int] = None) -> None:
+def add_new_reference(image_frame: tk.Frame, reference_dropdown: ttk.Combobox) -> None:
+    path = Path(askopenfilename(title="Select reference image (.png)", filetypes=[("PNG files", "*.png")]))
+    image = Image.open(path)
+    reference_images[path.name] = image.convert("RGBA")
+    build_reference_image(image_frame, path.name)
+    update_reference_dropdown(reference_dropdown, path.name)
+
+
+def clear_references(image_frame: tk.Frame, reference_dropdown: ttk.Combobox) -> None:
+    global reference_images
+    reference_images = {}
+    update_reference_dropdown(reference_dropdown)
+    build_reference_image(image_frame, reference_dropdown.get())
+
+
+def update_reference_dropdown(reference_dropdown: ttk.Combobox, new_value: str = "") -> None:
+    reference_dropdown.configure(values=list(reference_images.keys()))
+    if new_value != "": reference_dropdown.set(new_value)
+    else: reference_dropdown.set("<none>")
+
+
+def update_selected_color(new_color: tuple[int, int, int] = None) -> None:
     global selected_color
+    global selected_color_button
     if new_color is None:
         selected_color = getColor(selected_color)
     else:
@@ -327,8 +459,9 @@ def update_palette_color(event) -> None:
     palette_button: PaletteButton = palette_buttons[index]
     palette_button.configure(bg="#" + str(rgb2hex(selected_color)), activebackground="#" + str(rgb2hex(selected_color)))
     palettes[palette_button.palette_type][palette_button.index] = selected_color
-    for pixel in preview_pixel_ids[index]:
-        pixel.configure(bg="#" + str(rgb2hex(selected_color)))
+    if preview_pixel_ids.keys().__contains__(index):
+        for pixel in preview_pixel_ids[index]:
+            pixel.configure(bg="#" + str(rgb2hex(selected_color)))
 
 
 def save_assets() -> None:
@@ -357,6 +490,11 @@ def main():
         mod_id = config["output"]["atlas"]["mod_id"]
 
     init_tool_images()
+    init_armor_images()
+    init_fluid_images()
+
+    global selected_reference
+    selected_reference = "<none>"
 
     global root
     global main_frame
