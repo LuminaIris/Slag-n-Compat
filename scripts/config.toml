@@ -1,10 +1,22 @@
 [output]
-tool_palette_save_location = "src/main/resources/assets/slag/textures/color_palettes"
-armor_palette_save_location = "src/main/resources/assets/slag/textures/color_palettes/armor"
-fluid_texture_save_location = "src/main/resources/assets/slag/textures/fluid"
-bucket_texture_save_location = "src/main/resources/assets/slagcompat/textures/item"
+# the save location for tool color palettes, relative to this file
+tool_palette_save_location = "../../src/main/resources/assets/slag/textures/color_palettes"
+
+# the save location for armor color palettes, relative to this file
+armor_palette_save_location = "../../src/main/resources/assets/slag/textures/color_palettes/armor"
+
+# the save location for the fluid images and mcmeta files, relative to this file
+fluid_texture_save_location = "../../src/main/resources/assets/slag/textures/fluid"
+
+# the save location for the bucket texture image, relative to this file
+bucket_texture_save_location = "../../src/main/resources/assets/slagcompat/textures/item"
 
 [output.atlas]
+# whether to update the 'blocks' atlas when saving fluids
 update_atlas_on_fluid_save = true
-atlas_save_location = "src/main/resources/assets/minecraft/atlases/blocks.json"
+
+# the atlas file to update
+atlas_save_location = "../../src/main/resources/assets/minecraft/atlases/blocks.json"
+
+# the mod id of the fluids
 mod_id = "slagcompat"
