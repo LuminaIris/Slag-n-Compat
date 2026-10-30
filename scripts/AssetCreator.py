@@ -349,7 +349,6 @@ def build_preview(preview_frame: tk.Frame, palette_type: str) -> None:
 
 
 def set_selected(preview_frame: tk.Frame, palette_type: str, value: str) -> None:
-    print(palette_type)
     global selected_preview
     global selected_frame
     if palette_type == "Tool":
@@ -358,9 +357,6 @@ def set_selected(preview_frame: tk.Frame, palette_type: str, value: str) -> None
         selected_preview = armor_types.index(value)
     elif palette_type == "Fluid":
         selected_frame = 0
-        print(value)
-        print(fluid_types)
-        print(fluid_types.index(value))
         selected_preview = fluid_types.index(value)
     build_image_frame(preview_frame, palette_type)
 
