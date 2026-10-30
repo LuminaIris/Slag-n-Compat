@@ -11,6 +11,7 @@
     "tag": "c:ingots/ironwood"
   },
   "sort_order": 1080,
+  "texture": "soft",
   "traits": [
     {
       "trait": "slag:attack_damage",

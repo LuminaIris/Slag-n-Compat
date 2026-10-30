@@ -20,7 +20,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .trait(AllTraits.ENCHANTABILITY, 5f)
             .trait(AllTraits.ARMOR, 7.5f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
-            .setTexture("base")
+            .setTexture("soft")
             .moltenFluid(TwilightForestFluids.MOLTEN_IRONWOOD::getSource)
             .modLoaded("twilightforest")
             .register(), true);
