@@ -15,8 +15,8 @@ bucket_texture_save_location = "../../src/main/resources/assets/slagcompat/textu
 # whether to update the 'blocks' atlas when saving fluids
 update_atlas_on_fluid_save = true
 
-# the atlas file to update
+# the atlas file to update, relative to this file
 atlas_save_location = "../../src/main/resources/assets/minecraft/atlases/blocks.json"
 
-# the mod id of the fluids
-mod_id = "slagcompat"
+# the mod id of the fluids in the assets folder
+mod_id = "slag"

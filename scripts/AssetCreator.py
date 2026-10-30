@@ -1,6 +1,8 @@
 import os
 import tkinter as tk
 import tomllib
+import copy
+import json
 from tkinter import ttk
 from tkinter.filedialog import askopenfilename
 from pathlib import Path
@@ -31,6 +33,7 @@ tool_palette_save_location: str
 armor_palette_save_location: str
 fluid_texture_save_location: str
 bucket_texture_save_location: str
+should_update_atlas: bool
 atlas_save_location: str
 mod_id: str
 
@@ -50,6 +53,11 @@ tool_types = ["Axe", "Boots", "Chestplate", "Graip", "Hammer", "Helmet", "Hoe", 
 armor_types = ["layer_1", "layer_2"]
 fluid_types = ["Still", "Flow", "Bucket"]
 texture_styles = ["Base", "Metal", "Shiny", "Soft"]
+default_palettes = {
+    "Tool": [(255, 255, 255), (241, 241, 241), (228, 228, 228), (205, 205, 205), (180, 180, 180), (151, 151, 151), (108, 108, 108), (77, 77, 77)],
+    "Armor": [(254, 254, 254), (245, 245, 245), (234, 234, 234), (221, 221, 221), (203, 203, 203), (183, 183, 183), (161, 161, 161), (140, 140, 140), (116, 116, 116)],
+    "Fluid": [(244, 244, 244), (230, 230, 230), (211, 211, 211), (192, 192, 192), (174, 174, 174), (158, 158, 158), (136, 136, 136), (121, 121, 121), (105, 105, 105), (90, 90, 90)]
+}
 
 
 def init_tool_images() -> None:
@@ -206,11 +214,7 @@ def new_asset_set() -> None:
     global material_id
     global selected_color
     global palettes
-    palettes = {
-        "Tool": [(255, 255, 255), (241, 241, 241), (228, 228, 228), (205, 205, 205), (180, 180, 180), (151, 151, 151), (108, 108, 108), (77, 77, 77)],
-        "Armor": [(254, 254, 254), (245, 245, 245), (234, 234, 234), (221, 221, 221), (203, 203, 203), (183, 183, 183), (161, 161, 161), (140, 140, 140), (116, 116, 116)],
-        "Fluid": [(244, 244, 244), (230, 230, 230), (211, 211, 211), (192, 192, 192), (174, 174, 174), (158, 158, 158), (136, 136, 136), (121, 121, 121), (105, 105, 105), (90, 90, 90)]
-    }
+    palettes = copy.deepcopy(default_palettes)
     material_id.set("")
     selected_color = (255, 255, 255)
     builder_frame.destroy()
@@ -271,7 +275,7 @@ def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, 
     elif palette_type == "Fluid":
         # fluid has preview type and frame change buttons
         fluid_dropdown = ttk.Combobox(preview_frame, name="tool_dropdown", values=fluid_types, state="readonly")
-        fluid_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(image_frame, palette_type, tool_dropdown.get()))
+        fluid_dropdown.bind("<<ComboboxSelected>>", lambda e: set_selected(image_frame, palette_type, fluid_dropdown.get()))
         fluid_dropdown.set("Still")
         fluid_dropdown.place(relx=0.05, rely=0.93, relwidth=0.2, relheight=0.05)
         selected_preview = fluid_types.index(fluid_dropdown.get())
@@ -293,7 +297,8 @@ def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, 
 
 
 def build_image_frame(image_frame: tk.Frame, palette_type: str) -> tk.Frame:
-    image_frame.forget()
+    for child in image_frame.winfo_children():
+        child.destroy()
     build_preview(image_frame, palette_type)
     return image_frame
 
@@ -311,7 +316,7 @@ def build_preview(preview_frame: tk.Frame, palette_type: str) -> None:
         mapping = Mapping(Mapping.FLUID_IMAGE_TO_PALETTE)
         if fluid_types[selected_preview] == "Bucket":
             mapping = Mapping(Mapping.BUCKET_IMAGE_TO_PALETTE)
-        image = fluid_images[fluid_types[selected_style]][selected_frame]
+        image = fluid_images[fluid_types[selected_preview]][selected_frame]
     else:
         print("Invalid palette type!")
         return
@@ -344,12 +349,18 @@ def build_preview(preview_frame: tk.Frame, palette_type: str) -> None:
 
 
 def set_selected(preview_frame: tk.Frame, palette_type: str, value: str) -> None:
+    print(palette_type)
     global selected_preview
+    global selected_frame
     if palette_type == "Tool":
         selected_preview = tool_types.index(value)
     elif palette_type == "Armor":
         selected_preview = armor_types.index(value)
     elif palette_type == "Fluid":
+        selected_frame = 0
+        print(value)
+        print(fluid_types)
+        print(fluid_types.index(value))
         selected_preview = fluid_types.index(value)
     build_image_frame(preview_frame, palette_type)
 
@@ -465,12 +476,85 @@ def update_palette_color(event) -> None:
 
 
 def save_assets() -> None:
+    if palettes == {}:
+        tk.messagebox.showerror("No Asset Set", "You must create an asset set before saving!")
+        return
+    if material_id.get() == "" or material_id.get().isspace():
+        tk.messagebox.showerror("Error", "No material ID given")
+        return
+    if save_tool.get() == save_armor.get() == save_tool.get() == 0:
+        tk.messagebox.showerror("Error", "No save checkboxes clicked!")
+        return
     if save_tool.get() == 1:
-        pass
+        if palettes["Tool"] == default_palettes["Tool"]:
+            if not tk.messagebox.askokcancel("No Edits", "The 'Tool' palette is the same as the default palette! Did you mean to save it?"):
+                return
+        count = len(default_palettes["Tool"])
+        image = Image.new("RGBA", (count, 1))
+        for i in range(count):
+            r, g, b = palettes["Tool"][i]
+            image.putpixel((i, 0), (r, g, b, 255))
+        image.save(Path(__file__) / "{0}/{1}.png".format(tool_palette_save_location, material_id.get()))
     if save_armor.get() == 1:
-        pass
+        if palettes["Armor"] == default_palettes["Armor"]:
+            if not tk.messagebox.askokcancel("No Edits", "The 'Armor' palette is the same as the default palette! Did you mean to save it?"):
+                return
+        count = len(default_palettes["Armor"])
+        image = Image.new("RGBA", (count, 1))
+        for i in range(count):
+            r, g, b = palettes["Armor"][i]
+            image.putpixel((i, 0), (r, g, b, 255))
+        image.save(Path(__file__) / "{0}/{1}.png".format(armor_palette_save_location, material_id.get()))
     if save_fluid.get() == 1:
-        pass
+        if palettes["Fluid"] == default_palettes["Fluid"]:
+            if not tk.messagebox.askokcancel("No Edits", "The 'Fluid' palette is the same as the default palette! Did you mean to save it?"):
+                return
+        fluid_mapping = Mapping(Mapping.FLUID_IMAGE_TO_PALETTE)
+        bucket_mapping = Mapping(Mapping.BUCKET_IMAGE_TO_PALETTE)
+
+        # save images
+        image_still = Image.open(Path(__file__).parent / "resources" / "fluid" / "still.png").convert("RGBA")
+        image_flow = Image.open(Path(__file__).parent / "resources" / "fluid" / "flow.png").convert("RGBA")
+        image_bucket = Image.open(Path(__file__).parent / "resources" / "fluid" / "bucket.png").convert("RGBA")
+        replace_and_save(image_still, Path(__file__) / "{0}/molten_{1}_still.png".format(fluid_texture_save_location, material_id.get()), fluid_mapping, "Fluid")
+        replace_and_save(image_flow, Path(__file__) / "{0}/molten_{1}_flow.png".format(fluid_texture_save_location, material_id.get()), fluid_mapping, "Fluid")
+        replace_and_save(image_bucket, Path(__file__) / "{0}/molten_{1}_bucket.png".format(bucket_texture_save_location, material_id.get()), bucket_mapping, "Fluid")
+
+        # save mcmeta files
+        with open(Path(__file__).parent / "resources" / "fluid" / "still.mcmeta", "r") as source:
+            with open(Path(__file__) / "{0}/molten_{1}_still.png.mcmeta".format(fluid_texture_save_location, material_id.get()), "w") as destination:
+                destination.write(source.read())
+        with open(Path(__file__).parent / "resources" / "fluid" / "flow.mcmeta", "r") as source:
+            with open(Path(__file__) / "{0}/molten_{1}_flow.png.mcmeta".format(fluid_texture_save_location, material_id.get()), "w") as destination:
+                destination.write(source.read())
+
+        # update atlas (if enabled)
+        if should_update_atlas:
+            with open(Path(__file__) / atlas_save_location, "r+") as atlas:
+                data1 = {"type": "single", "resource": "{0}:fluid/molten_{1}_flow".format(mod_id, material_id.get())}
+                data2 = {"type": "single", "resource": "{0}:fluid/molten_{1}_still".format(mod_id, material_id.get())}
+                data = json.load(atlas)
+                data["sources"].append(data1)
+                data["sources"].append(data2)
+                atlas.seek(0)
+                json.dump(data, atlas, indent=4)
+    tk.messagebox.showinfo("Successfully Saved!", "Successfully saved asset set '{0}'!".format(material_id.get()))
+
+
+def replace_and_save(image: Image.Image, save_path: Path, mapping: Mapping, palette_type: str) -> None:
+    for x in range(image.width):
+        for y in range(image.height):
+            r, g, b, a = image.getpixel((x, y))
+            if a == 0:
+                image.putpixel((x, y), (r, g, b, a))
+            else:
+                index = mapping.map((r, g, b))
+                if (index == -1):
+                    image.putpixel((x, y), (r, g, b, a))
+                else:
+                    r_f, g_f, b_f = palettes[palette_type][index]
+                    image.putpixel((x, y), (r_f, g_f, b_f, a))
+    image.save(save_path)
 
 
 def main():
@@ -478,6 +562,7 @@ def main():
     global armor_palette_save_location
     global fluid_texture_save_location
     global bucket_texture_save_location
+    global should_update_atlas
     global atlas_save_location
     global mod_id
     with open("config.toml", "rb") as f:
@@ -486,6 +571,7 @@ def main():
         armor_palette_save_location = config["output"]["armor_palette_save_location"]
         fluid_texture_save_location = config["output"]["fluid_texture_save_location"]
         bucket_texture_save_location = config["output"]["bucket_texture_save_location"]
+        should_update_atlas = config["output"]["atlas"]["update_atlas_on_fluid_save"]
         atlas_save_location = config["output"]["atlas"]["atlas_save_location"]
         mod_id = config["output"]["atlas"]["mod_id"]
 

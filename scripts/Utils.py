@@ -38,6 +38,39 @@ class Mapping:
                 case (32, 32, 32): return 6
                 case (0, 0, 0): return 7
             return -1
+        if self.mapping_type == self.ARMOR_IMAGE_TO_PALETTE:
+            match color:
+                case (224, 224, 224): return 0
+                case (198, 198, 198): return 1
+                case (170, 170, 170): return 2
+                case (142, 142, 142): return 3
+                case (113, 113, 113): return 4
+                case (85, 85, 85): return 5
+                case (57, 57, 57): return 6
+                case (29, 29, 29): return 7
+                case (0, 0, 0): return 8
+            return -1
+        if self.mapping_type == self.FLUID_IMAGE_TO_PALETTE:
+            match color:
+                case (244, 244, 244): return 0
+                case (230, 230, 230): return 1
+                case (211, 211, 211): return 2
+                case (192, 192, 192): return 3
+                case (174, 174, 174): return 4
+                case (158, 158, 158): return 5
+                case (136, 136, 136): return 6
+                case (121, 121, 121): return 7
+                case (105, 105, 105): return 8
+                case (90, 90, 90): return 9
+            return -1
+        if self.mapping_type == self.BUCKET_IMAGE_TO_PALETTE:
+            match color:
+                case (255, 255, 253): return 0
+                case (247, 240, 232): return 1
+                case (235, 228, 213): return 3
+                case (213, 204, 186): return 5
+                case (190, 179, 162): return 6
+            return -1
         else:
             print("Unknown mapping type")
             return -1
