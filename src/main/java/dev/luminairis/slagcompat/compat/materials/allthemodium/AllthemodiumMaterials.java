@@ -4,6 +4,7 @@ import com.thevortex.allthemodium.registry.TagRegistry;
 import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
+import dev.luminairis.slagcompat.compat.fluids.allthemodium.AllthemodiumFluids;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import dev.luminairis.slagcompat.compat.traits.general.GeneralTraits;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -25,7 +26,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .trait(AllTraits.KNOCKBACK_RESISTANCE, 0.5f)
             .trait(GeneralTraits.UNBREAKABLE)
             .setTexture("metal")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .moltenFluid(AllthemodiumFluids.MOLTEN_ALLTHEMODIUM::getSource)
             .modLoaded("allthemodium")
             .register(), true);
 
@@ -40,7 +41,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .trait(AllTraits.KNOCKBACK_RESISTANCE, 0.8f)
             .trait(GeneralTraits.UNBREAKABLE)
             .setTexture("base")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .moltenFluid(AllthemodiumFluids.MOLTEN_VIBRANIUM::getSource)
             .modLoaded("allthemodium")
             .register(), true);
 
@@ -55,7 +56,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .trait(AllTraits.KNOCKBACK_RESISTANCE, 1f)
             .trait(GeneralTraits.UNBREAKABLE)
             .setTexture("soft")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .moltenFluid(AllthemodiumFluids.MOLTEN_UNOBTAINIUM::getSource)
             .modLoaded("allthemodium")
             .register(), true);
 

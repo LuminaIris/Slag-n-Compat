@@ -4,6 +4,10 @@
     "slagcompat:molten_refined_glowstone",
     "slagcompat:molten_allthemodium",
     "slagcompat:molten_vibranium",
-    "slagcompat:molten_unobtainium"
+    "slagcompat:molten_unobtainium",
+    "slagcompat:molten_ironwood",
+    "slagcompat:molten_steeleaf",
+    "slagcompat:molten_knightmetal",
+    "slagcompat:molten_fiery"
   ]
 }

@@ -3,6 +3,10 @@
     {
       "type": "neoforge:mod_loaded",
       "modid": "allthemodium"
+    },
+    {
+      "type": "slag:cast_only",
+      "tier": 7.0
     }
   ],
   "type": "minecraft:crafting_shaped",

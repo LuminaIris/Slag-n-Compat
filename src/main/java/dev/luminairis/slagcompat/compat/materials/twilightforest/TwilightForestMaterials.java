@@ -3,6 +3,7 @@ package dev.luminairis.slagcompat.compat.materials.twilightforest;
 import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
+import dev.luminairis.slagcompat.compat.fluids.twilightforest.TwilightForestFluids;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import dev.luminairis.slagcompat.compat.traits.general.GeneralTraits;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -19,8 +20,8 @@ public class TwilightForestMaterials extends CompatMaterial {
             .trait(AllTraits.ENCHANTABILITY, 5f)
             .trait(AllTraits.ARMOR, 7.5f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
-            .setTexture("metal")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .setTexture("base")
+            .moltenFluid(TwilightForestFluids.MOLTEN_IRONWOOD::getSource)
             .modLoaded("twilightforest")
             .register(), true);
 
@@ -32,8 +33,8 @@ public class TwilightForestMaterials extends CompatMaterial {
             .trait(AllTraits.ENCHANTABILITY, 5f)
             .trait(AllTraits.ARMOR, 7.5f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
-            .setTexture("metal")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .setTexture("soft")
+            .moltenFluid(TwilightForestFluids.MOLTEN_STEELEAF::getSource)
             .modLoaded("twilightforest")
             .register(), false);
 
@@ -46,7 +47,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .trait(AllTraits.ARMOR, 7.5f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 2f)
             .setTexture("metal")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .moltenFluid(TwilightForestFluids.MOLTEN_KNIGHTMETAL::getSource)
             .modLoaded("twilightforest")
             .register(), true);
 
@@ -61,7 +62,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .trait(AllTraits.AUTO_SMELTING)
             .trait(GeneralTraits.IGNITE)
             .setTexture("metal")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .moltenFluid(TwilightForestFluids.MOLTEN_FIERY::getSource)
             .modLoaded("twilightforest")
             .register(), false);
 

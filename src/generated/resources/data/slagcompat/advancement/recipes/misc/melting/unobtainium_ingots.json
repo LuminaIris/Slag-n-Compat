@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/unobtainium"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_unobtainium_ingots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ingots/unobtainium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/unobtainium_ingots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_unobtainium_ingots"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/unobtainium_ingots"
+    ]
+  }
+}

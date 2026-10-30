@@ -9,6 +9,14 @@
     "slagcompat:flowing_molten_vibranium",
     "slagcompat:molten_vibranium",
     "slagcompat:flowing_molten_unobtainium",
-    "slagcompat:molten_unobtainium"
+    "slagcompat:molten_unobtainium",
+    "slagcompat:flowing_molten_ironwood",
+    "slagcompat:molten_ironwood",
+    "slagcompat:flowing_molten_steeleaf",
+    "slagcompat:molten_steeleaf",
+    "slagcompat:flowing_molten_knightmetal",
+    "slagcompat:molten_knightmetal",
+    "slagcompat:flowing_molten_fiery",
+    "slagcompat:molten_fiery"
   ]
 }

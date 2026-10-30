@@ -172,12 +172,15 @@ def create_palette_builder(parent: tk.Frame) -> tk.Frame:
     palette_label = tk.Label(frame, name="palette_label", text="Palette:")
     palette_label.place(relx=0.2, rely=0.03, relheight=0.045, relwidth=0.08)
 
+    reset_palette_button = tk.Button(frame, name="reset_palette_label", text="Reset", command=lambda: reset_palette(palette_type_dropdown.get()))
+    reset_palette_button.place(relx=0.64, rely=0.02, relheight=0.06, relwidth=0.07)
+
     selected_color_label = tk.Label(frame, name="selected_color_label", text="Selected Color:")
-    selected_color_label.place(relx=0.7, rely=0.03, relheight=0.045, relwidth=0.1)
+    selected_color_label.place(relx=0.75, rely=0.03, relheight=0.045, relwidth=0.1)
     global selected_color_button
     selected_color_button = tk.Button(frame, name="selected_color_button")
     selected_color_button.configure(command=lambda: update_selected_color())
-    selected_color_button.place(relx=0.81, rely=0.02, relheight=0.06, relwidth=0.06)
+    selected_color_button.place(relx=0.86, rely=0.02, relheight=0.06, relwidth=0.06)
 
     palette_type_dropdown = ttk.Combobox(frame, name="palette_type_dropdown", values=["Tool", "Armor", "Fluid"], state="readonly")
     palette_type_dropdown.bind("<<ComboboxSelected>>", lambda e: build_palette_and_preview(palette_frame, preview_frame, palette_type_dropdown.get()))
@@ -219,6 +222,16 @@ def new_asset_set() -> None:
     selected_color = (255, 255, 255)
     builder_frame.destroy()
     builder_frame = create_palette_builder(main_frame)
+
+
+def reset_palette(palette_type: str) -> None:
+    global palettes
+    for i in range(len(palettes[palette_type])):
+        palettes[palette_type][i] = default_palettes[palette_type][i]
+        palette_buttons[i].configure(bg="#" + str(rgb2hex(palettes[palette_type][i])))
+        if preview_pixel_ids.keys().__contains__(i):
+            for pixel in preview_pixel_ids[i]:
+                pixel.configure(bg="#" + str(rgb2hex(palettes[palette_type][i])))
 
 
 def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, palette_type: str) -> None:

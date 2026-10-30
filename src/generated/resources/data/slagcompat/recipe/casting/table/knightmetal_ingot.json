@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/knightmetal"
+      }
+    }
+  ],
+  "type": "slag:table_casting",
+  "cast": "slag:cast/ingots",
+  "ingredient": {
+    "amount": 72,
+    "fluid": "slagcompat:molten_knightmetal"
+  },
+  "result": {
+    "tag": "c:ingots/knightmetal"
+  }
+}

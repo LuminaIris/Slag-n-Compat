@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:wires/unobtainium"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_unobtainium_wires": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:wires/unobtainium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/unobtainium_wires"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_unobtainium_wires"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/unobtainium_wires"
+    ]
+  }
+}

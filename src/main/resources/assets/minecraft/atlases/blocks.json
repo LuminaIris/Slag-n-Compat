@@ -39,6 +39,38 @@
         {
             "type": "single",
             "resource": "slag:fluid/molten_unobtainium_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_fiery_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_fiery_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_ironwood_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_ironwood_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_knightmetal_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_knightmetal_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_steeleaf_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_steeleaf_still"
         }
     ]
 }

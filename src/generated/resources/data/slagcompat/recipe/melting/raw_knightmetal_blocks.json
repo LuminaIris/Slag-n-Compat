@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:storage_blocks/raw_knightmetal"
+      }
+    }
+  ],
+  "type": "slag:melting",
+  "ingredient": {
+    "tag": "c:storage_blocks/raw_knightmetal"
+  },
+  "ingredients": [],
+  "result": [
+    {
+      "amount": 864,
+      "id": "slagcompat:molten_knightmetal"
+    }
+  ]
+}

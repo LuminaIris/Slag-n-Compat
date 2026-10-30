@@ -6,11 +6,12 @@
     }
   ],
   "id": "slag:steeleaf",
+  "molten_fluid": "slagcompat:molten_steeleaf",
   "repair_ingredient": {
     "tag": "c:ingots/steeleaf"
   },
   "sort_order": 1090,
-  "texture": "metal",
+  "texture": "soft",
   "traits": [
     {
       "trait": "slag:attack_damage",

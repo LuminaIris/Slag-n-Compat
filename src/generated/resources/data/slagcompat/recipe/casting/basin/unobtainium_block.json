@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:storage_blocks/unobtainium"
+      }
+    }
+  ],
+  "type": "slag:basin_casting",
+  "ingredient": {
+    "amount": 648,
+    "fluid": "slagcompat:molten_unobtainium"
+  },
+  "result": {
+    "tag": "c:storage_blocks/unobtainium"
+  }
+}

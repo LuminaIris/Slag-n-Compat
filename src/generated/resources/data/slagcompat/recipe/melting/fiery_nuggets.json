@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/fiery"
+      }
+    }
+  ],
+  "type": "slag:melting",
+  "ingredient": {
+    "tag": "c:nuggets/fiery"
+  },
+  "ingredients": [],
+  "result": [
+    {
+      "amount": 8,
+      "id": "slagcompat:molten_fiery"
+    }
+  ]
+}

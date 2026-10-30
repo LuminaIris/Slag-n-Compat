@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:storage_blocks/ironwood"
+      }
+    }
+  ],
+  "type": "slag:basin_casting",
+  "ingredient": {
+    "amount": 648,
+    "fluid": "slagcompat:molten_ironwood"
+  },
+  "result": {
+    "tag": "c:storage_blocks/ironwood"
+  }
+}

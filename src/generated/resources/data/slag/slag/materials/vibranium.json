@@ -6,6 +6,7 @@
     }
   ],
   "id": "slag:vibranium",
+  "molten_fluid": "slagcompat:molten_vibranium",
   "repair_ingredient": {
     "tag": "c:ingots/vibranium"
   },

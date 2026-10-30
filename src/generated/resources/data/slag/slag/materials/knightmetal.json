@@ -6,6 +6,7 @@
     }
   ],
   "id": "slag:knightmetal",
+  "molten_fluid": "slagcompat:molten_knightmetal",
   "repair_ingredient": {
     "tag": "c:ingots/knightmetal"
   },

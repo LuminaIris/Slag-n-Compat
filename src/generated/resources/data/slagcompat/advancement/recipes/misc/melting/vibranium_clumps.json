@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:clumps/vibranium"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_vibranium_clumps": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:clumps/vibranium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/vibranium_clumps"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_vibranium_clumps"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/vibranium_clumps"
+    ]
+  }
+}

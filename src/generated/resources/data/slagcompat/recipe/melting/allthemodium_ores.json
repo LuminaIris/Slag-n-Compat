@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ores/allthemodium"
+      }
+    }
+  ],
+  "type": "slag:melting",
+  "ingredient": {
+    "tag": "c:ores/allthemodium"
+  },
+  "ingredients": [],
+  "result": [
+    {
+      "amount": 96,
+      "id": "slagcompat:molten_allthemodium"
+    }
+  ]
+}

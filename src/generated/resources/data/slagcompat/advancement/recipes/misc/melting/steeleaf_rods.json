@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:rods/steeleaf"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_steeleaf_rods": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:rods/steeleaf"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/steeleaf_rods"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_steeleaf_rods"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/steeleaf_rods"
+    ]
+  }
+}

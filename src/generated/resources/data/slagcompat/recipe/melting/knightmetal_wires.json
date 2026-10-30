@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:wires/knightmetal"
+      }
+    }
+  ],
+  "type": "slag:melting",
+  "ingredient": {
+    "tag": "c:wires/knightmetal"
+  },
+  "ingredients": [],
+  "result": [
+    {
+      "amount": 18,
+      "id": "slagcompat:molten_knightmetal"
+    }
+  ]
+}
