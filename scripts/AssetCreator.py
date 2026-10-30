@@ -430,6 +430,8 @@ def build_reference_image(image_frame: tk.Frame, reference_name: str) -> None:
 
 def add_new_reference(image_frame: tk.Frame, reference_dropdown: ttk.Combobox) -> None:
     path = Path(askopenfilename(title="Select reference image (.png)", filetypes=[("PNG files", "*.png")]))
+    if path == Path("."):
+        return
     image = Image.open(path)
     reference_images[path.name] = image.convert("RGBA")
     build_reference_image(image_frame, path.name)
@@ -453,7 +455,8 @@ def update_selected_color(new_color: tuple[int, int, int] = None) -> None:
     global selected_color
     global selected_color_button
     if new_color is None:
-        selected_color = getColor(selected_color)
+        r, g, b = getColor(selected_color)
+        selected_color = (round(r), round(g), round(b))
     else:
         selected_color = new_color
     selected_color_button.configure(bg="#" + str(rgb2hex(selected_color)))
@@ -478,7 +481,7 @@ def save_assets() -> None:
     if material_id.get() == "" or material_id.get().isspace():
         tk.messagebox.showerror("Error", "No material ID given")
         return
-    if save_tool.get() == save_armor.get() == save_tool.get() == 0:
+    if save_tool.get() == save_armor.get() == save_fluid.get() == 0:
         tk.messagebox.showerror("Error", "No save checkboxes clicked!")
         return
     if save_tool.get() == 1:

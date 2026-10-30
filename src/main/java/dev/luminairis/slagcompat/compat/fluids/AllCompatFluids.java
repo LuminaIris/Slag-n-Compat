@@ -1,9 +1,16 @@
 package dev.luminairis.slagcompat.compat.fluids;
 
+import dev.luminairis.slagcompat.compat.fluids.allthemodium.AllthemodiumFluids;
 import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
+import net.neoforged.fml.ModList;
 
 public class AllCompatFluids {
     public static void register() {
-        MekanismFluids.registerMekanismFluids();
+        if (ModList.get().isLoaded("mekanism")) {
+            MekanismFluids.register();
+        }
+        if (ModList.get().isLoaded("allthemodium")) {
+            AllthemodiumFluids.register();
+        }
     }
 }

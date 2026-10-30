@@ -10,7 +10,7 @@
     "tag": "c:ingots/unobtainium"
   },
   "sort_order": 1040,
-  "texture": "metal",
+  "texture": "soft",
   "traits": [
     {
       "trait": "slag:attack_damage",

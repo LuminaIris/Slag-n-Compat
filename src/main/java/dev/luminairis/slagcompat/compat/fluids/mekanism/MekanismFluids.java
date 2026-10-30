@@ -12,5 +12,5 @@ public class MekanismFluids {
     public static final FluidEntry<LavaLikeFluid.Flowing> MOLTEN_REFINED_GLOWSTONE =
             AllFluids.compatFluid(REG, "Refined Glowstone", () -> 0xffffff);
 
-    public static void registerMekanismFluids() {}
+    public static void register() {}
 }

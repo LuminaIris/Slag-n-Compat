@@ -15,6 +15,30 @@
         {
             "type": "single",
             "resource": "slag:fluid/molten_refined_glowstone_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_allthemodium_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_allthemodium_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_vibranium_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_vibranium_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_unobtainium_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_unobtainium_still"
         }
     ]
 }

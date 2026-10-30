@@ -39,7 +39,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .trait(AllTraits.ARMOR_TOUGHNESS, 9f)
             .trait(AllTraits.KNOCKBACK_RESISTANCE, 0.8f)
             .trait(GeneralTraits.UNBREAKABLE)
-            .setTexture("metal")
+            .setTexture("base")
 //            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("allthemodium")
             .register(), true);
@@ -54,7 +54,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .trait(AllTraits.ARMOR_TOUGHNESS, 15f)
             .trait(AllTraits.KNOCKBACK_RESISTANCE, 1f)
             .trait(GeneralTraits.UNBREAKABLE)
-            .setTexture("metal")
+            .setTexture("soft")
 //            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
             .modLoaded("allthemodium")
             .register(), true);

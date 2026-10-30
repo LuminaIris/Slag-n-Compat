@@ -1,8 +1,17 @@
 {
+  "block.slagcompat.molten_allthemodium": "ɯnıpoɯǝɥʇןןⱯ uǝʇןoW",
   "block.slagcompat.molten_refined_glowstone": "ǝuoʇsʍoן⅁ pǝuıɟǝᴚ uǝʇןoW",
   "block.slagcompat.molten_refined_obsidian": "uɐıpısqO pǝuıɟǝᴚ uǝʇןoW",
+  "block.slagcompat.molten_unobtainium": "ɯnıuıɐʇqou∩ uǝʇןoW",
+  "block.slagcompat.molten_vibranium": "ɯnıuɐɹqıΛ uǝʇןoW",
+  "fluid.slagcompat.molten_allthemodium": "ɯnıpoɯǝɥʇןןⱯ uǝʇןoW",
   "fluid.slagcompat.molten_refined_glowstone": "ǝuoʇsʍoן⅁ pǝuıɟǝᴚ uǝʇןoW",
   "fluid.slagcompat.molten_refined_obsidian": "uɐıpısqO pǝuıɟǝᴚ uǝʇןoW",
+  "fluid.slagcompat.molten_unobtainium": "ɯnıuıɐʇqou∩ uǝʇןoW",
+  "fluid.slagcompat.molten_vibranium": "ɯnıuɐɹqıΛ uǝʇןoW",
+  "item.slagcompat.molten_allthemodium_bucket": "ʇǝʞɔnᗺ ɯnıpoɯǝɥʇןןⱯ uǝʇןoW",
   "item.slagcompat.molten_refined_glowstone_bucket": "ʇǝʞɔnᗺ ǝuoʇsʍoן⅁ pǝuıɟǝᴚ uǝʇןoW",
-  "item.slagcompat.molten_refined_obsidian_bucket": "ʇǝʞɔnᗺ uɐıpısqO pǝuıɟǝᴚ uǝʇןoW"
+  "item.slagcompat.molten_refined_obsidian_bucket": "ʇǝʞɔnᗺ uɐıpısqO pǝuıɟǝᴚ uǝʇןoW",
+  "item.slagcompat.molten_unobtainium_bucket": "ʇǝʞɔnᗺ ɯnıuıɐʇqou∩ uǝʇןoW",
+  "item.slagcompat.molten_vibranium_bucket": "ʇǝʞɔnᗺ ɯnıuɐɹqıΛ uǝʇןoW"
 }

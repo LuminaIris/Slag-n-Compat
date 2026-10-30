@@ -10,7 +10,6 @@
     "tag": "c:ingots/vibranium"
   },
   "sort_order": 1030,
-  "texture": "metal",
   "traits": [
     {
       "trait": "slag:attack_damage",
