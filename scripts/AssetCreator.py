@@ -533,8 +533,10 @@ def save_assets() -> None:
                 data1 = {"type": "single", "resource": "{0}:fluid/molten_{1}_flow".format(mod_id, material_id.get())}
                 data2 = {"type": "single", "resource": "{0}:fluid/molten_{1}_still".format(mod_id, material_id.get())}
                 data = json.load(atlas)
-                data["sources"].append(data1)
-                data["sources"].append(data2)
+                if not data["sources"].__contains__(data1):
+                    data["sources"].append(data1)
+                if not data["sources"].__contains__(data2):
+                    data["sources"].append(data2)
                 atlas.seek(0)
                 json.dump(data, atlas, indent=4)
     tk.messagebox.showinfo("Successfully Saved!", "Successfully saved asset set '{0}'!".format(material_id.get()))
