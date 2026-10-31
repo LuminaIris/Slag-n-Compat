@@ -8,7 +8,7 @@
   "type": "slag:table_casting",
   "cast": "slag:cast/chestplates",
   "ingredient": {
-    "amount": 432,
+    "amount": 72,
     "fluid": "slagcompat:molten_unobtainium"
   },
   "result": {

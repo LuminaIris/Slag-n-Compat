@@ -8,7 +8,7 @@
   "type": "slag:table_casting",
   "cast": "slag:cast/leggings",
   "ingredient": {
-    "amount": 360,
+    "amount": 72,
     "fluid": "slagcompat:molten_unobtainium"
   },
   "result": {

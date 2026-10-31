@@ -8,7 +8,7 @@
   "type": "slag:table_casting",
   "cast": "slag:cast/boots",
   "ingredient": {
-    "amount": 144,
+    "amount": 72,
     "fluid": "slagcompat:molten_allthemodium"
   },
   "result": {

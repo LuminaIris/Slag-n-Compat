@@ -3,6 +3,7 @@ package dev.luminairis.slagcompat.datagen;
 import dev.lopyluna.slag.SlagEmbers;
 import dev.lopyluna.slag.content.blocks.melter.MelterBE;
 import dev.lopyluna.slag.content.conditions.CastOnlyCondition;
+import dev.lopyluna.slag.content.datagen.AlloyingRecipeBuilder;
 import dev.lopyluna.slag.content.datagen.BasinCastingRecipeBuilder;
 import dev.lopyluna.slag.content.datagen.MeltingRecipeBuilder;
 import dev.lopyluna.slag.content.datagen.TableCastingRecipeBuilder;
@@ -11,7 +12,9 @@ import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.content.types.PartType;
 import dev.lopyluna.slag.register.*;
 import dev.luminairis.slagcompat.SlagCompat;
+import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
+import dev.luminairis.slagcompat.compat.materials.allthemodium.AllthemodiumMaterials;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -24,15 +27,22 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import static dev.lopyluna.slag.content.datagen.AlloyingRecipeBuilder.fluid;
+
 public class CompatRecipeDatagen extends RecipeProvider implements IConditionBuilder {
 
-    public static List<Fluid> BLOCK_COMPAT_FLUIDS = List.of();
-    public static List<Fluid> ONE_INGOT_COMPAT_FLUIDS = List.of();
+    public static List<MaterialType> BLOCK_COMPAT_MATERIALS = List.of();
+    public static List<MaterialType> ONE_INGOT_COMPAT_MATERIALS = List.of(
+            AllthemodiumMaterials.ALLTHEMODIUM,
+            AllthemodiumMaterials.VIBRANIUM,
+            AllthemodiumMaterials.UNOBTAINIUM
+    );
 
     public CompatRecipeDatagen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
@@ -43,6 +53,13 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
         for (MaterialType m : AllCompatMaterials.COMPAT_MATERIALS) {
             genRecipesForMaterial(m, recipeOutput);
         }
+
+        // alloying recipes
+        AlloyingRecipeBuilder.create(MekanismFluids.MOLTEN_REFINED_OBSIDIAN.getSource(), MelterBE.INGOT_SIZE, fluid(AllFluids.MOLTEN_OBSIDIAN.getSource(), MelterBE.INGOT_SIZE), fluid(AllFluids.MOLTEN_DIAMOND.getSource(), MelterBE.INGOT_SIZE), fluid(AllFluids.MOLTEN_OSMIUM.getSource(), MelterBE.INGOT_SIZE))
+                .unlockedBy("has_obsidian", has(Items.OBSIDIAN))
+                .unlockedBy("has_diamond", has(Items.DIAMOND))
+                .unlockedBy("has_osmium", has(AllTags.item("ingots/osmium")))
+                .save(recipeOutput.withConditions(new ModLoadedCondition("mekanism"), AllTags.present(AllTags.itemC("ingots/osmium"))), SlagEmbers.loc(SlagCompat.MODID, "alloying/refined_obsidian"));
     }
 
     private void genRecipesForMaterial(MaterialType material, RecipeOutput recipeOutput) {
@@ -114,7 +131,7 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
             item.setPartType(stack, part);
 
             // part crafting with paper
-            if (material.moltenFluid.get() == null || !ONE_INGOT_COMPAT_FLUIDS.contains(material.moltenFluid.get())) {
+            if (material.moltenFluid.get() == null || !ONE_INGOT_COMPAT_MATERIALS.contains(material)) {
                 buildPattern(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, stack), part)
                         .define('M', material.repairMaterials.get())
                         .define('R', Items.PAPER)
@@ -153,9 +170,10 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
     private int castSize(MaterialType material, PartType part) {
         var fluid = material.moltenFluid.get();
         if (fluid == null) return 0;
-        var size = BLOCK_COMPAT_FLUIDS.contains(fluid) ? MelterBE.BLOCK_SIZE : MelterBE.INGOT_SIZE;
+        var size = BLOCK_COMPAT_MATERIALS.contains(material) ? MelterBE.BLOCK_SIZE : MelterBE.INGOT_SIZE;
         size *= getSize(part);
-        if (size > 0 && ONE_INGOT_COMPAT_FLUIDS.contains(fluid)) size = MelterBE.INGOT_SIZE;
+        LOGGER.info("Testing for one ingot with material - " + material.id.getPath() + ONE_INGOT_COMPAT_MATERIALS.contains(material));
+        if (size > 0 && ONE_INGOT_COMPAT_MATERIALS.contains(material)) size = MelterBE.INGOT_SIZE;
         return size;
     }
 

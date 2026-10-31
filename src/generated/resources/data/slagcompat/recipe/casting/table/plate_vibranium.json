@@ -8,7 +8,7 @@
   "type": "slag:table_casting",
   "cast": "slag:cast/plates",
   "ingredient": {
-    "amount": 144,
+    "amount": 72,
     "fluid": "slagcompat:molten_vibranium"
   },
   "result": {
