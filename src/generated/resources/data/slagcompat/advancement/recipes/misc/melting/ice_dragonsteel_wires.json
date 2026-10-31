@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:wires/ice_dragonsteel"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_ice_dragonsteel_wires": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:wires/ice_dragonsteel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/ice_dragonsteel_wires"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_ice_dragonsteel_wires"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/ice_dragonsteel_wires"
+    ]
+  }
+}

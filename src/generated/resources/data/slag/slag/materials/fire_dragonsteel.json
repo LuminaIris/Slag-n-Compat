@@ -6,6 +6,7 @@
     }
   ],
   "id": "slag:fire_dragonsteel",
+  "molten_fluid": "slagcompat:molten_fire_dragonsteel",
   "repair_ingredient": {
     "item": "iceandfire:dragonsteel_fire_ingot"
   },

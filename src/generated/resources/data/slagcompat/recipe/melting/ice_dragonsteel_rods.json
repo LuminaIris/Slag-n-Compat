@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:rods/ice_dragonsteel"
+      }
+    }
+  ],
+  "type": "slag:melting",
+  "ingredient": {
+    "tag": "c:rods/ice_dragonsteel"
+  },
+  "ingredients": [],
+  "result": [
+    {
+      "amount": 36,
+      "id": "slagcompat:molten_ice_dragonsteel"
+    }
+  ]
+}

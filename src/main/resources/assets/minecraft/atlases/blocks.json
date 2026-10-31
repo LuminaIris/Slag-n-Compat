@@ -71,6 +71,30 @@
         {
             "type": "single",
             "resource": "slag:fluid/molten_steeleaf_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_fire_dragonsteel_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_fire_dragonsteel_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_ice_dragonsteel_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_ice_dragonsteel_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_lightning_dragonsteel_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_lightning_dragonsteel_still"
         }
     ]
 }

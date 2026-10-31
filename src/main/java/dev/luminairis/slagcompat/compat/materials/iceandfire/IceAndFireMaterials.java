@@ -5,6 +5,7 @@ import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.register.AllTags;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
+import dev.luminairis.slagcompat.compat.fluids.iceandfire.IceAndFireFluids;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import dev.luminairis.slagcompat.compat.traits.iceandfire.IceAndFireTraits;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -26,7 +27,7 @@ public class IceAndFireMaterials extends CompatMaterial {
             .trait(IceAndFireTraits.DRAGONSLAYER)
             .trait(IceAndFireTraits.FIRE_IMBUED)
             .setTexture("metal")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .moltenFluid(IceAndFireFluids.MOLTEN_FIRE_DRAGONSTEEL::getSource)
             .modLoaded("iceandfire")
             .register(), false);
 
@@ -41,7 +42,7 @@ public class IceAndFireMaterials extends CompatMaterial {
             .trait(IceAndFireTraits.DRAGONSLAYER)
             .trait(IceAndFireTraits.ICE_IMBUED)
             .setTexture("metal")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .moltenFluid(IceAndFireFluids.MOLTEN_ICE_DRAGONSTEEL::getSource)
             .modLoaded("iceandfire")
             .register(), false);
 
@@ -56,7 +57,7 @@ public class IceAndFireMaterials extends CompatMaterial {
             .trait(IceAndFireTraits.DRAGONSLAYER)
             .trait(IceAndFireTraits.LIGHTNING_IMBUED)
             .setTexture("metal")
-//            .moltenFluid(MekanismFluids.MOLTEN_REFINED_OBSIDIAN::getSource)
+            .moltenFluid(IceAndFireFluids.MOLTEN_LIGHTNING_DRAGONSTEEL::getSource)
             .modLoaded("iceandfire")
             .register(), false);
 

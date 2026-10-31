@@ -1,6 +1,7 @@
 package dev.luminairis.slagcompat;
 
 import dev.lopyluna.slag.content.utils.Registration;
+import dev.luminairis.slagcompat.compat.AllCompatCreativeTabs;
 import dev.luminairis.slagcompat.compat.fluids.AllCompatFluids;
 import dev.luminairis.slagcompat.compat.traits.effects.AllCompatTraitEffects;
 import dev.luminairis.slagcompat.compat.traits.AllCompatTraits;
@@ -26,6 +27,7 @@ public class SlagCompat {
         AllCompatFluids.register();
         AllCompatMaterials.register();
         AllCompatTraits.register();
+        modEventBus.addListener(AllCompatCreativeTabs::addCreative);
         modEventBus.addListener(EventPriority.LOWEST, CompatDatagen::gatherData);
     }
 }

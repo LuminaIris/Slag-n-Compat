@@ -3,6 +3,9 @@ package dev.luminairis.slagcompat.compat.fluids.twilightforest;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import dev.lopyluna.slag.register.AllFluids.LavaLikeFluid;
 import dev.lopyluna.slag.register.AllFluids;
+import dev.luminairis.slagcompat.compat.fluids.AllCompatFluids;
+import java.util.List;
+
 import static dev.luminairis.slagcompat.SlagCompat.LOGGER;
 import static dev.luminairis.slagcompat.SlagCompat.REG;
 
@@ -18,6 +21,7 @@ public class TwilightForestFluids {
             AllFluids.compatFluid(REG, "Fiery", () -> 0xffffff);
 
     public static void register() {
+        AllCompatFluids.ALL_COMPAT_FLUIDS.addAll(List.of(MOLTEN_IRONWOOD, MOLTEN_STEELEAF, MOLTEN_KNIGHTMETAL, MOLTEN_FIERY));
         LOGGER.info("Registering fluids for mod: Twilight Forest");
     }
 }

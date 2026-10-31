@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:storage_blocks/ice_dragonsteel"
+      }
+    }
+  ],
+  "type": "slag:basin_casting",
+  "ingredient": {
+    "amount": 648,
+    "fluid": "slagcompat:molten_ice_dragonsteel"
+  },
+  "result": {
+    "tag": "c:storage_blocks/ice_dragonsteel"
+  }
+}
