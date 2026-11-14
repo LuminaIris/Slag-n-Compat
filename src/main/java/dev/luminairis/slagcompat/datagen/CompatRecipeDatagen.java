@@ -172,7 +172,6 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
         if (fluid == null) return 0;
         var size = BLOCK_COMPAT_MATERIALS.contains(material) ? MelterBE.BLOCK_SIZE : MelterBE.INGOT_SIZE;
         size *= getSize(part);
-        LOGGER.info("Testing for one ingot with material - " + material.id.getPath() + ONE_INGOT_COMPAT_MATERIALS.contains(material));
         if (size > 0 && ONE_INGOT_COMPAT_MATERIALS.contains(material)) size = MelterBE.INGOT_SIZE;
         return size;
     }

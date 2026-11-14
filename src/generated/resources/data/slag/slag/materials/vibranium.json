@@ -14,7 +14,7 @@
   "traits": [
     {
       "trait": "slag:attack_damage",
-      "value": 36.0
+      "value": 35.0
     },
     {
       "trait": "slag:durability",

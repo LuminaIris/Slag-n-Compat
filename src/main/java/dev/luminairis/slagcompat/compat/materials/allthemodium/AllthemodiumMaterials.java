@@ -16,7 +16,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 public class AllthemodiumMaterials extends CompatMaterial {
 
     public static final MaterialType ALLTHEMODIUM = register(new MaterialType.Builder("allthemodium", () -> Ingredient.of(TagRegistry.ALLTHEMODIUM_INGOT)).setSortOrder(sortOrder)
-            .trait(AllTraits.ATTACK_DAMAGE, 18f)
+            .trait(AllTraits.ATTACK_DAMAGE, 17f)
             .trait(AllTraits.DURABILITY, 9001f)
             .trait(AllTraits.MINING_TIER, 7) // I have no idea what the mining tiers are for allthemodium so I'm just gonna trial and error this
             .trait(AllTraits.MINING_SPEED, 15f)
@@ -31,7 +31,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .register(), true);
 
     public static final MaterialType VIBRANIUM = register(new MaterialType.Builder("vibranium", () -> Ingredient.of(TagRegistry.VIBRANIUM_INGOT)).setSortOrder(sortOrder)
-            .trait(AllTraits.ATTACK_DAMAGE, 36f)
+            .trait(AllTraits.ATTACK_DAMAGE, 35f)
             .trait(AllTraits.DURABILITY, 9001f)
             .trait(AllTraits.MINING_TIER, 8)
             .trait(AllTraits.MINING_SPEED, 25f)
@@ -46,7 +46,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .register(), true);
 
     public static final MaterialType UNOBTAINIUM = register(new MaterialType.Builder("unobtainium", () -> Ingredient.of(TagRegistry.UNOBTAINIUM_INGOT)).setSortOrder(sortOrder)
-            .trait(AllTraits.ATTACK_DAMAGE, 51f)
+            .trait(AllTraits.ATTACK_DAMAGE, 50f)
             .trait(AllTraits.DURABILITY, 9001f)
             .trait(AllTraits.MINING_TIER, 9)
             .trait(AllTraits.MINING_SPEED, 35f)
