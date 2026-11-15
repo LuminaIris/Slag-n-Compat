@@ -10,7 +10,11 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 public class AllCompatCreativeTabs {
     public static void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey().equals(AllCreativeTabs.BASE_TAB.getKey())) {
-            for (var fluid: AllCompatFluids.ALL_COMPAT_FLUIDS) event.accept(new ItemStack(fluid.getSource().getBucket()), CreativeModeTab.TabVisibility.SEARCH_TAB_ONLY);
+            for (var fluid: AllCompatFluids.ALL_COMPAT_FLUIDS) {
+                if (!AllCompatFluids.HIDDEN_COMPAT_FLUIDS.contains(fluid)) {
+                    event.accept(new ItemStack(fluid.getSource().getBucket()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                }
+            }
         }
     }
 }
