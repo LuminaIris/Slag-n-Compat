@@ -4,7 +4,7 @@ import dev.lopyluna.slag.content.traits.TraitType;
 import dev.lopyluna.slag.content.traits.effects.ComponentsEffect;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.traits.CompatTrait;
-import dev.luminairis.slagcompat.compat.traits.effects.OnHitEffect;
+import dev.luminairis.slagcompat.compat.traits.effects.OnHitAbility;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,13 +14,13 @@ import net.minecraft.world.item.component.Unbreakable;
 @SuppressWarnings("unused")
 public class GeneralTraits extends CompatTrait {
     public static final TraitType IGNITE = register(new TraitType.Builder("ignite").color(0xF23800)
-            .effect(new OnHitEffect(OnHitEffect.HitEffect.IGNITE)));
+            .effect(new OnHitAbility(OnHitAbility.HitAbility.IGNITE)));
 
     public static final TraitType UNBREAKABLE = register(new TraitType.Builder("unbreakable").color(0x5555FF)
             .effect(new ComponentsEffect(DataComponentPatch.builder().set(DataComponents.UNBREAKABLE, new Unbreakable(false)).build())));
 
     public static void register() {
-        OnHitEffect.registerOperation(OnHitEffect.HitEffect.IGNITE, GeneralTraits::igniteTarget);
+        OnHitAbility.registerOperation(OnHitAbility.HitAbility.IGNITE, GeneralTraits::igniteTarget);
         SlagCompat.LOGGER.info("Registering general compat traits");
     }
 

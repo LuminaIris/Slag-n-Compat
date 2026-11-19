@@ -90,11 +90,8 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     implementation "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
-    // optional compatibility
-    compileOnly "maven.modrinth:mekanism:10.7.19.85"
-    compileOnly "curse.maven:allthemodium-364466:9040574"
+    // mod compatibility
     compileOnly "curse.maven:iceandfire-ce-1040076:8929517"
-    compileOnly "curse.maven:the-twilight-forest-227639:7797302"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

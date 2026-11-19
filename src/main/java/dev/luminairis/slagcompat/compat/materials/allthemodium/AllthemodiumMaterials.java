@@ -1,7 +1,7 @@
 package dev.luminairis.slagcompat.compat.materials.allthemodium;
 
-import com.thevortex.allthemodium.registry.TagRegistry;
 import dev.lopyluna.slag.content.types.MaterialType;
+import dev.lopyluna.slag.register.AllTags;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.fluids.allthemodium.AllthemodiumFluids;
@@ -15,10 +15,10 @@ import net.minecraft.world.item.crafting.Ingredient;
 @SuppressWarnings("unused")
 public class AllthemodiumMaterials extends CompatMaterial {
 
-    public static final MaterialType ALLTHEMODIUM = register(new MaterialType.Builder("allthemodium", () -> Ingredient.of(TagRegistry.ALLTHEMODIUM_INGOT)).setSortOrder(sortOrder)
+    public static final MaterialType ALLTHEMODIUM = register(new MaterialType.Builder("allthemodium", () -> Ingredient.of(AllTags.itemC("ingots/allthemodium"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 17f)
             .trait(AllTraits.DURABILITY, 9001f)
-            .trait(AllTraits.MINING_TIER, 7) // I have no idea what the mining tiers are for allthemodium so I'm just gonna trial and error this
+            .trait(AllTraits.MINING_TIER, 7)
             .trait(AllTraits.MINING_SPEED, 15f)
             .trait(AllTraits.ENCHANTABILITY, 85f)
             .trait(AllTraits.ARMOR, 9f)
@@ -30,7 +30,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .modLoaded("allthemodium")
             .register(), true);
 
-    public static final MaterialType VIBRANIUM = register(new MaterialType.Builder("vibranium", () -> Ingredient.of(TagRegistry.VIBRANIUM_INGOT)).setSortOrder(sortOrder)
+    public static final MaterialType VIBRANIUM = register(new MaterialType.Builder("vibranium", () -> Ingredient.of(AllTags.itemC("ingots/vibranium"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 35f)
             .trait(AllTraits.DURABILITY, 9001f)
             .trait(AllTraits.MINING_TIER, 8)
@@ -45,7 +45,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .modLoaded("allthemodium")
             .register(), true);
 
-    public static final MaterialType UNOBTAINIUM = register(new MaterialType.Builder("unobtainium", () -> Ingredient.of(TagRegistry.UNOBTAINIUM_INGOT)).setSortOrder(sortOrder)
+    public static final MaterialType UNOBTAINIUM = register(new MaterialType.Builder("unobtainium", () -> Ingredient.of(AllTags.itemC("ingots/unobtainium"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 50f)
             .trait(AllTraits.DURABILITY, 9001f)
             .trait(AllTraits.MINING_TIER, 9)

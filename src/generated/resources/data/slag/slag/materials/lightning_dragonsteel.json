@@ -8,7 +8,7 @@
   "id": "slag:lightning_dragonsteel",
   "molten_fluid": "slagcompat:molten_lightning_dragonsteel",
   "repair_ingredient": {
-    "item": "iceandfire:dragonsteel_lightning_ingot"
+    "tag": "c:ingots/lightning_dragonsteel"
   },
   "sort_order": 1070,
   "texture": "metal",

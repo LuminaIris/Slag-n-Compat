@@ -14,7 +14,7 @@ import static dev.lopyluna.slag.register.AllTraitEffects.REGISTRY_KEY;
 public class AllCompatTraitEffects {
     private static final DeferredRegister<MapCodec<? extends  TraitEffect>> EFFECTS = DeferredRegister.create(REGISTRY_KEY, SlagCompat.MODID);
 
-    public static Holder<OnHitEffect> ON_HIT_EFFECT = register("on_hit_effect", () -> OnHitEffect.CODEC);
+    public static Holder<OnHitAbility> ON_HIT_EFFECT = register("on_hit_effect", () -> OnHitAbility.CODEC);
     public static Holder<BonusDamageEffect> BONUS_DAMAGE_EFFECT = register("bonus_damage_effect", () -> BonusDamageEffect.CODEC);
 
     private static <T extends TraitEffect> Holder<T> register(String name, Supplier<MapCodec<T>> codec) {

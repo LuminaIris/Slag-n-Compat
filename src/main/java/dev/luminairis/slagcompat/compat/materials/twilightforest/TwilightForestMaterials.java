@@ -1,18 +1,18 @@
 package dev.luminairis.slagcompat.compat.materials.twilightforest;
 
 import dev.lopyluna.slag.content.types.MaterialType;
+import dev.lopyluna.slag.register.AllTags;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.fluids.twilightforest.TwilightForestFluids;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import dev.luminairis.slagcompat.compat.traits.general.GeneralTraits;
 import net.minecraft.world.item.crafting.Ingredient;
-import twilightforest.data.tags.ItemTagGenerator;
 
 @SuppressWarnings("unused")
 public class TwilightForestMaterials extends CompatMaterial {
 
-    public static MaterialType IRONWOOD = register(new MaterialType.Builder("ironwood", () -> Ingredient.of(ItemTagGenerator.IRONWOOD_INGOTS)).setSortOrder(sortOrder)
+    public static MaterialType IRONWOOD = register(new MaterialType.Builder("ironwood", () -> Ingredient.of(AllTags.itemC("ingots/ironwood"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 5f)
             .trait(AllTraits.DURABILITY, 512f)
             .trait(AllTraits.MINING_TIER, 4)
@@ -24,7 +24,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .modLoaded("twilightforest")
             .register(), true);
 
-    public static MaterialType STEELEAF = register(new MaterialType.Builder("steeleaf", () -> Ingredient.of(ItemTagGenerator.STEELEAF_INGOTS)).setSortOrder(sortOrder)
+    public static MaterialType STEELEAF = register(new MaterialType.Builder("steeleaf", () -> Ingredient.of(AllTags.itemC("ingots/steeleaf"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 6f)
             .trait(AllTraits.DURABILITY, 131f)
             .trait(AllTraits.MINING_TIER, 5)
@@ -36,7 +36,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .modLoaded("twilightforest")
             .register(), false);
 
-    public static MaterialType KNIGHTMETAL = register(new MaterialType.Builder("knightmetal", () -> Ingredient.of(ItemTagGenerator.KNIGHTMETAL_INGOTS)).setSortOrder(sortOrder)
+    public static MaterialType KNIGHTMETAL = register(new MaterialType.Builder("knightmetal", () -> Ingredient.of(AllTags.itemC("ingots/knightmetal"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 6f)
             .trait(AllTraits.DURABILITY, 512f)
             .trait(AllTraits.MINING_TIER, 5)
@@ -49,7 +49,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .modLoaded("twilightforest")
             .register(), true);
 
-    public static MaterialType FIERY = register(new MaterialType.Builder("fiery", () -> Ingredient.of(ItemTagGenerator.FIERY_INGOTS)).setSortOrder(sortOrder)
+    public static MaterialType FIERY = register(new MaterialType.Builder("fiery", () -> Ingredient.of(AllTags.itemC("ingots/fiery"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 7f)
             .trait(AllTraits.DURABILITY, 1024f)
             .trait(AllTraits.MINING_TIER, 6)

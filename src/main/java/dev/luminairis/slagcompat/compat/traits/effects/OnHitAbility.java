@@ -12,10 +12,10 @@ import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 
-public record OnHitEffect(HitEffect onHitEffect) implements TraitEffect {
-    public static final MapCodec<OnHitEffect> CODEC = HitEffect.CODEC.fieldOf("hit_effect").xmap(OnHitEffect::new, OnHitEffect::onHitEffect);
+public record OnHitAbility(HitAbility onHitAbility) implements TraitEffect {
+    public static final MapCodec<OnHitAbility> CODEC = HitAbility.CODEC.fieldOf("ability").xmap(OnHitAbility::new, OnHitAbility::onHitAbility);
 
-    private static final Map<HitEffect, Operation> OPERATION_MAP = new HashMap<>();
+    private static final Map<HitAbility, Operation> OPERATION_MAP = new HashMap<>();
 
     @Override
     public MapCodec<? extends TraitEffect> codec() {
@@ -29,18 +29,18 @@ public record OnHitEffect(HitEffect onHitEffect) implements TraitEffect {
 
     @Override
     public void onHurtEnemy(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        getOperation(onHitEffect).execute(stack, target, attacker);
+        getOperation(onHitAbility).execute(stack, target, attacker);
     }
 
-    public static void registerOperation(HitEffect effect, Operation operation) {
+    public static void registerOperation(HitAbility effect, Operation operation) {
         OPERATION_MAP.put(effect, operation);
     }
 
-    private Operation getOperation(HitEffect effect) {
+    private Operation getOperation(HitAbility effect) {
         return OPERATION_MAP.get(effect);
     }
 
-    public enum HitEffect implements StringRepresentable {
+    public enum HitAbility implements StringRepresentable {
         // GENERAL
         IGNITE("ignite"),
         // ICE AND FIRE
@@ -48,11 +48,11 @@ public record OnHitEffect(HitEffect onHitEffect) implements TraitEffect {
         ICE_IMBUED("ice_imbued"),
         LIGHTNING_IMBUED("lightning_imbued");
 
-        public static final Codec<HitEffect> CODEC = StringRepresentable.fromEnum(HitEffect::values);
+        public static final Codec<HitAbility> CODEC = StringRepresentable.fromEnum(HitAbility::values);
 
         private final String name;
 
-        HitEffect(String name) {
+        HitAbility(String name) {
             this.name = name;
         }
 
