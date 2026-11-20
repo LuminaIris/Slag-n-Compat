@@ -5,7 +5,6 @@ import dev.luminairis.slagcompat.compat.traits.CompatTrait;
 import dev.luminairis.slagcompat.compat.traits.effects.BonusDamageEffect;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.world.damagesource.DamageTypes;
-
 import java.util.Optional;
 
 @SuppressWarnings("unused")

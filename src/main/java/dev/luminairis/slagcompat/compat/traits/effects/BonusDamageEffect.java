@@ -6,7 +6,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.lopyluna.slag.content.traits.Trait;
 import dev.lopyluna.slag.content.traits.TraitEffect;
 import dev.lopyluna.slag.content.traits.Traits;
-import dev.luminairis.slagcompat.SlagCompat;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -67,7 +66,6 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
                     }
                     if (totalDmg != 0f) {
                         target.hurt(new DamageSource(getDamageType(attacker, damageType), attacker), totalDmg);
-                        SlagCompat.LOGGER.info("Bonus damage: " + totalDmg);
                     }
                     break;
                 }
@@ -84,7 +82,6 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
             }
             if (totalDmg != 0f) {
                 target.hurt(new DamageSource(getDamageType(attacker, damageType), attacker), totalDmg);
-                SlagCompat.LOGGER.info("Bonus damage of: " + totalDmg);
             }
         }
     }
