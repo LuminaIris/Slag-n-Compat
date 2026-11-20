@@ -9,7 +9,7 @@
   "effects": [
     {
       "type": "slagcompat:on_hit_effect",
-      "hit_effect": "lightning_imbued"
+      "ability": "lightning_imbued"
     }
   ],
   "id": "slag:lightning_imbued",

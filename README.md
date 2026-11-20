@@ -12,8 +12,6 @@ Materials
 | **Mod**                 | **Materials**                                                   | **Traits**                                              | **Status**  |
 |-------------------------|-----------------------------------------------------------------|---------------------------------------------------------|-------------|
 | Allthemodium            | Allthemodium, Vibranium, Unobtainium                            | Unbreakable                                             | In Progress |
-| Better End: New Dawn    | Thallasium, Terminite, Aeternium                                |                                                         | In Progress |
-| Better Nether: New Dawn | Cincinnacite, Nether Ruby                                       |                                                         | In Progress |
 | Eternal Starlight       | Deepsilver, Starlit Diamond, Aethersent, Golem Steel, Unrealium |                                                         | In Progress |
 | Ice and Fire: CE        | Fire Dragonsteel, Ice Dragonsteel, Lightning Dragonsteel        | Dragonslayer, Fire Imbued, Ice Imbued, Lightning Imbued | In Progress |
 | Iron's Spellbooks       | Arcane, Mithril, Pyrium                                         |                                                         | In Progress |

@@ -3,7 +3,7 @@
   "effects": [
     {
       "type": "slagcompat:on_hit_effect",
-      "hit_effect": "ignite"
+      "ability": "ignite"
     }
   ],
   "id": "slag:ignite",

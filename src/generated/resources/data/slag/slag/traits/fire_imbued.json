@@ -9,7 +9,7 @@
   "effects": [
     {
       "type": "slagcompat:on_hit_effect",
-      "hit_effect": "fire_imbued"
+      "ability": "fire_imbued"
     }
   ],
   "id": "slag:fire_imbued",

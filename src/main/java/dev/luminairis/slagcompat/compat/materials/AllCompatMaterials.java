@@ -6,7 +6,6 @@ import dev.luminairis.slagcompat.compat.materials.iceandfire.IceAndFireMaterials
 import dev.luminairis.slagcompat.compat.materials.mekanism.MekanismMaterials;
 import dev.luminairis.slagcompat.compat.materials.twilightforest.TwilightForestMaterials;
 import net.neoforged.fml.ModList;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
