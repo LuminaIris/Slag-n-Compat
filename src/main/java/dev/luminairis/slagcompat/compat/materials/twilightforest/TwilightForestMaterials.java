@@ -9,6 +9,9 @@ import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import dev.luminairis.slagcompat.compat.traits.general.GeneralTraits;
 import net.minecraft.world.item.crafting.Ingredient;
 
+/**
+ * Materials: Ironwood, Steeleaf, Knightmetal, Fiery
+ */
 @SuppressWarnings("unused")
 public class TwilightForestMaterials extends CompatMaterial {
 
@@ -65,6 +68,6 @@ public class TwilightForestMaterials extends CompatMaterial {
             .register(), false);
 
     public static void register() {
-        SlagCompat.LOGGER.info("Registering materials for mod: Twilight Forest");
+        SlagCompat.LOGGER.info("Registering materials for mod: twilightforest");
     }
 }

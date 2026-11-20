@@ -3,6 +3,7 @@ package dev.luminairis.slagcompat.compat.materials;
 import dev.lopyluna.slag.content.types.MaterialType;
 import dev.luminairis.slagcompat.compat.materials.allthemodium.AllthemodiumMaterials;
 import dev.luminairis.slagcompat.compat.materials.iceandfire.IceAndFireMaterials;
+import dev.luminairis.slagcompat.compat.materials.irons_spellbooks.IronsSpellbooksMaterials;
 import dev.luminairis.slagcompat.compat.materials.mekanism.MekanismMaterials;
 import dev.luminairis.slagcompat.compat.materials.twilightforest.TwilightForestMaterials;
 import net.neoforged.fml.ModList;
@@ -27,6 +28,9 @@ public class AllCompatMaterials {
         }
         if (ModList.get().isLoaded("twilightforest")) {
             TwilightForestMaterials.register();
+        }
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            IronsSpellbooksMaterials.register();
         }
     }
 }

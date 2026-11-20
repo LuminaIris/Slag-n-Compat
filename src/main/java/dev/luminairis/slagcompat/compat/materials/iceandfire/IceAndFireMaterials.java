@@ -10,7 +10,7 @@ import dev.luminairis.slagcompat.compat.traits.iceandfire.IceAndFireTraits;
 import net.minecraft.world.item.crafting.Ingredient;
 
 /**
- * IAF Materials: Fire, Ice, and Lightning Dragonsteel
+ * Materials: Fire, Ice, and Lightning Dragonsteel
  */
 @SuppressWarnings("unused")
 public class IceAndFireMaterials extends CompatMaterial {
@@ -61,6 +61,6 @@ public class IceAndFireMaterials extends CompatMaterial {
             .register(), false);
 
     public static void register() {
-        SlagCompat.LOGGER.info("Registering materials for mod: Ice and Fire CE");
+        SlagCompat.LOGGER.info("Registering materials for mod: iceandfire");
     }
 }

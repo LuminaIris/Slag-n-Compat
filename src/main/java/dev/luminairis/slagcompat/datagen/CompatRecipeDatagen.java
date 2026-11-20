@@ -15,6 +15,7 @@ import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
 import dev.luminairis.slagcompat.compat.materials.allthemodium.AllthemodiumMaterials;
+import dev.luminairis.slagcompat.compat.materials.irons_spellbooks.IronsSpellbooksMaterials;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -41,7 +42,9 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
     public static List<MaterialType> ONE_INGOT_COMPAT_MATERIALS = List.of(
             AllthemodiumMaterials.ALLTHEMODIUM,
             AllthemodiumMaterials.VIBRANIUM,
-            AllthemodiumMaterials.UNOBTAINIUM
+            AllthemodiumMaterials.UNOBTAINIUM,
+            IronsSpellbooksMaterials.MITHRIL,
+            IronsSpellbooksMaterials.PYRIUM
     );
 
     public CompatRecipeDatagen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

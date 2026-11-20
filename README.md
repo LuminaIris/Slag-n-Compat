@@ -25,11 +25,15 @@ General
 - Auto-smelting: Automatically smelts mined ores
 - Unbreakable: Tool does not take any durability damage
 
-Ice and Fire: CE
+Ice and Fire
 - Dragonslayer: Attacks deal extra damage to dragons
 - Fire Imbued: Attacks deal extra knockback and ignite enemies; same as IaF fire dragonsteel tools
 - Ice Imbued: Attacks freeze enemies; same as IaF ice dragonsteel tools
 - Lightning Imbued: Attacks cause chain lightning to damage other enemies near the target; same as IaF lightning dragonsteel tools
+
+Iron's Spellbooks
+- Arcane: Attacks deal bonus magic damage based on your maximum mana
+- Havocking: Attacks cause an explosion
 
 Other Compat
 -------

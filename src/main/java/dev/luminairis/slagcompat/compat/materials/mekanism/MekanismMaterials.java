@@ -9,7 +9,7 @@ import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
 /**
- * Mekanism Materials: Refined Obsidian, Refined Glowstone
+ * Materials: Refined Obsidian, Refined Glowstone
  */
 @SuppressWarnings("unused")
 public class MekanismMaterials extends CompatMaterial {
@@ -40,6 +40,6 @@ public class MekanismMaterials extends CompatMaterial {
             .register(), false);
 
     public static void register() {
-        SlagCompat.LOGGER.info("Registering materials for mod: Mekanism");
+        SlagCompat.LOGGER.info("Registering materials for mod: mekanism");
     }
 }

@@ -10,7 +10,7 @@ import dev.luminairis.slagcompat.compat.traits.general.GeneralTraits;
 import net.minecraft.world.item.crafting.Ingredient;
 
 /**
- * Allthemodium, Vibranium, Unobtainium
+ * Materials: Allthemodium, Vibranium, Unobtainium
  */
 @SuppressWarnings("unused")
 public class AllthemodiumMaterials extends CompatMaterial {
@@ -61,7 +61,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .register(), true);
 
     public static void register() {
-        SlagCompat.LOGGER.info("Registering materials for mod: Allthemodium");
+        SlagCompat.LOGGER.info("Registering materials for mod: allthemodium");
 
     }
 }
