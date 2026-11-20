@@ -38,7 +38,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#slag:ingots/osmium"
+            "items": "#c:ingots/osmium"
           }
         ]
       },

@@ -3,6 +3,10 @@
     {
       "type": "neoforge:mod_loaded",
       "modid": "irons_spellbooks"
+    },
+    {
+      "type": "slag:cast_only",
+      "tier": 4.0
     }
   ],
   "type": "minecraft:crafting_shaped",

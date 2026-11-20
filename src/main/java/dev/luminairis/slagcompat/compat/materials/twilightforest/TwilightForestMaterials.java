@@ -61,6 +61,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .trait(AllTraits.ARMOR, 9f)
             .trait(AllTraits.ARMOR_TOUGHNESS, 1.5f)
             .trait(AllTraits.AUTO_SMELTING)
+            .trait(AllTraits.FIRE_RESISTANT)
             .trait(GeneralTraits.IGNITING)
             .setTexture("metal")
             .moltenFluid(TwilightForestFluids.MOLTEN_FIERY::getSource)

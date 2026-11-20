@@ -23,6 +23,12 @@
     "slagcompat:flowing_molten_knightmetal",
     "slagcompat:molten_knightmetal",
     "slagcompat:flowing_molten_fiery",
-    "slagcompat:molten_fiery"
+    "slagcompat:molten_fiery",
+    "slagcompat:flowing_molten_arcane",
+    "slagcompat:molten_arcane",
+    "slagcompat:flowing_molten_mithril",
+    "slagcompat:molten_mithril",
+    "slagcompat:flowing_molten_pyrium",
+    "slagcompat:molten_pyrium"
   ]
 }

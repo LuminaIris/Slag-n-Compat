@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:pyrium",
+  "molten_fluid": "slagcompat:molten_pyrium",
   "repair_ingredient": {
     "tag": "c:ingots/pyrium"
   },
   "sort_order": 1140,
+  "texture": "metal",
   "traits": [
     {
       "trait": "slag:attack_damage",

@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/osmium"
+      }
+    }
+  ],
+  "type": "slag:alloying",
+  "ingredients": [
+    {
+      "amount": 72,
+      "tag": "c:molten/glowstone"
+    },
+    {
+      "amount": 72,
+      "tag": "c:molten/osmium"
+    }
+  ],
+  "result": {
+    "amount": 72,
+    "id": "slagcompat:molten_refined_glowstone"
+  }
+}

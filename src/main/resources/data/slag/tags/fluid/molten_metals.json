@@ -12,6 +12,9 @@
     "slagcompat:molten_ironwood",
     "slagcompat:molten_steeleaf",
     "slagcompat:molten_knightmetal",
-    "slagcompat:molten_fiery"
+    "slagcompat:molten_fiery",
+    "slagcompat:molten_arcane",
+    "slagcompat:molten_mithril",
+    "slagcompat:molten_pyrium"
   ]
 }

@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:arcane",
+  "molten_fluid": "slagcompat:molten_arcane",
   "repair_ingredient": {
     "tag": "c:ingots/arcane"
   },
   "sort_order": 1120,
+  "texture": "soft",
   "traits": [
     {
       "trait": "slag:attack_damage",

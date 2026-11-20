@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:mithril",
+  "molten_fluid": "slagcompat:molten_mithril",
   "repair_ingredient": {
     "tag": "c:ingots/mithril"
   },
   "sort_order": 1130,
+  "texture": "shiny",
   "traits": [
     {
       "trait": "slag:attack_damage",

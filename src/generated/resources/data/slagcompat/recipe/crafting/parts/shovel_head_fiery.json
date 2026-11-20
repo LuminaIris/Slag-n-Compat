@@ -26,6 +26,7 @@
   ],
   "result": {
     "components": {
+      "minecraft:fire_resistant": {},
       "slag:material_type": "slag:fiery",
       "slag:part_type": "slag:shovel_head"
     },

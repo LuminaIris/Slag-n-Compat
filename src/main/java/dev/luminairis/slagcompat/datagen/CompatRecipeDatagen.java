@@ -61,8 +61,12 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
         AlloyingRecipeBuilder.create(MekanismFluids.MOLTEN_REFINED_OBSIDIAN.getSource(), MelterBE.INGOT_SIZE, fluid(AllFluids.MOLTEN_OBSIDIAN.getSource(), MelterBE.INGOT_SIZE), fluid(AllFluids.MOLTEN_DIAMOND.getSource(), MelterBE.INGOT_SIZE), fluid(AllFluids.MOLTEN_OSMIUM.getSource(), MelterBE.INGOT_SIZE))
                 .unlockedBy("has_obsidian", has(Items.OBSIDIAN))
                 .unlockedBy("has_diamond", has(Items.DIAMOND))
-                .unlockedBy("has_osmium", has(AllTags.item("ingots/osmium")))
+                .unlockedBy("has_osmium", has(AllTags.itemC("ingots/osmium")))
                 .save(recipeOutput.withConditions(new ModLoadedCondition("mekanism"), AllTags.present(AllTags.itemC("ingots/osmium"))), SlagEmbers.loc(SlagCompat.MODID, "alloying/refined_obsidian"));
+        AlloyingRecipeBuilder.create(MekanismFluids.MOLTEN_REFINED_GLOWSTONE.getSource(), MelterBE.INGOT_SIZE, fluid(AllFluids.MOLTEN_GLOWSTONE.getSource(), MelterBE.INGOT_SIZE), fluid(AllFluids.MOLTEN_OSMIUM.getSource(), MelterBE.INGOT_SIZE))
+                .unlockedBy("has_glowstone", has(Items.GLOWSTONE_DUST))
+                .unlockedBy("has_osmium", has(AllTags.itemC("ingots/osmium")))
+                .save(recipeOutput.withConditions(new ModLoadedCondition("mekanism"), AllTags.present(AllTags.itemC("ingots/osmium"))), SlagEmbers.loc(SlagCompat.MODID, "alloying/refined_glowstone"));
     }
 
     private void genRecipesForMaterial(MaterialType material, RecipeOutput recipeOutput) {

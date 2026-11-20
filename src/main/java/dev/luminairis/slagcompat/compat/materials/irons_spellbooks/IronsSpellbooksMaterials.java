@@ -4,6 +4,7 @@ import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.register.AllTags;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
+import dev.luminairis.slagcompat.compat.fluids.irons_spellbooks.IronsSpellbooksFluids;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -19,6 +20,8 @@ public class IronsSpellbooksMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_SPEED, 6f)
             .trait(AllTraits.ENCHANTABILITY, 128f)
             .trait(AllTraits.ARMOR, 3f)
+            .setTexture("soft")
+            .moltenFluid(IronsSpellbooksFluids.MOLTEN_ARCANE::getSource)
             .modLoaded("irons_spellbooks")
             .register(), false);
 
@@ -29,8 +32,10 @@ public class IronsSpellbooksMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_SPEED, 6f)
             .trait(AllTraits.ENCHANTABILITY, 128f)
             .trait(AllTraits.ARMOR, 3f)
+            .setTexture("shiny")
+            .moltenFluid(IronsSpellbooksFluids.MOLTEN_MITHRIL::getSource)
             .modLoaded("irons_spellbooks")
-            .register(), false);
+            .register(), true);
 
     public static MaterialType PYRIUM = register(new MaterialType.Builder("pyrium", () -> Ingredient.of(AllTags.itemC("ingots/pyrium"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 12f)
@@ -39,6 +44,8 @@ public class IronsSpellbooksMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_SPEED, 4f)
             .trait(AllTraits.ENCHANTABILITY, 64f)
             .trait(AllTraits.ARMOR, 8f)
+            .setTexture("metal")
+            .moltenFluid(IronsSpellbooksFluids.MOLTEN_PYRIUM::getSource)
             .modLoaded("irons_spellbooks")
             .register(), false);
 

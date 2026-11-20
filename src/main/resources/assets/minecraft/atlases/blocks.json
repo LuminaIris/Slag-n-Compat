@@ -95,6 +95,30 @@
         {
             "type": "single",
             "resource": "slag:fluid/molten_lightning_dragonsteel_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_arcane_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_arcane_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_mithril_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_mithril_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_pyrium_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_pyrium_still"
         }
     ]
 }
