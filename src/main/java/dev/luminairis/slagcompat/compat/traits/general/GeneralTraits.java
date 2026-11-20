@@ -14,13 +14,13 @@ import net.minecraft.world.item.component.Unbreakable;
 @SuppressWarnings("unused")
 public class GeneralTraits extends CompatTrait {
     public static final TraitType IGNITING = register(new TraitType.Builder("igniting").color(0xF23800)
-            .effect(new OnHitAbility(OnHitAbility.HitAbility.IGNITE)));
+            .effect(new OnHitAbility(OnHitAbility.HitAbility.IGNITING)));
 
     public static final TraitType UNBREAKABLE = register(new TraitType.Builder("unbreakable").color(0x5555FF)
             .effect(new ComponentsEffect(DataComponentPatch.builder().set(DataComponents.UNBREAKABLE, new Unbreakable(false)).build())));
 
     public static void register() {
-        OnHitAbility.registerOperation(OnHitAbility.HitAbility.IGNITE, GeneralTraits::igniteTarget);
+        OnHitAbility.registerOperation(OnHitAbility.HitAbility.IGNITING, GeneralTraits::igniteTarget);
         SlagCompat.LOGGER.info("Registering general compat traits");
     }
 

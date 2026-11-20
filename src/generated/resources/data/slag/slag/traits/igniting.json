@@ -3,9 +3,9 @@
   "effects": [
     {
       "type": "slagcompat:on_hit_effect",
-      "ability": "ignite"
+      "ability": "igniting"
     }
   ],
-  "id": "slag:ignite",
+  "id": "slag:igniting",
   "sort_order": 1000
 }
