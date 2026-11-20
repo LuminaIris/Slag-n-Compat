@@ -6,6 +6,7 @@ import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.fluids.irons_spellbooks.IronsSpellbooksFluids;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
+import dev.luminairis.slagcompat.compat.traits.irons_spellbooks.IronsSpellbooksTraits;
 import net.minecraft.world.item.crafting.Ingredient;
 
 /**
@@ -20,6 +21,7 @@ public class IronsSpellbooksMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_SPEED, 6f)
             .trait(AllTraits.ENCHANTABILITY, 128f)
             .trait(AllTraits.ARMOR, 3f)
+            .trait(IronsSpellbooksTraits.ARCANE)
             .setTexture("soft")
             .moltenFluid(IronsSpellbooksFluids.MOLTEN_ARCANE::getSource)
             .modLoaded("irons_spellbooks")

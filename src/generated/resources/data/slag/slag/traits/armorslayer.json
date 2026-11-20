@@ -1,0 +1,14 @@
+{
+  "color": "#C9D6C5",
+  "effects": [
+    {
+      "type": "slagcompat:bonus_damage_effect",
+      "attribute_key": "minecraft:generic.armor",
+      "attribute_percentage": 0.4,
+      "attribute_target": "target",
+      "bonus_damage_type": "minecraft:generic"
+    }
+  ],
+  "id": "slag:armorslayer",
+  "sort_order": 1010
+}

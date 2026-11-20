@@ -9,12 +9,13 @@ import dev.luminairis.slagcompat.compat.traits.CompatTrait;
 import dev.luminairis.slagcompat.compat.traits.effects.BonusDamageEffect;
 import dev.luminairis.slagcompat.compat.traits.effects.OnHitAbility;
 import java.util.List;
+import java.util.Optional;
 
 @SuppressWarnings("unused")
 public class IceAndFireTraits extends CompatTrait {
 
     public static final TraitType DRAGONSLAYER = register(new TraitType.Builder("dragonslayer").modLoaded("iceandfire").color(0xE6A895)
-            .effect(new BonusDamageEffect(4f, IafDamageTypes.BONUS, List.of(IafEntityTags.FIRE_DRAGON, IafEntityTags.ICE_DRAGON, IafEntityTags.LIGHTNING_DRAGON))));
+            .effect(new BonusDamageEffect(Optional.of(4f), Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(List.of(IafEntityTags.FIRE_DRAGON, IafEntityTags.ICE_DRAGON, IafEntityTags.LIGHTNING_DRAGON)), IafDamageTypes.BONUS)));
 
     public static final TraitType FIRE_IMBUED = register(new TraitType.Builder("fire_imbued").modLoaded("iceandfire").color(0xFF0000)
             .effect(new OnHitAbility(OnHitAbility.HitAbility.FIRE_IMBUED)));

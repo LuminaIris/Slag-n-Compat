@@ -1,0 +1,20 @@
+{
+  "color": "#99E9FF",
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "effects": [
+    {
+      "type": "slagcompat:bonus_damage_effect",
+      "attribute_key": "irons_spellbooks:max_mana",
+      "attribute_percentage": 0.03,
+      "attribute_target": "self",
+      "bonus_damage_type": "minecraft:magic"
+    }
+  ],
+  "id": "slag:arcane",
+  "sort_order": 1070
+}

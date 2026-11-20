@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.lopyluna.slag.content.traits.Trait;
 import dev.lopyluna.slag.content.traits.TraitEffect;
 import dev.lopyluna.slag.content.traits.Traits;
+import dev.luminairis.slagcompat.SlagCompat;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -22,7 +23,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Objects;
@@ -63,10 +63,11 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
                             case TARGET ->
                                     attribute = (float) Objects.requireNonNull(target.getAttribute(BuiltInRegistries.ATTRIBUTE.getHolderOrThrow(attributeKey.get()))).getValue();
                         }
-                        totalDmg += attribute / attributePercentage.get();
+                        totalDmg += attribute * attributePercentage.get();
                     }
                     if (totalDmg != 0f) {
                         target.hurt(new DamageSource(getDamageType(attacker, damageType), attacker), totalDmg);
+                        SlagCompat.LOGGER.info("Bonus damage: " + totalDmg);
                     }
                     break;
                 }
@@ -79,10 +80,11 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
                     case SELF -> attribute = (float) Objects.requireNonNull(attacker.getAttribute(BuiltInRegistries.ATTRIBUTE.getHolderOrThrow(attributeKey.get()))).getValue();
                     case TARGET -> attribute = (float) Objects.requireNonNull(target.getAttribute(BuiltInRegistries.ATTRIBUTE.getHolderOrThrow(attributeKey.get()))).getValue();
                 }
-                totalDmg += attribute / attributePercentage.get();
+                totalDmg += attribute * attributePercentage.get();
             }
             if (totalDmg != 0f) {
                 target.hurt(new DamageSource(getDamageType(attacker, damageType), attacker), totalDmg);
+                SlagCompat.LOGGER.info("Bonus damage of: " + totalDmg);
             }
         }
     }
@@ -92,7 +94,7 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
         return registry.getHolder(key).orElse(registry.getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD));
     }
 
-    private enum AttributeTarget implements StringRepresentable {
+    public enum AttributeTarget implements StringRepresentable {
         SELF("self"),
         TARGET("target");
 

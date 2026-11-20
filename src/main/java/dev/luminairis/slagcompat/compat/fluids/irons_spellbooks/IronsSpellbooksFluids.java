@@ -4,7 +4,6 @@ import com.tterrag.registrate.util.entry.FluidEntry;
 import dev.lopyluna.slag.register.AllFluids.LavaLikeFluid;
 import dev.lopyluna.slag.register.AllFluids;
 import dev.luminairis.slagcompat.compat.fluids.CompatFluid;
-
 import java.util.List;
 
 import static dev.luminairis.slagcompat.SlagCompat.REG;
