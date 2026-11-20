@@ -16,12 +16,12 @@ Materials
 | Ice and Fire: CE        | Fire Dragonsteel, Ice Dragonsteel, Lightning Dragonsteel        | Dragonslayer, Fire Imbued, Ice Imbued, Lightning Imbued | In Progress |
 | Iron's Spellbooks       | Arcane, Mithril, Pyrium                                         |                                                         | In Progress |
 | Mekanism                | Refined Obsidian, Refined Glowstone                             |                                                         | In Progress |
-| Twilight Forest         | Ironwood, Steeleaf, Knightmetal, Fiery                          | Ignite, Auto-smelting                                   | In Progress |
+| Twilight Forest         | Ironwood, Steeleaf, Knightmetal, Fiery                          | Igniting, Auto-smelting                                 | In Progress |
 
 Traits
 -------
 General
-- Ignite: Lights enemies hit on fire
+- Igniting: Lights enemies hit on fire
 - Auto-smelting: Automatically smelts mined ores
 - Unbreakable: Tool does not take any durability damage
 

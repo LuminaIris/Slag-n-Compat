@@ -42,7 +42,7 @@ public record OnHitAbility(HitAbility onHitAbility) implements TraitEffect {
 
     public enum HitAbility implements StringRepresentable {
         // GENERAL
-        IGNITE("ignite"),
+        IGNITING("igniting"),
         // ICE AND FIRE
         FIRE_IMBUED("fire_imbued"),
         ICE_IMBUED("ice_imbued"),

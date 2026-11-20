@@ -13,7 +13,7 @@ import net.minecraft.world.item.component.Unbreakable;
 
 @SuppressWarnings("unused")
 public class GeneralTraits extends CompatTrait {
-    public static final TraitType IGNITE = register(new TraitType.Builder("ignite").color(0xF23800)
+    public static final TraitType IGNITING = register(new TraitType.Builder("igniting").color(0xF23800)
             .effect(new OnHitAbility(OnHitAbility.HitAbility.IGNITE)));
 
     public static final TraitType UNBREAKABLE = register(new TraitType.Builder("unbreakable").color(0x5555FF)
