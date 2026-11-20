@@ -22,7 +22,6 @@ Traits
 -------
 General
 - Ignite: Lights enemies hit on fire
-- Auto-smelting: Automatically smelts mined ores
 - Unbreakable: Tool does not take any durability damage
 
 Ice and Fire
