@@ -2,7 +2,7 @@
   "color": "#F23800",
   "effects": [
     {
-      "type": "slagcompat:on_hit_effect",
+      "type": "slagcompat:on_hit_ability",
       "ability": "igniting"
     }
   ],

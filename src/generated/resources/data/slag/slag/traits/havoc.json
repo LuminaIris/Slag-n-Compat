@@ -2,7 +2,7 @@
   "color": "#B9892E",
   "effects": [
     {
-      "type": "slagcompat:on_hit_effect",
+      "type": "slagcompat:on_hit_ability",
       "ability": "havoc"
     }
   ],
