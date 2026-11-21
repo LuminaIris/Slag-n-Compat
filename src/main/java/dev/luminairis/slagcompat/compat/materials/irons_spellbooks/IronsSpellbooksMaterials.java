@@ -12,10 +12,11 @@ import net.minecraft.world.item.crafting.Ingredient;
 /**
  * Materials: Arcane, Mithril, Pyrium
  */
+@SuppressWarnings("unused")
 public class IronsSpellbooksMaterials extends CompatMaterial {
 
     public static MaterialType ARCANE = register(new MaterialType.Builder("arcane", () -> Ingredient.of(AllTags.itemC("ingots/arcane"))).setSortOrder(sortOrder)
-            .trait(AllTraits.ATTACK_DAMAGE, 3f)
+            .trait(AllTraits.ATTACK_DAMAGE, 1f)
             .trait(AllTraits.DURABILITY, 256f)
             .trait(AllTraits.MINING_TIER, 4)
             .trait(AllTraits.MINING_SPEED, 6f)
@@ -46,6 +47,7 @@ public class IronsSpellbooksMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_SPEED, 4f)
             .trait(AllTraits.ENCHANTABILITY, 64f)
             .trait(AllTraits.ARMOR, 8f)
+            .trait(AllTraits.FIRE_RESISTANT)
             .setTexture("metal")
             .moltenFluid(IronsSpellbooksFluids.MOLTEN_PYRIUM::getSource)
             .modLoaded("irons_spellbooks")

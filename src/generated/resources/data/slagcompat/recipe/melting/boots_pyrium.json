@@ -9,6 +9,7 @@
   "ingredients": [
     {
       "components": {
+        "minecraft:fire_resistant": {},
         "slag:material_type": "slag:pyrium",
         "slag:part_type": "slag:boots"
       },

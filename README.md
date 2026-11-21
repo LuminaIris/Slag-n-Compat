@@ -31,8 +31,8 @@ Ice and Fire
 - Lightning Imbued: Attacks cause chain lightning to damage other enemies near the target; same as IaF lightning dragonsteel tools
 
 Iron's Spellbooks
-- Arcane: Attacks deal bonus magic damage based on your maximum mana
-- Havocking: Attacks cause an explosion
+- Arcane: Attacks deal bonus damage equal to 3% of your maximum mana
+- Havoc: Attacks cause an explosion. The tool is imbued with 'Raise Hell III.'
 
 Other Compat
 -------

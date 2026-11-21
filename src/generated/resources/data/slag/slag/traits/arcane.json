@@ -11,8 +11,7 @@
       "type": "slagcompat:bonus_damage_effect",
       "attribute_key": "irons_spellbooks:max_mana",
       "attribute_percentage": 0.03,
-      "attribute_target": "self",
-      "bonus_damage_type": "minecraft:magic"
+      "attribute_target": "self"
     }
   ],
   "id": "slag:arcane",
