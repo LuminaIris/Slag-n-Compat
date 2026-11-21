@@ -7,7 +7,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class CompatMobEffects {
+public class AllCompatMobEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, SlagCompat.MODID);
 
     public static final Holder<MobEffect> UNSTABLE = MOB_EFFECTS.register("unstable", () -> new UnstableMobEffect(

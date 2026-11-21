@@ -2,7 +2,7 @@ package dev.luminairis.slagcompat.compat.traits.irons_spellbooks;
 
 import dev.lopyluna.slag.content.traits.TraitType;
 import dev.luminairis.slagcompat.SlagCompat;
-import dev.luminairis.slagcompat.compat.mobeffect.CompatMobEffects;
+import dev.luminairis.slagcompat.compat.mobeffect.AllCompatMobEffects;
 import dev.luminairis.slagcompat.compat.traits.CompatTrait;
 import dev.luminairis.slagcompat.compat.traits.effects.BonusDamageEffect;
 import dev.luminairis.slagcompat.compat.traits.effects.OnHitAbility;
@@ -29,8 +29,8 @@ public class IronsSpellbooksTraits extends CompatTrait {
     }
 
     public static void havocExplosion(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (target.hasEffect(CompatMobEffects.UNSTABLE)) {
-            var effect = target.getEffect(CompatMobEffects.UNSTABLE);
+        if (target.hasEffect(AllCompatMobEffects.UNSTABLE)) {
+            var effect = target.getEffect(AllCompatMobEffects.UNSTABLE);
             if (effect != null) {
                 int amplifier = effect.getAmplifier() + 1;
                 if (amplifier >= 2) {
@@ -42,13 +42,13 @@ public class IronsSpellbooksTraits extends CompatTrait {
                     fireball.setPos(origin);
                     fireball.shoot(new Vec3(0, -1, 0));
                     world.addFreshEntity(fireball);
-                    target.removeEffect(CompatMobEffects.UNSTABLE);
+                    target.removeEffect(AllCompatMobEffects.UNSTABLE);
                 } else {
-                    target.addEffect(new MobEffectInstance(CompatMobEffects.UNSTABLE, 120, amplifier, false, true, false));
+                    target.addEffect(new MobEffectInstance(AllCompatMobEffects.UNSTABLE, 120, amplifier, false, true, false));
                 }
             }
         } else {
-            target.addEffect(new MobEffectInstance(CompatMobEffects.UNSTABLE, 120, 0, false, true, false));
+            target.addEffect(new MobEffectInstance(AllCompatMobEffects.UNSTABLE, 120, 0, false, true, false));
         }
     }
 }
