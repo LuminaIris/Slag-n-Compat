@@ -1,7 +1,6 @@
 package dev.luminairis.slagcompat.compat.traits.iceandfire;
 
 import com.iafenvoy.iceandfire.item.ability.BuiltinAbilities;
-import com.iafenvoy.iceandfire.registry.IafDamageTypes;
 import com.iafenvoy.iceandfire.registry.tag.IafEntityTags;
 import dev.lopyluna.slag.content.traits.TraitType;
 import dev.luminairis.slagcompat.SlagCompat;
@@ -15,7 +14,7 @@ import java.util.Optional;
 public class IceAndFireTraits extends CompatTrait {
 
     public static final TraitType DRAGONSLAYER = register(new TraitType.Builder("dragonslayer").modLoaded("iceandfire").color(0xE6A895)
-            .effect(new BonusDamageEffect(Optional.of(4f), Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(List.of(IafEntityTags.FIRE_DRAGON, IafEntityTags.ICE_DRAGON, IafEntityTags.LIGHTNING_DRAGON)), IafDamageTypes.BONUS)));
+            .effect(new BonusDamageEffect(Optional.of(4f), Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(List.of(IafEntityTags.FIRE_DRAGON, IafEntityTags.ICE_DRAGON, IafEntityTags.LIGHTNING_DRAGON)))));
 
     public static final TraitType FIRE_IMBUED = register(new TraitType.Builder("fire_imbued").modLoaded("iceandfire").color(0xFF0000)
             .effect(new OnHitAbility(OnHitAbility.HitAbility.FIRE_IMBUED)));

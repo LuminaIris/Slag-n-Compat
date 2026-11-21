@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.lopyluna.slag.content.traits.Trait;
 import dev.lopyluna.slag.content.traits.TraitEffect;
 import dev.lopyluna.slag.content.traits.Traits;
+import dev.lopyluna.slag.register.AllItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -27,14 +28,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKey<Attribute>> attributeKey, Optional<Float> attributePercentage, Optional<AttributeTarget> attributeTarget, Optional<List<TagKey<EntityType<?>>>> targetTypes, ResourceKey<DamageType> damageType) implements TraitEffect {
+public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKey<Attribute>> attributeKey, Optional<Float> attributePercentage, Optional<AttributeTarget> attributeTarget, Optional<List<TagKey<EntityType<?>>>> targetTypes) implements TraitEffect, IDamageEffect {
     public static final MapCodec<BonusDamageEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.FLOAT.optionalFieldOf("bonus_damage").forGetter(BonusDamageEffect::bonusDamage),
             ResourceKey.codec(Registries.ATTRIBUTE).optionalFieldOf("attribute_key").forGetter(BonusDamageEffect::attributeKey),
             Codec.FLOAT.optionalFieldOf("attribute_percentage").forGetter(BonusDamageEffect::attributePercentage),
             AttributeTarget.CODEC.optionalFieldOf("attribute_target").forGetter(BonusDamageEffect::attributeTarget),
-            TagKey.codec(Registries.ENTITY_TYPE).listOf().optionalFieldOf("target_types").forGetter(BonusDamageEffect::targetTypes),
-            ResourceKey.codec(Registries.DAMAGE_TYPE).fieldOf("bonus_damage_type").forGetter(BonusDamageEffect::damageType)
+            TagKey.codec(Registries.ENTITY_TYPE).listOf().optionalFieldOf("target_types").forGetter(BonusDamageEffect::targetTypes)
     ).apply(instance, BonusDamageEffect::new));
 
     @Override
@@ -48,8 +48,8 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
     }
 
     @Override
-    public void onHurtEnemy(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (attacker instanceof Player player && player.getAttackStrengthScale(0) != 1.0F) return;
+    public float calculateDamage(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (attacker instanceof Player player && player.getAttackStrengthScale(0) != 1.0F) return 0f;
         if (targetTypes.isPresent()) {
             for (TagKey<EntityType<?>> tag : targetTypes.get()) {
                 if (target.getType().is(tag)) {
@@ -64,10 +64,7 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
                         }
                         totalDmg += attribute * attributePercentage.get();
                     }
-                    if (totalDmg != 0f) {
-                        target.hurt(new DamageSource(getDamageType(attacker, damageType), attacker), totalDmg);
-                    }
-                    break;
+                    return totalDmg;
                 }
             }
         } else {
@@ -80,15 +77,9 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
                 }
                 totalDmg += attribute * attributePercentage.get();
             }
-            if (totalDmg != 0f) {
-                target.hurt(new DamageSource(getDamageType(attacker, damageType), attacker), totalDmg);
-            }
+            return totalDmg;
         }
-    }
-
-    private Holder<DamageType> getDamageType(Entity entity, ResourceKey<DamageType> key) {
-        Registry<DamageType> registry = entity.level().damageSources().damageTypes;
-        return registry.getHolder(key).orElse(registry.getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD));
+        return 0f;
     }
 
     public enum AttributeTarget implements StringRepresentable {
