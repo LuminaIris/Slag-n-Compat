@@ -3,6 +3,7 @@ package dev.luminairis.slagcompat.compat.traits;
 import dev.lopyluna.slag.content.traits.TraitType;
 import dev.luminairis.slagcompat.compat.traits.general.GeneralTraits;
 import dev.luminairis.slagcompat.compat.traits.iceandfire.IceAndFireTraits;
+import dev.luminairis.slagcompat.compat.traits.irons_spellbooks.IronsSpellbooksTraits;
 import net.neoforged.fml.ModList;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,9 @@ public class AllCompatTraits {
     public static void register() {
         if (ModList.get().isLoaded("iceandfire")) {
             IceAndFireTraits.register();
+        }
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            IronsSpellbooksTraits.register();
         }
         GeneralTraits.register();
     }

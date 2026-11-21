@@ -48,6 +48,7 @@ public class IronsSpellbooksMaterials extends CompatMaterial {
             .trait(AllTraits.ENCHANTABILITY, 64f)
             .trait(AllTraits.ARMOR, 8f)
             .trait(AllTraits.FIRE_RESISTANT)
+            .trait(IronsSpellbooksTraits.HAVOC)
             .setTexture("metal")
             .moltenFluid(IronsSpellbooksFluids.MOLTEN_PYRIUM::getSource)
             .modLoaded("irons_spellbooks")

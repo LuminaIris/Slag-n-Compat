@@ -46,7 +46,9 @@ public record OnHitAbility(HitAbility onHitAbility) implements TraitEffect {
         // ICE AND FIRE
         FIRE_IMBUED("fire_imbued"),
         ICE_IMBUED("ice_imbued"),
-        LIGHTNING_IMBUED("lightning_imbued");
+        LIGHTNING_IMBUED("lightning_imbued"),
+        // IRONS SPELLBOOKS
+        HAVOC("havoc");
 
         public static final Codec<HitAbility> CODEC = StringRepresentable.fromEnum(HitAbility::values);
 

@@ -29,6 +29,6 @@ public class IceAndFireTraits extends CompatTrait {
         OnHitAbility.registerOperation(OnHitAbility.HitAbility.FIRE_IMBUED, BuiltinAbilities.DRAGONSTEEL_FIRE_TOOL::active);
         OnHitAbility.registerOperation(OnHitAbility.HitAbility.ICE_IMBUED, BuiltinAbilities.DRAGONSTEEL_ICE_TOOL::active);
         OnHitAbility.registerOperation(OnHitAbility.HitAbility.LIGHTNING_IMBUED, BuiltinAbilities.DRAGONSTEEL_LIGHTNING_TOOL::active);
-        SlagCompat.LOGGER.info("Registering traits for mod: Ice and Fire CE");
+        SlagCompat.LOGGER.info("Registering traits for mod: iceandfire");
     }
 }

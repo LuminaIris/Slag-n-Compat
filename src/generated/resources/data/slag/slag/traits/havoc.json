@@ -1,0 +1,11 @@
+{
+  "color": "#B9892E",
+  "effects": [
+    {
+      "type": "slagcompat:on_hit_effect",
+      "ability": "havoc"
+    }
+  ],
+  "id": "slag:havoc",
+  "sort_order": 1080
+}

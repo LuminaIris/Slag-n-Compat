@@ -37,6 +37,7 @@
       "trait": "slag:armor",
       "value": 8.0
     },
-    "slag:fire_resistant"
+    "slag:fire_resistant",
+    "slag:havoc"
   ]
 }

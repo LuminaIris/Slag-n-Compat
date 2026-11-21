@@ -32,7 +32,7 @@ Ice and Fire
 
 Iron's Spellbooks
 - Arcane: Attacks deal bonus damage equal to 3% of your maximum mana
-- Havoc: Attacks cause an explosion. The tool is imbued with 'Raise Hell III.'
+- Havoc: Attacking an enemy 3 times causes an explosion
 
 Other Compat
 -------
