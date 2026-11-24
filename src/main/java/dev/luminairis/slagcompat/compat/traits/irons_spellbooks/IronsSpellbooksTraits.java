@@ -1,6 +1,8 @@
 package dev.luminairis.slagcompat.compat.traits.irons_spellbooks;
 
+import dev.lopyluna.slag.SlagEmbers;
 import dev.lopyluna.slag.content.traits.TraitType;
+import dev.lopyluna.slag.content.traits.effects.AttributeEffect;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.mobeffect.AllCompatMobEffects;
 import dev.luminairis.slagcompat.compat.traits.CompatTrait;
@@ -18,9 +20,15 @@ import java.util.Optional;
 @SuppressWarnings("unused")
 public class IronsSpellbooksTraits extends CompatTrait {
 
+    public static final TraitType MANA = register(new TraitType.Builder("mana").modLoaded("irons_spellbooks").hidden()
+            .effect(AttributeEffect.equipped(AttributeRegistry.MAX_MANA, SlagEmbers.locMC("armor")).rounded()));
+    public static final TraitType SPELL_RESIST = register(new TraitType.Builder("spell_resist").modLoaded("irons_spellbooks").hidden()
+            .effect(AttributeEffect.equipped(AttributeRegistry.SPELL_RESIST, SlagEmbers.locMC("armor"))));
+    public static final TraitType SPELL_POWER = register(new TraitType.Builder("spell_power").modLoaded("irons_spellbooks").hidden()
+            .effect(AttributeEffect.equipped(AttributeRegistry.SPELL_POWER, SlagEmbers.locMC("armor"))));
     public static final TraitType ARCANE = register(new TraitType.Builder("arcane").modLoaded("irons_spellbooks").color(0x99E9FF)
             .effect(new BonusDamageEffect(Optional.empty(), AttributeRegistry.MAX_MANA.unwrapKey(), Optional.of(0.03f), Optional.of(BonusDamageEffect.AttributeTarget.SELF), Optional.empty())));
-    public static final TraitType HAVOC = register(new TraitType.Builder("havoc").color(0xB9892E)
+    public static final TraitType HAVOC = register(new TraitType.Builder("havoc").modLoaded("irons_spellbooks").color(0xB9892E)
             .effect(new OnHitAbility(OnHitAbility.HitAbility.HAVOC)));
 
     public static void register() {

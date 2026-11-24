@@ -1,5 +1,11 @@
 {
   "color": "#B9892E",
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
   "effects": [
     {
       "type": "slagcompat:on_hit_ability",
@@ -7,5 +13,5 @@
     }
   ],
   "id": "slag:havoc",
-  "sort_order": 1080
+  "sort_order": 1110
 }

@@ -35,7 +35,15 @@
     },
     {
       "trait": "slag:armor",
-      "value": 3.0
+      "value": 8.8
+    },
+    {
+      "trait": "slag:armor_toughness",
+      "value": 2.0
+    },
+    {
+      "trait": "slag:spell_resist",
+      "value": 0.1
     }
   ]
 }

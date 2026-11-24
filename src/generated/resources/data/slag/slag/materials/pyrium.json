@@ -35,7 +35,15 @@
     },
     {
       "trait": "slag:armor",
-      "value": 8.0
+      "value": 7.5
+    },
+    {
+      "trait": "slag:armor_toughness",
+      "value": 1.0
+    },
+    {
+      "trait": "slag:spell_power",
+      "value": 0.1
     },
     "slag:fire_resistant",
     "slag:havoc"

@@ -37,6 +37,10 @@
       "trait": "slag:armor",
       "value": 3.0
     },
+    {
+      "trait": "slag:mana",
+      "value": 100.0
+    },
     "slag:arcane"
   ]
 }
