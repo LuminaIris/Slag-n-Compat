@@ -3,6 +3,7 @@ package dev.luminairis.slagcompat.datagen;
 import dev.lopyluna.slag.register.AllTags;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.fluids.allthemodium.AllthemodiumFluids;
+import dev.luminairis.slagcompat.compat.fluids.eternal_starlight.EternalStarlightFluids;
 import dev.luminairis.slagcompat.compat.fluids.iceandfire.IceAndFireFluids;
 import dev.luminairis.slagcompat.compat.fluids.irons_spellbooks.IronsSpellbooksFluids;
 import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
@@ -58,7 +59,22 @@ public class CompatTagsDatagen {
                     TwilightForestFluids.MOLTEN_FIERY.getSource(),
                     IronsSpellbooksFluids.MOLTEN_ARCANE.getSource(),
                     IronsSpellbooksFluids.MOLTEN_MITHRIL.getSource(),
-                    IronsSpellbooksFluids.MOLTEN_PYRIUM.getSource()
+                    IronsSpellbooksFluids.MOLTEN_PYRIUM.getSource(),
+                    EternalStarlightFluids.MOLTEN_DEEPSILVER.getSource(),
+                    EternalStarlightFluids.MOLTEN_THERMAL_SPRINGSTONE.getSource(),
+                    EternalStarlightFluids.MOLTEN_AMARAMBER.getSource(),
+                    EternalStarlightFluids.MOLTEN_AETHERSENT.getSource(),
+                    EternalStarlightFluids.MOLTEN_GOLEM_STEEL.getSource(),
+                    EternalStarlightFluids.MOLTEN_UNREALIUM.getSource()
+            );
+            tag(AllTags.MOLTEN_GEMS).add(
+                    EternalStarlightFluids.MOLTEN_GLACITE.getSource(),
+                    EternalStarlightFluids.MOLTEN_MALARITE.getSource(),
+                    EternalStarlightFluids.MOLTEN_STARLIT_DIAMOND.getSource()
+            );
+            tag(AllTags.MOLTEN_DUSTS).add(
+                    EternalStarlightFluids.MOLTEN_FLOWGLAZE.getSource(),
+                    EternalStarlightFluids.MOLTEN_STARFIRE.getSource()
             );
         }
     }

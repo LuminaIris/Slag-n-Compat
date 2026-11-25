@@ -1,20 +1,11 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:dusts/starfire"
-      }
-    }
-  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dust": {
+    "has_eternal_starlight:flowglaze": {
       "conditions": {
         "items": [
           {
-            "items": "#c:dusts/starfire"
+            "items": "eternal_starlight:flowglaze"
           }
         ]
       },
@@ -22,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "slagcompat:casting/table/starfire_dust"
+        "recipe": "slagcompat:casting/basin/flowglaze"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -30,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_dust"
+      "has_eternal_starlight:flowglaze"
     ]
   ],
   "rewards": {
     "recipes": [
-      "slagcompat:casting/table/starfire_dust"
+      "slagcompat:casting/basin/flowglaze"
     ]
   }
 }

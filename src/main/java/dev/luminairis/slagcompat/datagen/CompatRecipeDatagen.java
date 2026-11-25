@@ -82,6 +82,11 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
                     generateMeltingRecipe(name + "_ores", molten, MelterBE.INGOT_SIZE + MelterBE.NUGGET_SIZE * 3, AllTags.itemC("ores/" + name), recipeOutput);
                     generateMeltingRecipe(name + "_clumps", molten, MelterBE.INGOT_SIZE + MelterBE.NUGGET_SIZE * 3, AllTags.itemC("clumps/" + name), recipeOutput);
                 }
+            } else if (form.equals(CompatMaterial.BLOCKS)) {
+                var item = material.repairMaterials.get().getItems()[0].getItem();
+                MeltingRecipeBuilder.create(molten, MelterBE.BLOCK_SIZE, item)
+                        .unlockedBy("has_" + item, has(item))
+                        .save(recipeOutput, SlagEmbers.loc(SlagCompat.MODID, "melting/" + item.toString().split(":")[1]));
             }
             else {
                 var item = material.repairMaterials.get().getItems()[0].getItem();
@@ -91,18 +96,35 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
             }
 
             // CASTING RECIPES
-            if (form.equals(CompatMaterial.INGOTS)) { generateTableCastingRecipe("ingot", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_INGOTS, recipeOutput); }
-            else if (form.equals(CompatMaterial.GEMS)) { generateTableCastingRecipe("gem", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_GEMS, recipeOutput); }
+            if (form.equals(CompatMaterial.INGOTS) || form.equals(CompatMaterial.GEMS)) {
+                String key;
+                TagKey<Item> cast;
+                if (form.equals(CompatMaterial.INGOTS)) {
+                    key = "ingot";
+                    cast = AllTags.CAST_INGOTS;
+                } else {
+                    key = "gem";
+                    cast = AllTags.CAST_GEMS;
+                }
+                generateTableCastingRecipe(key, name, molten, MelterBE.INGOT_SIZE, cast, recipeOutput);
+                generateTableCastingRecipe("nugget", name, molten, MelterBE.NUGGET_SIZE, AllTags.CAST_NUGGETS, recipeOutput);
+                generateTableCastingRecipe("dust", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_DUSTS, recipeOutput);
+                generateTableCastingRecipe("rod", name, molten, MelterBE.INGOT_SIZE / 2, AllTags.CAST_RODS, recipeOutput);
+                generateBasinCastingRecipe(name, molten, recipeOutput);
+            }
+            else if (form.equals(CompatMaterial.BLOCKS)) {
+                var item = material.repairMaterials.get().getItems()[0].getItem();
+                BasinCastingRecipeBuilder.create(item, 1, molten, MelterBE.BLOCK_SIZE)
+                        .unlockedBy("has_" + item, has(item))
+                        .save(recipeOutput, SlagEmbers.loc(SlagCompat.MODID, "casting/basin/" + item.toString().split(":")[1]));
+                generateTableCastingRecipe("dust", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_DUSTS, recipeOutput);
+            }
             else {
                 var item = material.repairMaterials.get().getItems()[0].getItem();
-                TableCastingRecipeBuilder.create(item, 1, molten, MelterBE.INGOT_SIZE, AllTags.CAST_INGOTS)
+                TableCastingRecipeBuilder.create(item, 1, molten, MelterBE.INGOT_SIZE, AllTags.CAST_DUSTS)
                         .unlockedBy("has_" + item, has(item))
                         .save(recipeOutput, SlagEmbers.loc(SlagCompat.MODID, "casting/table/" + item.toString().split(":")[1]));
             }
-            generateTableCastingRecipe("nugget", name, molten, MelterBE.NUGGET_SIZE, AllTags.CAST_NUGGETS, recipeOutput);
-            generateTableCastingRecipe("dust", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_DUSTS, recipeOutput);
-            generateTableCastingRecipe("rod", name, molten, MelterBE.INGOT_SIZE / 2, AllTags.CAST_RODS, recipeOutput);
-            generateBasinCastingRecipe(name, molten, recipeOutput);
         }
 
         // DYNAMIC PART RECIPES

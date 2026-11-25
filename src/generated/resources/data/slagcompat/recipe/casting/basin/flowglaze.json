@@ -1,8 +1,7 @@
 {
-  "type": "slag:table_casting",
-  "cast": "slag:cast/ingots",
+  "type": "slag:basin_casting",
   "ingredient": {
-    "amount": 72,
+    "amount": 648,
     "fluid": "slagcompat:molten_flowglaze"
   },
   "result": {

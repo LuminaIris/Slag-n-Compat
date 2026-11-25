@@ -1,6 +1,6 @@
 {
   "type": "slag:table_casting",
-  "cast": "slag:cast/ingots",
+  "cast": "slag:cast/dusts",
   "ingredient": {
     "amount": 72,
     "fluid": "slagcompat:molten_starfire"
