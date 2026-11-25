@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:dusts/glacite"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_glacite_dusts": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:dusts/glacite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/glacite_dusts"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_glacite_dusts"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/glacite_dusts"
+    ]
+  }
+}

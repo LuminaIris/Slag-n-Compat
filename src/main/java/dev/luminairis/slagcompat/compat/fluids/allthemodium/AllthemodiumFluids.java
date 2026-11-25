@@ -11,11 +11,11 @@ import static dev.luminairis.slagcompat.SlagCompat.REG;
 @SuppressWarnings("unused")
 public class AllthemodiumFluids extends CompatFluid {
     public static final FluidEntry<LavaLikeFluid.Flowing> MOLTEN_ALLTHEMODIUM =
-            AllFluids.compatFluid(REG, "Allthemodium", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Allthemodium", () -> 0xffffff).register();
     public static final FluidEntry<LavaLikeFluid.Flowing> MOLTEN_VIBRANIUM =
-            AllFluids.compatFluid(REG, "Vibranium", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Vibranium", () -> 0xffffff).register();
     public static final FluidEntry<LavaLikeFluid.Flowing> MOLTEN_UNOBTAINIUM =
-            AllFluids.compatFluid(REG, "Unobtainium", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Unobtainium", () -> 0xffffff).register();
 
     public static void register() {
         registerFluids(List.of(MOLTEN_ALLTHEMODIUM, MOLTEN_VIBRANIUM, MOLTEN_UNOBTAINIUM), "allthemodium");

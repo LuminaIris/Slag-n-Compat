@@ -14,6 +14,9 @@
     "slagcompat:molten_fiery",
     "slagcompat:molten_arcane",
     "slagcompat:molten_mithril",
-    "slagcompat:molten_pyrium"
+    "slagcompat:molten_pyrium",
+    "slagcompat:molten_deepsilver",
+    "slagcompat:molten_glacite",
+    "slagcompat:molten_thermal_springstone"
   ]
 }

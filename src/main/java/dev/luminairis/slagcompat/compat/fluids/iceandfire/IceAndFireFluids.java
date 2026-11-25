@@ -11,11 +11,11 @@ import static dev.luminairis.slagcompat.SlagCompat.REG;
 @SuppressWarnings("unused")
 public class IceAndFireFluids extends CompatFluid {
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_FIRE_DRAGONSTEEL =
-            AllFluids.compatFluid(REG, "Fire Dragonsteel", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Fire Dragonsteel", () -> 0xffffff).register();
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_ICE_DRAGONSTEEL =
-            AllFluids.compatFluid(REG, "Ice Dragonsteel", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Ice Dragonsteel", () -> 0xffffff).register();
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_LIGHTNING_DRAGONSTEEL =
-            AllFluids.compatFluid(REG, "Lightning Dragonsteel", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Lightning Dragonsteel", () -> 0xffffff).register();
 
     public static void register() {
         registerFluids(List.of(MOLTEN_FIRE_DRAGONSTEEL, MOLTEN_ICE_DRAGONSTEEL, MOLTEN_LIGHTNING_DRAGONSTEEL), "iceandfire");

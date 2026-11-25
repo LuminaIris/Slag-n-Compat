@@ -11,11 +11,11 @@ import static dev.luminairis.slagcompat.SlagCompat.REG;
 @SuppressWarnings("unused")
 public class IronsSpellbooksFluids extends CompatFluid {
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_ARCANE =
-            AllFluids.compatFluid(REG, "Arcane", () -> 0xFFFFFF);
+            AllFluids.newMoltenFluid(REG, "Arcane", () -> 0xFFFFFF).register();
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_MITHRIL =
-            AllFluids.compatFluid(REG, "Mithril", () -> 0xFFFFFF);
+            AllFluids.newMoltenFluid(REG, "Mithril", () -> 0xFFFFFF).register();
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_PYRIUM =
-            AllFluids.compatFluid(REG, "Pyrium", () -> 0xFFFFFF);
+            AllFluids.newMoltenFluid(REG, "Pyrium", () -> 0xFFFFFF).register();
 
     public static void register() {
         registerFluids(List.of(MOLTEN_ARCANE, MOLTEN_MITHRIL, MOLTEN_PYRIUM), "irons_spellbooks");

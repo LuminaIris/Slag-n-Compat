@@ -11,13 +11,13 @@ import static dev.luminairis.slagcompat.SlagCompat.REG;
 @SuppressWarnings("unused")
 public class TwilightForestFluids extends CompatFluid {
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_IRONWOOD =
-            AllFluids.compatFluid(REG, "Ironwood", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Ironwood", () -> 0xffffff).register();
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_STEELEAF =
-            AllFluids.compatFluid(REG, "Steeleaf", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Steeleaf", () -> 0xffffff).register();
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_KNIGHTMETAL =
-            AllFluids.compatFluid(REG, "Knightmetal", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Knightmetal", () -> 0xffffff).register();
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_FIERY =
-            AllFluids.compatFluid(REG, "Fiery", () -> 0xffffff);
+            AllFluids.newMoltenFluid(REG, "Fiery", () -> 0xffffff).register();
 
     public static void register() {
         registerFluids(List.of(MOLTEN_IRONWOOD, MOLTEN_STEELEAF, MOLTEN_KNIGHTMETAL, MOLTEN_FIERY), "twilightforest");

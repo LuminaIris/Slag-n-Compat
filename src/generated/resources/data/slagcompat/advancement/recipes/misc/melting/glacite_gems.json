@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:gems/glacite"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_glacite_gems": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:gems/glacite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/glacite_gems"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_glacite_gems"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/glacite_gems"
+    ]
+  }
+}

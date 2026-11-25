@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:wires/deepsilver"
+      }
+    }
+  ],
+  "type": "slag:melting",
+  "ingredient": {
+    "tag": "c:wires/deepsilver"
+  },
+  "ingredients": [],
+  "result": [
+    {
+      "amount": 18,
+      "id": "slagcompat:molten_deepsilver"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ package dev.luminairis.slagcompat.compat.fluids;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import dev.lopyluna.slag.register.AllFluids;
 import dev.luminairis.slagcompat.compat.fluids.allthemodium.AllthemodiumFluids;
+import dev.luminairis.slagcompat.compat.fluids.eternal_starlight.EternalStarlightFluids;
 import dev.luminairis.slagcompat.compat.fluids.iceandfire.IceAndFireFluids;
 import dev.luminairis.slagcompat.compat.fluids.irons_spellbooks.IronsSpellbooksFluids;
 import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
@@ -19,5 +20,6 @@ public class AllCompatFluids {
         IceAndFireFluids.register();
         TwilightForestFluids.register();
         IronsSpellbooksFluids.register();
+        EternalStarlightFluids.register();
     }
 }

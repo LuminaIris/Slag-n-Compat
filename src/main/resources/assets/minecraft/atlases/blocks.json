@@ -119,6 +119,30 @@
         {
             "type": "single",
             "resource": "slag:fluid/molten_pyrium_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_deepsilver_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_deepsilver_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_glacite_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_glacite_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_thermal_springstone_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_thermal_springstone_still"
         }
     ]
 }

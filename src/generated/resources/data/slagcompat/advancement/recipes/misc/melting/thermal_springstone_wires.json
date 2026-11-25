@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:wires/thermal_springstone"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_thermal_springstone_wires": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:wires/thermal_springstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/thermal_springstone_wires"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_thermal_springstone_wires"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/thermal_springstone_wires"
+    ]
+  }
+}

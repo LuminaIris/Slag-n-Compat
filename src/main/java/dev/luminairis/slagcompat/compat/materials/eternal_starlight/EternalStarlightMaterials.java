@@ -5,6 +5,7 @@ import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.register.AllTags;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
+import dev.luminairis.slagcompat.compat.fluids.eternal_starlight.EternalStarlightFluids;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -22,6 +23,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("base")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_DEEPSILVER::getSource)
             .modLoaded("eternal_starlight")
             .register(), INGOTS, false);
 
@@ -31,6 +34,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("shiny")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_GLACITE::getSource)
             .modLoaded("eternal_starlight")
             .register(), GEMS, false);
 
@@ -40,6 +45,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("soft")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_THERMAL_SPRINGSTONE::getSource)
             .modLoaded("eternal_starlight")
             .register(), INGOTS, false);
 

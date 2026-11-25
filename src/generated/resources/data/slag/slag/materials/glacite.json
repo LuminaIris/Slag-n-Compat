@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:glacite",
+  "molten_fluid": "slagcompat:molten_glacite",
   "repair_ingredient": {
     "tag": "c:gems/glacite"
   },
   "sort_order": 1160,
+  "texture": "shiny",
   "traits": [
     {
       "trait": "slag:attack_damage",

@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/thermal_springstone"
+      }
+    }
+  ],
+  "type": "slag:table_casting",
+  "cast": "slag:cast/nuggets",
+  "ingredient": {
+    "amount": 8,
+    "fluid": "slagcompat:molten_thermal_springstone"
+  },
+  "result": {
+    "tag": "c:nuggets/thermal_springstone"
+  }
+}

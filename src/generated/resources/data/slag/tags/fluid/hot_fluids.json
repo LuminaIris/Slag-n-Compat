@@ -29,6 +29,12 @@
     "slagcompat:flowing_molten_mithril",
     "slagcompat:molten_mithril",
     "slagcompat:flowing_molten_pyrium",
-    "slagcompat:molten_pyrium"
+    "slagcompat:molten_pyrium",
+    "slagcompat:flowing_molten_deepsilver",
+    "slagcompat:molten_deepsilver",
+    "slagcompat:flowing_molten_glacite",
+    "slagcompat:molten_glacite",
+    "slagcompat:flowing_molten_thermal_springstone",
+    "slagcompat:molten_thermal_springstone"
   ]
 }

@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:dusts/deepsilver"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_deepsilver_dusts": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:dusts/deepsilver"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/deepsilver_dusts"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_deepsilver_dusts"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/deepsilver_dusts"
+    ]
+  }
+}
