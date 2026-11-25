@@ -28,7 +28,7 @@ public class IceAndFireMaterials extends CompatMaterial {
             .setTexture("metal")
             .moltenFluid(IceAndFireFluids.MOLTEN_FIRE_DRAGONSTEEL::getSource)
             .modLoaded("iceandfire")
-            .register(), false);
+            .register(), INGOTS, false);
 
     public static MaterialType ICE_DRAGONSTEEL = register(new MaterialType.Builder("ice_dragonsteel", () -> Ingredient.of(AllTags.itemC("ingots/ice_dragonsteel"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 28f)
@@ -43,7 +43,7 @@ public class IceAndFireMaterials extends CompatMaterial {
             .setTexture("metal")
             .moltenFluid(IceAndFireFluids.MOLTEN_ICE_DRAGONSTEEL::getSource)
             .modLoaded("iceandfire")
-            .register(), false);
+            .register(), INGOTS, false);
 
     public static MaterialType LIGHTNING_DRAGONSTEEL = register(new MaterialType.Builder("lightning_dragonsteel", () -> Ingredient.of(AllTags.itemC("ingots/lightning_dragonsteel"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 38f)
@@ -58,7 +58,7 @@ public class IceAndFireMaterials extends CompatMaterial {
             .setTexture("metal")
             .moltenFluid(IceAndFireFluids.MOLTEN_LIGHTNING_DRAGONSTEEL::getSource)
             .modLoaded("iceandfire")
-            .register(), false);
+            .register(), INGOTS, false);
 
     public static void register() {
         SlagCompat.LOGGER.info("Registering materials for mod: iceandfire");

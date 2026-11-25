@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "eternal_starlight"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": {
+      "tag": "c:gems/starlit_diamond"
+    },
+    "R": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "MMM",
+    "R R"
+  ],
+  "result": {
+    "components": {
+      "slag:material_type": "slag:starlit_diamond",
+      "slag:part_type": "slag:helmet"
+    },
+    "count": 1,
+    "id": "slag:dynamic_part"
+  }
+}

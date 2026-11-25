@@ -1,0 +1,35 @@
+{
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "eternal_starlight"
+    }
+  ],
+  "id": "slag:flowglaze",
+  "repair_ingredient": {
+    "item": "eternal_starlight:flowglaze"
+  },
+  "sort_order": 1210,
+  "traits": [
+    {
+      "trait": "slag:attack_damage",
+      "value": 1.0
+    },
+    {
+      "trait": "slag:durability",
+      "value": 99.0
+    },
+    {
+      "trait": "slag:mining_tier",
+      "value": 1.0
+    },
+    {
+      "trait": "slag:mining_speed",
+      "value": 1.0
+    },
+    {
+      "trait": "slag:enchantability",
+      "value": 1.0
+    }
+  ]
+}

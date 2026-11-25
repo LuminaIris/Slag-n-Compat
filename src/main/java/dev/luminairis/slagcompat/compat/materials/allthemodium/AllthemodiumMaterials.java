@@ -5,9 +5,11 @@ import dev.lopyluna.slag.register.AllTags;
 import dev.lopyluna.slag.register.AllTraits;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.fluids.allthemodium.AllthemodiumFluids;
+import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import dev.luminairis.slagcompat.compat.traits.general.GeneralTraits;
 import net.minecraft.world.item.crafting.Ingredient;
+import java.util.List;
 
 /**
  * Materials: Allthemodium, Vibranium, Unobtainium
@@ -28,7 +30,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .setTexture("metal")
             .moltenFluid(AllthemodiumFluids.MOLTEN_ALLTHEMODIUM::getSource)
             .modLoaded("allthemodium")
-            .register(), true);
+            .register(), INGOTS, true);
 
     public static final MaterialType VIBRANIUM = register(new MaterialType.Builder("vibranium", () -> Ingredient.of(AllTags.itemC("ingots/vibranium"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 35f)
@@ -43,7 +45,7 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .setTexture("base")
             .moltenFluid(AllthemodiumFluids.MOLTEN_VIBRANIUM::getSource)
             .modLoaded("allthemodium")
-            .register(), true);
+            .register(), INGOTS, true);
 
     public static final MaterialType UNOBTAINIUM = register(new MaterialType.Builder("unobtainium", () -> Ingredient.of(AllTags.itemC("ingots/unobtainium"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 50f)
@@ -58,9 +60,10 @@ public class AllthemodiumMaterials extends CompatMaterial {
             .setTexture("soft")
             .moltenFluid(AllthemodiumFluids.MOLTEN_UNOBTAINIUM::getSource)
             .modLoaded("allthemodium")
-            .register(), true);
+            .register(), INGOTS, true);
 
     public static void register() {
+        AllCompatMaterials.ONE_INGOT_COMPAT_MATERIALS.addAll(List.of(ALLTHEMODIUM, VIBRANIUM, UNOBTAINIUM));
         SlagCompat.LOGGER.info("Registering materials for mod: allthemodium");
 
     }

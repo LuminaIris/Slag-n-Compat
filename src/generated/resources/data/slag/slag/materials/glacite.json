@@ -1,0 +1,35 @@
+{
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "eternal_starlight"
+    }
+  ],
+  "id": "slag:glacite",
+  "repair_ingredient": {
+    "tag": "c:gems/glacite"
+  },
+  "sort_order": 1160,
+  "traits": [
+    {
+      "trait": "slag:attack_damage",
+      "value": 1.0
+    },
+    {
+      "trait": "slag:durability",
+      "value": 99.0
+    },
+    {
+      "trait": "slag:mining_tier",
+      "value": 1.0
+    },
+    {
+      "trait": "slag:mining_speed",
+      "value": 1.0
+    },
+    {
+      "trait": "slag:enchantability",
+      "value": 1.0
+    }
+  ]
+}

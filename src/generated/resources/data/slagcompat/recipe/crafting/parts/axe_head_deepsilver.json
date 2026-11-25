@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "eternal_starlight"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": {
+      "tag": "c:ingots/deepsilver"
+    },
+    "R": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "MM",
+    "MR",
+    " R"
+  ],
+  "result": {
+    "components": {
+      "slag:material_type": "slag:deepsilver",
+      "slag:part_type": "slag:axe_head"
+    },
+    "count": 1,
+    "id": "slag:dynamic_part"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "eternal_starlight"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": {
+      "item": "eternal_starlight:starfire"
+    },
+    "R": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "R R",
+    "M M"
+  ],
+  "result": {
+    "components": {
+      "slag:material_type": "slag:starfire",
+      "slag:part_type": "slag:boots"
+    },
+    "count": 1,
+    "id": "slag:dynamic_part"
+  }
+}

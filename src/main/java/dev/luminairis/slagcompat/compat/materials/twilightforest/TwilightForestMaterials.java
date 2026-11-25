@@ -26,7 +26,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .setTexture("soft")
             .moltenFluid(TwilightForestFluids.MOLTEN_IRONWOOD::getSource)
             .modLoaded("twilightforest")
-            .register(), true);
+            .register(), INGOTS, true);
 
     public static MaterialType STEELEAF = register(new MaterialType.Builder("steeleaf", () -> Ingredient.of(AllTags.itemC("ingots/steeleaf"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 6f)
@@ -38,7 +38,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .setTexture("soft")
             .moltenFluid(TwilightForestFluids.MOLTEN_STEELEAF::getSource)
             .modLoaded("twilightforest")
-            .register(), false);
+            .register(), INGOTS, false);
 
     public static MaterialType KNIGHTMETAL = register(new MaterialType.Builder("knightmetal", () -> Ingredient.of(AllTags.itemC("ingots/knightmetal"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 6f)
@@ -52,7 +52,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .setTexture("metal")
             .moltenFluid(TwilightForestFluids.MOLTEN_KNIGHTMETAL::getSource)
             .modLoaded("twilightforest")
-            .register(), true);
+            .register(), INGOTS, true);
 
     public static MaterialType FIERY = register(new MaterialType.Builder("fiery", () -> Ingredient.of(AllTags.itemC("ingots/fiery"))).setSortOrder(sortOrder)
             .trait(AllTraits.ATTACK_DAMAGE, 7f)
@@ -68,7 +68,7 @@ public class TwilightForestMaterials extends CompatMaterial {
             .setTexture("metal")
             .moltenFluid(TwilightForestFluids.MOLTEN_FIERY::getSource)
             .modLoaded("twilightforest")
-            .register(), false);
+            .register(), INGOTS, false);
 
     public static void register() {
         SlagCompat.LOGGER.info("Registering materials for mod: twilightforest");

@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "eternal_starlight"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": {
+      "tag": "c:ingots/unrealium"
+    },
+    "R": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    "R",
+    "M"
+  ],
+  "result": {
+    "components": {
+      "slag:material_type": "slag:unrealium",
+      "slag:part_type": "slag:guard"
+    },
+    "count": 1,
+    "id": "slag:dynamic_part"
+  }
+}

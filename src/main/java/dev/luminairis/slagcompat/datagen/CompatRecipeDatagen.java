@@ -14,8 +14,7 @@ import dev.lopyluna.slag.register.*;
 import dev.luminairis.slagcompat.SlagCompat;
 import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
-import dev.luminairis.slagcompat.compat.materials.allthemodium.AllthemodiumMaterials;
-import dev.luminairis.slagcompat.compat.materials.irons_spellbooks.IronsSpellbooksMaterials;
+import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -37,15 +36,6 @@ import java.util.concurrent.CompletableFuture;
 import static dev.lopyluna.slag.content.datagen.AlloyingRecipeBuilder.fluid;
 
 public class CompatRecipeDatagen extends RecipeProvider implements IConditionBuilder {
-
-    public static List<MaterialType> BLOCK_COMPAT_MATERIALS = List.of();
-    public static List<MaterialType> ONE_INGOT_COMPAT_MATERIALS = List.of(
-            AllthemodiumMaterials.ALLTHEMODIUM,
-            AllthemodiumMaterials.VIBRANIUM,
-            AllthemodiumMaterials.UNOBTAINIUM,
-            IronsSpellbooksMaterials.MITHRIL,
-            IronsSpellbooksMaterials.PYRIUM
-    );
 
     public CompatRecipeDatagen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
@@ -71,28 +61,44 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
 
     private void genRecipesForMaterial(MaterialType material, RecipeOutput recipeOutput) {
         String name = material.id.getPath();
+        String form = AllCompatMaterials.MATERIAL_FORM.get(name);
 
         // only generate these recipes if material has a molten fluid
         if (material.moltenFluid != null && material.moltenFluid.get() != null) {
             Fluid molten = material.moltenFluid.get();
 
             // MELTING RECIPES
-            generateMeltingRecipe(name + "_blocks", molten, MelterBE.BLOCK_SIZE, AllTags.itemC("storage_blocks/" + name), recipeOutput);
-            generateMeltingRecipe(name + "_ingots", molten, MelterBE.INGOT_SIZE, AllTags.itemC("ingots/" + name), recipeOutput);
-            generateMeltingRecipe(name + "_nuggets", molten, MelterBE.NUGGET_SIZE, AllTags.itemC("nuggets/" + name), recipeOutput);
-            generateMeltingRecipe(name + "_plates", molten, MelterBE.INGOT_SIZE, AllTags.itemC("plates/" + name), recipeOutput);
-            generateMeltingRecipe(name + "_rods", molten, MelterBE.INGOT_SIZE / 2, AllTags.itemC("rods/" + name), recipeOutput);
-            generateMeltingRecipe(name + "_dusts", molten, MelterBE.INGOT_SIZE, AllTags.itemC("dusts/" + name), recipeOutput);
-            generateMeltingRecipe(name + "_wires", molten, MelterBE.INGOT_SIZE / 4, AllTags.itemC("wires/" + name), recipeOutput);
-            if (AllCompatMaterials.MATERIAL_HAS_RAW.get(name)) {
-                generateMeltingRecipe("raw_" + name + "_blocks", molten, MelterBE.BLOCK_SIZE + MelterBE.INGOT_SIZE * 3, AllTags.itemC("storage_blocks/raw_" + name), recipeOutput);
-                generateMeltingRecipe("raw_" + name + "_materials", molten, MelterBE.INGOT_SIZE + MelterBE.NUGGET_SIZE * 3, AllTags.itemC("raw_materials/" + name), recipeOutput);
-                generateMeltingRecipe(name + "_ores", molten, MelterBE.INGOT_SIZE + MelterBE.NUGGET_SIZE * 3, AllTags.itemC("ores/" + name), recipeOutput);
-                generateMeltingRecipe(name + "_clumps", molten, MelterBE.INGOT_SIZE + MelterBE.NUGGET_SIZE * 3, AllTags.itemC("clumps/" + name), recipeOutput);
+            if (form.equals(CompatMaterial.INGOTS) || form.equals(CompatMaterial.GEMS)) {
+                generateMeltingRecipe(name + "_blocks", molten, MelterBE.BLOCK_SIZE, AllTags.itemC("storage_blocks/" + name), recipeOutput);
+                generateMeltingRecipe(name + "_" + form, molten, MelterBE.INGOT_SIZE, AllTags.itemC(form + "/" + name), recipeOutput);
+                generateMeltingRecipe(name + "_nuggets", molten, MelterBE.NUGGET_SIZE, AllTags.itemC("nuggets/" + name), recipeOutput);
+                generateMeltingRecipe(name + "_plates", molten, MelterBE.INGOT_SIZE, AllTags.itemC("plates/" + name), recipeOutput);
+                generateMeltingRecipe(name + "_rods", molten, MelterBE.INGOT_SIZE / 2, AllTags.itemC("rods/" + name), recipeOutput);
+                generateMeltingRecipe(name + "_dusts", molten, MelterBE.INGOT_SIZE, AllTags.itemC("dusts/" + name), recipeOutput);
+                generateMeltingRecipe(name + "_wires", molten, MelterBE.INGOT_SIZE / 4, AllTags.itemC("wires/" + name), recipeOutput);
+                if (AllCompatMaterials.MATERIAL_HAS_RAW.get(name)) {
+                    generateMeltingRecipe("raw_" + name + "_blocks", molten, MelterBE.BLOCK_SIZE + MelterBE.INGOT_SIZE * 3, AllTags.itemC("storage_blocks/raw_" + name), recipeOutput);
+                    generateMeltingRecipe("raw_" + name + "_materials", molten, MelterBE.INGOT_SIZE + MelterBE.NUGGET_SIZE * 3, AllTags.itemC("raw_materials/" + name), recipeOutput);
+                    generateMeltingRecipe(name + "_ores", molten, MelterBE.INGOT_SIZE + MelterBE.NUGGET_SIZE * 3, AllTags.itemC("ores/" + name), recipeOutput);
+                    generateMeltingRecipe(name + "_clumps", molten, MelterBE.INGOT_SIZE + MelterBE.NUGGET_SIZE * 3, AllTags.itemC("clumps/" + name), recipeOutput);
+                }
+            }
+            else {
+                var item = material.repairMaterials.get().getItems()[0].getItem();
+                MeltingRecipeBuilder.create(molten, MelterBE.INGOT_SIZE, item)
+                        .unlockedBy("has_" + item, has(item))
+                        .save(recipeOutput, SlagEmbers.loc(SlagCompat.MODID, "melting/" + item));
             }
 
             // CASTING RECIPES
-            generateTableCastingRecipe("ingot", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_INGOTS, recipeOutput);
+            if (form.equals(CompatMaterial.INGOTS)) { generateTableCastingRecipe("ingot", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_INGOTS, recipeOutput); }
+            else if (form.equals(CompatMaterial.GEMS)) { generateTableCastingRecipe("gem", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_GEMS, recipeOutput); }
+            else {
+                var item = material.repairMaterials.get().getItems()[0].getItem();
+                TableCastingRecipeBuilder.create(item, 1, molten, MelterBE.INGOT_SIZE, AllTags.CAST_INGOTS)
+                        .unlockedBy("has_" + item, has(item))
+                        .save(recipeOutput, SlagEmbers.loc(SlagCompat.MODID, "casting/table/" + item));
+            }
             generateTableCastingRecipe("nugget", name, molten, MelterBE.NUGGET_SIZE, AllTags.CAST_NUGGETS, recipeOutput);
             generateTableCastingRecipe("dust", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_DUSTS, recipeOutput);
             generateTableCastingRecipe("rod", name, molten, MelterBE.INGOT_SIZE / 2, AllTags.CAST_RODS, recipeOutput);
@@ -138,7 +144,7 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
             item.setPartType(stack, part);
 
             // part crafting with paper
-            if (material.moltenFluid.get() == null || !ONE_INGOT_COMPAT_MATERIALS.contains(material)) {
+            if (material.moltenFluid.get() == null || !AllCompatMaterials.ONE_INGOT_COMPAT_MATERIALS.contains(material)) {
                 buildPattern(ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, stack), part)
                         .define('M', material.repairMaterials.get())
                         .define('R', Items.PAPER)
@@ -177,9 +183,9 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
     private int castSize(MaterialType material, PartType part) {
         var fluid = material.moltenFluid.get();
         if (fluid == null) return 0;
-        var size = BLOCK_COMPAT_MATERIALS.contains(material) ? MelterBE.BLOCK_SIZE : MelterBE.INGOT_SIZE;
+        var size = AllCompatMaterials.BLOCK_COMPAT_MATERIALS.contains(material) ? MelterBE.BLOCK_SIZE : MelterBE.INGOT_SIZE;
         size *= getSize(part);
-        if (size > 0 && ONE_INGOT_COMPAT_MATERIALS.contains(material)) size = MelterBE.INGOT_SIZE;
+        if (size > 0 && AllCompatMaterials.ONE_INGOT_COMPAT_MATERIALS.contains(material)) size = MelterBE.INGOT_SIZE;
         return size;
     }
 
