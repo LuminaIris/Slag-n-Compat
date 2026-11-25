@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/amaramber"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_raw_amaramber_materials": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:raw_materials/amaramber"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/raw_amaramber_materials"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_raw_amaramber_materials"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/raw_amaramber_materials"
+    ]
+  }
+}

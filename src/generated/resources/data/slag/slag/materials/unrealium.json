@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:unrealium",
+  "molten_fluid": "slagcompat:molten_unrealium",
   "repair_ingredient": {
     "tag": "c:ingots/unrealium"
   },
   "sort_order": 1250,
+  "texture": "soft",
   "traits": [
     {
       "trait": "slag:attack_damage",

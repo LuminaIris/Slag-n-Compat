@@ -143,6 +143,70 @@
         {
             "type": "single",
             "resource": "slag:fluid/molten_thermal_springstone_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_malarite_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_malarite_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_starlit_diamond_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_starlit_diamond_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_starfire_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_starfire_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_flowglaze_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_flowglaze_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_amaramber_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_amaramber_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_aethersent_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_aethersent_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_golem_steel_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_golem_steel_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_unrealium_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_unrealium_still"
         }
     ]
 }

@@ -1,0 +1,12 @@
+{
+  "type": "slag:table_casting",
+  "cast": "slag:cast/ingots",
+  "ingredient": {
+    "amount": 72,
+    "fluid": "slagcompat:molten_flowglaze"
+  },
+  "result": {
+    "count": 1,
+    "id": "eternal_starlight:flowglaze"
+  }
+}

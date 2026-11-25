@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/aethersent"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_aethersent_nuggets": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:nuggets/aethersent"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/aethersent_nuggets"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_aethersent_nuggets"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/aethersent_nuggets"
+    ]
+  }
+}

@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:flowglaze",
+  "molten_fluid": "slagcompat:molten_flowglaze",
   "repair_ingredient": {
     "item": "eternal_starlight:flowglaze"
   },
   "sort_order": 1210,
+  "texture": "shiny",
   "traits": [
     {
       "trait": "slag:attack_damage",

@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:starlit_diamond",
+  "molten_fluid": "slagcompat:molten_starlit_diamond",
   "repair_ingredient": {
     "tag": "c:gems/starlit_diamond"
   },
   "sort_order": 1190,
+  "texture": "shiny",
   "traits": [
     {
       "trait": "slag:attack_damage",

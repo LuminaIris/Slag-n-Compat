@@ -35,6 +35,22 @@
     "slagcompat:flowing_molten_glacite",
     "slagcompat:molten_glacite",
     "slagcompat:flowing_molten_thermal_springstone",
-    "slagcompat:molten_thermal_springstone"
+    "slagcompat:molten_thermal_springstone",
+    "slagcompat:flowing_molten_malarite",
+    "slagcompat:molten_malarite",
+    "slagcompat:flowing_molten_starlit_diamond",
+    "slagcompat:molten_starlit_diamond",
+    "slagcompat:flowing_molten_starfire",
+    "slagcompat:molten_starfire",
+    "slagcompat:flowing_molten_flowglaze",
+    "slagcompat:molten_flowglaze",
+    "slagcompat:flowing_molten_amaramber",
+    "slagcompat:molten_amaramber",
+    "slagcompat:flowing_molten_aethersent",
+    "slagcompat:molten_aethersent",
+    "slagcompat:flowing_molten_golem_steel",
+    "slagcompat:molten_golem_steel",
+    "slagcompat:flowing_molten_unrealium",
+    "slagcompat:molten_unrealium"
   ]
 }

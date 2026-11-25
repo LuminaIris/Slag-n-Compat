@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/starlit_diamond"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_starlit_diamond_nuggets": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:nuggets/starlit_diamond"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/starlit_diamond_nuggets"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_starlit_diamond_nuggets"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/starlit_diamond_nuggets"
+    ]
+  }
+}

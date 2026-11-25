@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:malarite",
+  "molten_fluid": "slagcompat:molten_malarite",
   "repair_ingredient": {
     "tag": "c:gems/malarite"
   },
   "sort_order": 1180,
+  "texture": "soft",
   "traits": [
     {
       "trait": "slag:attack_damage",

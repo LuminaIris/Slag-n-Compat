@@ -87,7 +87,7 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
                 var item = material.repairMaterials.get().getItems()[0].getItem();
                 MeltingRecipeBuilder.create(molten, MelterBE.INGOT_SIZE, item)
                         .unlockedBy("has_" + item, has(item))
-                        .save(recipeOutput, SlagEmbers.loc(SlagCompat.MODID, "melting/" + item));
+                        .save(recipeOutput, SlagEmbers.loc(SlagCompat.MODID, "melting/" + item.toString().split(":")[1]));
             }
 
             // CASTING RECIPES
@@ -97,7 +97,7 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
                 var item = material.repairMaterials.get().getItems()[0].getItem();
                 TableCastingRecipeBuilder.create(item, 1, molten, MelterBE.INGOT_SIZE, AllTags.CAST_INGOTS)
                         .unlockedBy("has_" + item, has(item))
-                        .save(recipeOutput, SlagEmbers.loc(SlagCompat.MODID, "casting/table/" + item));
+                        .save(recipeOutput, SlagEmbers.loc(SlagCompat.MODID, "casting/table/" + item.toString().split(":")[1]));
             }
             generateTableCastingRecipe("nugget", name, molten, MelterBE.NUGGET_SIZE, AllTags.CAST_NUGGETS, recipeOutput);
             generateTableCastingRecipe("dust", name, molten, MelterBE.INGOT_SIZE, AllTags.CAST_DUSTS, recipeOutput);

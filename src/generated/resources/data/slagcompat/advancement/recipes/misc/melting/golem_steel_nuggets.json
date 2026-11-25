@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/golem_steel"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meltable_golem_steel_nuggets": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:nuggets/golem_steel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/golem_steel_nuggets"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_meltable_golem_steel_nuggets"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/golem_steel_nuggets"
+    ]
+  }
+}

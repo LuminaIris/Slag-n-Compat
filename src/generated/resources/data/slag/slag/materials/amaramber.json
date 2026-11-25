@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:amaramber",
+  "molten_fluid": "slagcompat:molten_amaramber",
   "repair_ingredient": {
     "tag": "c:ingots/amaramber"
   },
   "sort_order": 1220,
+  "texture": "metal",
   "traits": [
     {
       "trait": "slag:attack_damage",

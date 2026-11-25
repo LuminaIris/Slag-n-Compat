@@ -56,6 +56,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("soft")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_MALARITE::getSource)
             .modLoaded("eternal_starlight")
             .register(), GEMS, false);
 
@@ -65,6 +67,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("shiny")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_STARLIT_DIAMOND::getSource)
             .modLoaded("eternal_starlight")
             .register(), GEMS, false);
 
@@ -74,6 +78,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("base")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_STARFIRE::getSource)
             .modLoaded("eternal_starlight")
             .register(), MISC, false);
 
@@ -83,6 +89,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("shiny")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_FLOWGLAZE::getSource)
             .modLoaded("eternal_starlight")
             .register(), BLOCKS, false);
 
@@ -92,6 +100,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("metal")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_AMARAMBER::getSource)
             .modLoaded("eternal_starlight")
             .register(), INGOTS, true);
 
@@ -101,6 +111,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("shiny")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_AETHERSENT::getSource)
             .modLoaded("eternal_starlight")
             .register(), INGOTS, true);
 
@@ -110,6 +122,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("metal")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_GOLEM_STEEL::getSource)
             .modLoaded("eternal_starlight")
             .register(), INGOTS, true);
 
@@ -119,6 +133,8 @@ public class EternalStarlightMaterials extends CompatMaterial {
             .trait(AllTraits.MINING_TIER, 1)
             .trait(AllTraits.MINING_SPEED, 1f)
             .trait(AllTraits.ENCHANTABILITY, 1f)
+            .setTexture("soft")
+            .moltenFluid(EternalStarlightFluids.MOLTEN_UNREALIUM::getSource)
             .modLoaded("eternal_starlight")
             .register(), INGOTS, true);
 

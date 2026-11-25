@@ -6,6 +6,7 @@
     }
   ],
   "id": "slag:starfire",
+  "molten_fluid": "slagcompat:molten_starfire",
   "repair_ingredient": {
     "item": "eternal_starlight:starfire"
   },

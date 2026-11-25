@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_eternal_starlight:starfire": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eternal_starlight:starfire"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "slagcompat:melting/starfire"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_eternal_starlight:starfire"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "slagcompat:melting/starfire"
+    ]
+  }
+}

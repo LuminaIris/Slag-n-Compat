@@ -6,10 +6,12 @@
     }
   ],
   "id": "slag:aethersent",
+  "molten_fluid": "slagcompat:molten_aethersent",
   "repair_ingredient": {
     "tag": "c:ingots/aethersent"
   },
   "sort_order": 1230,
+  "texture": "shiny",
   "traits": [
     {
       "trait": "slag:attack_damage",
