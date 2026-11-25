@@ -2,8 +2,14 @@ package dev.luminairis.slagcompat.datagen;
 
 import dev.lopyluna.slag.register.AllTags;
 import dev.luminairis.slagcompat.SlagCompat;
+import dev.luminairis.slagcompat.compat.fluids.allthemodium.AllthemodiumFluids;
+import dev.luminairis.slagcompat.compat.fluids.iceandfire.IceAndFireFluids;
+import dev.luminairis.slagcompat.compat.fluids.irons_spellbooks.IronsSpellbooksFluids;
+import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
+import dev.luminairis.slagcompat.compat.fluids.twilightforest.TwilightForestFluids;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -13,8 +19,8 @@ import static dev.luminairis.slagcompat.compat.AllCompatTags.*;
 
 public class CompatTagsDatagen {
     public static class CompatBlockTagsProvider extends BlockTagsProvider {
-        public CompatBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
-            super(output, lookupProvider, SlagCompat.MODID, existingFileHelper);
+        public CompatBlockTagsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
+            super(packOutput, lookupProvider, SlagCompat.MODID, existingFileHelper);
         }
 
         @Override
@@ -27,6 +33,33 @@ public class CompatTagsDatagen {
             tag(INCORRECT_FOR_TIER_7_TOOL).addOptionalTag(AllTags.blockC("incorrect_for_allthemodium_tool"));
             tag(INCORRECT_FOR_TIER_8_TOOL).addOptionalTag(AllTags.blockC("incorrect_for_vibranium_tool"));
             tag(INCORRECT_FOR_TIER_9_TOOL).addOptionalTag(AllTags.blockC("incorrect_for_unobtainium_tool"));
+        }
+    }
+
+    public static class CompatFluidTagsProvider extends FluidTagsProvider {
+        public CompatFluidTagsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
+            super(packOutput, lookupProvider, SlagCompat.MODID, existingFileHelper);
+        }
+
+        @Override
+        protected void addTags(HolderLookup.Provider lookupProvider) {
+            tag(AllTags.MOLTEN_METALS).add(
+                    MekanismFluids.MOLTEN_REFINED_GLOWSTONE.getSource(),
+                    MekanismFluids.MOLTEN_REFINED_OBSIDIAN.getSource(),
+                    AllthemodiumFluids.MOLTEN_ALLTHEMODIUM.getSource(),
+                    AllthemodiumFluids.MOLTEN_VIBRANIUM.getSource(),
+                    AllthemodiumFluids.MOLTEN_UNOBTAINIUM.getSource(),
+                    IceAndFireFluids.MOLTEN_FIRE_DRAGONSTEEL.getSource(),
+                    IceAndFireFluids.MOLTEN_ICE_DRAGONSTEEL.getSource(),
+                    IceAndFireFluids.MOLTEN_LIGHTNING_DRAGONSTEEL.getSource(),
+                    TwilightForestFluids.MOLTEN_IRONWOOD.getSource(),
+                    TwilightForestFluids.MOLTEN_STEELEAF.getSource(),
+                    TwilightForestFluids.MOLTEN_KNIGHTMETAL.getSource(),
+                    TwilightForestFluids.MOLTEN_FIERY.getSource(),
+                    IronsSpellbooksFluids.MOLTEN_ARCANE.getSource(),
+                    IronsSpellbooksFluids.MOLTEN_MITHRIL.getSource(),
+                    IronsSpellbooksFluids.MOLTEN_PYRIUM.getSource()
+            );
         }
     }
 }

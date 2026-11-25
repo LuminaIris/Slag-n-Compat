@@ -6,7 +6,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
@@ -21,5 +20,6 @@ public class CompatDatagen {
         generator.addProvider(event.includeServer(), new CompatTraitDatagen(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new CompatRecipeDatagen(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new CompatTagsDatagen.CompatBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new CompatTagsDatagen.CompatFluidTagsProvider(packOutput, lookupProvider, existingFileHelper));
     }
 }

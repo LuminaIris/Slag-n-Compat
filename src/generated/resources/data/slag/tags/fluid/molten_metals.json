@@ -1,8 +1,7 @@
 {
-  "replace": false,
   "values": [
-    "slagcompat:molten_refined_obsidian",
     "slagcompat:molten_refined_glowstone",
+    "slagcompat:molten_refined_obsidian",
     "slagcompat:molten_allthemodium",
     "slagcompat:molten_vibranium",
     "slagcompat:molten_unobtainium",
