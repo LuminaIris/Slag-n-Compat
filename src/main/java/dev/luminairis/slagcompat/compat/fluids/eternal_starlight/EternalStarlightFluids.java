@@ -32,10 +32,12 @@ public class EternalStarlightFluids extends CompatFluid {
             AllFluids.newMoltenFluid(REG, "Golem Steel", () -> 0xFFFFFF).register();
     public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_UNREALIUM =
             AllFluids.newMoltenFluid(REG, "Unrealium", () -> 0xFFFFFF).register();
+    public static FluidEntry<LavaLikeFluid.Flowing> MOLTEN_SOUL_DEW =
+            AllFluids.newMoltenFluid(REG, "Soul Dew", () -> 0xFFFFFF).register();
 
     public static void register() {
         registerFluids(List.of(MOLTEN_DEEPSILVER, MOLTEN_GLACITE, MOLTEN_THERMAL_SPRINGSTONE, MOLTEN_MALARITE, MOLTEN_STARLIT_DIAMOND,
-                MOLTEN_STARFIRE, MOLTEN_FLOWGLAZE, MOLTEN_AMARAMBER, MOLTEN_AETHERSENT, MOLTEN_GOLEM_STEEL, MOLTEN_UNREALIUM),
+                MOLTEN_STARFIRE, MOLTEN_FLOWGLAZE, MOLTEN_AMARAMBER, MOLTEN_AETHERSENT, MOLTEN_GOLEM_STEEL, MOLTEN_UNREALIUM, MOLTEN_SOUL_DEW),
                 "eternal_starlight");
     }
 }

@@ -76,6 +76,9 @@ public class CompatTagsDatagen {
                     EternalStarlightFluids.MOLTEN_FLOWGLAZE.getSource(),
                     EternalStarlightFluids.MOLTEN_STARFIRE.getSource()
             );
+            tag(AllTags.MOLTEN_BALLS).add(
+                    EternalStarlightFluids.MOLTEN_SOUL_DEW.getSource()
+            );
         }
     }
 }

@@ -51,6 +51,8 @@
     "slagcompat:flowing_molten_golem_steel",
     "slagcompat:molten_golem_steel",
     "slagcompat:flowing_molten_unrealium",
-    "slagcompat:molten_unrealium"
+    "slagcompat:molten_unrealium",
+    "slagcompat:flowing_molten_soul_dew",
+    "slagcompat:molten_soul_dew"
   ]
 }

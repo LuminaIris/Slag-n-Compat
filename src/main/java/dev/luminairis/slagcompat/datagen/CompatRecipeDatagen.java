@@ -12,19 +12,24 @@ import dev.lopyluna.slag.content.types.MaterialType;
 import dev.lopyluna.slag.content.types.PartType;
 import dev.lopyluna.slag.register.*;
 import dev.luminairis.slagcompat.SlagCompat;
+import dev.luminairis.slagcompat.compat.fluids.eternal_starlight.EternalStarlightFluids;
 import dev.luminairis.slagcompat.compat.fluids.mekanism.MekanismFluids;
 import dev.luminairis.slagcompat.compat.materials.AllCompatMaterials;
 import dev.luminairis.slagcompat.compat.materials.CompatMaterial;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
@@ -48,15 +53,32 @@ public class CompatRecipeDatagen extends RecipeProvider implements IConditionBui
         }
 
         // alloying recipes
-        AlloyingRecipeBuilder.create(MekanismFluids.MOLTEN_REFINED_OBSIDIAN.getSource(), MelterBE.INGOT_SIZE, fluid(AllFluids.MOLTEN_OBSIDIAN.getSource(), MelterBE.INGOT_SIZE), fluid(AllFluids.MOLTEN_DIAMOND.getSource(), MelterBE.INGOT_SIZE), fluid(AllFluids.MOLTEN_OSMIUM.getSource(), MelterBE.INGOT_SIZE))
+        AlloyingRecipeBuilder.create(MekanismFluids.MOLTEN_REFINED_OBSIDIAN.getSource(), MelterBE.NUGGET_SIZE, fluid(AllFluids.MOLTEN_OBSIDIAN.getSource(), MelterBE.NUGGET_SIZE), fluid(AllFluids.MOLTEN_DIAMOND.getSource(), MelterBE.NUGGET_SIZE), fluid(AllFluids.MOLTEN_OSMIUM.getSource(), MelterBE.NUGGET_SIZE))
                 .unlockedBy("has_obsidian", has(Items.OBSIDIAN))
                 .unlockedBy("has_diamond", has(Items.DIAMOND))
                 .unlockedBy("has_osmium", has(AllTags.itemC("ingots/osmium")))
                 .save(recipeOutput.withConditions(new ModLoadedCondition("mekanism"), AllTags.present(AllTags.itemC("ingots/osmium"))), SlagEmbers.loc(SlagCompat.MODID, "alloying/refined_obsidian"));
-        AlloyingRecipeBuilder.create(MekanismFluids.MOLTEN_REFINED_GLOWSTONE.getSource(), MelterBE.INGOT_SIZE, fluid(AllFluids.MOLTEN_GLOWSTONE.getSource(), MelterBE.INGOT_SIZE), fluid(AllFluids.MOLTEN_OSMIUM.getSource(), MelterBE.INGOT_SIZE))
+        AlloyingRecipeBuilder.create(MekanismFluids.MOLTEN_REFINED_GLOWSTONE.getSource(), MelterBE.NUGGET_SIZE, fluid(AllFluids.MOLTEN_GLOWSTONE.getSource(), MelterBE.NUGGET_SIZE), fluid(AllFluids.MOLTEN_OSMIUM.getSource(), MelterBE.NUGGET_SIZE))
                 .unlockedBy("has_glowstone", has(Items.GLOWSTONE_DUST))
                 .unlockedBy("has_osmium", has(AllTags.itemC("ingots/osmium")))
                 .save(recipeOutput.withConditions(new ModLoadedCondition("mekanism"), AllTags.present(AllTags.itemC("ingots/osmium"))), SlagEmbers.loc(SlagCompat.MODID, "alloying/refined_glowstone"));
+        AlloyingRecipeBuilder.create(EternalStarlightFluids.MOLTEN_UNREALIUM.getSource(), MelterBE.INGOT_SIZE,
+                fluid(EternalStarlightFluids.MOLTEN_DEEPSILVER.getSource(), MelterBE.NUGGET_SIZE), fluid(EternalStarlightFluids.MOLTEN_GOLEM_STEEL.getSource(), MelterBE.NUGGET_SIZE), fluid(EternalStarlightFluids.MOLTEN_MALARITE.getSource(), MelterBE.NUGGET_SIZE), fluid(EternalStarlightFluids.MOLTEN_SOUL_DEW.getSource(), MelterBE.NUGGET_SIZE))
+                .unlockedBy("has_deepsilver_ingot", has(AllTags.itemC("ingots/deepsilver")))
+                .unlockedBy("has_golem_steel_ingot", has(AllTags.itemC("ingots/golem_steel")))
+                .unlockedBy("has_malarite_gem", has(AllTags.itemC("gems/malarite")))
+                .save(recipeOutput.withConditions(new ModLoadedCondition("eternal_starlight")), SlagEmbers.loc(SlagCompat.MODID, "alloying/unrealium"));
+
+        // recipes that use specific mod items
+        if (ModList.get().isLoaded("eternal_starlight")) {
+            var soulDew = BuiltInRegistries.ITEM.get(ResourceLocation.parse("eternal_starlight:soul_dew"));
+            MeltingRecipeBuilder.create(EternalStarlightFluids.MOLTEN_SOUL_DEW.getSource(), MelterBE.INGOT_SIZE, soulDew)
+                    .unlockedBy("has_soul_dew", has(soulDew))
+                    .save(recipeOutput.withConditions(new ModLoadedCondition("eternal_starlight")), SlagEmbers.loc(SlagCompat.MODID, "melting/soul_dew"));
+            TableCastingRecipeBuilder.create(soulDew, 1, EternalStarlightFluids.MOLTEN_SOUL_DEW.getSource(), MelterBE.INGOT_SIZE, AllTags.CAST_BALLS)
+                    .unlockedBy("has_soul_dew", has(soulDew))
+                    .save(recipeOutput.withConditions(new ModLoadedCondition("eternal_starlight")), SlagEmbers.loc(SlagCompat.MODID, "casting/table/soul_dew"));
+        }
     }
 
     private void genRecipesForMaterial(MaterialType material, RecipeOutput recipeOutput) {

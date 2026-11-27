@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "eternal_starlight"
+    }
+  ],
+  "type": "slag:melting",
+  "ingredient": {
+    "item": "eternal_starlight:soul_dew"
+  },
+  "ingredients": [],
+  "result": [
+    {
+      "amount": 72,
+      "id": "slagcompat:molten_soul_dew"
+    }
+  ]
+}

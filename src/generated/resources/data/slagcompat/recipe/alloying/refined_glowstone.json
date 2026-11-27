@@ -15,16 +15,16 @@
   "type": "slag:alloying",
   "ingredients": [
     {
-      "amount": 72,
+      "amount": 8,
       "tag": "c:molten/glowstone"
     },
     {
-      "amount": 72,
+      "amount": 8,
       "tag": "c:molten/osmium"
     }
   ],
   "result": {
-    "amount": 72,
+    "amount": 8,
     "id": "slagcompat:molten_refined_glowstone"
   }
 }

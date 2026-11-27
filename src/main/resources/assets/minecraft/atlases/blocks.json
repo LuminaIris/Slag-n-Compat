@@ -207,6 +207,14 @@
         {
             "type": "single",
             "resource": "slag:fluid/molten_unrealium_still"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_soul_dew_flow"
+        },
+        {
+            "type": "single",
+            "resource": "slag:fluid/molten_soul_dew_still"
         }
     ]
 }

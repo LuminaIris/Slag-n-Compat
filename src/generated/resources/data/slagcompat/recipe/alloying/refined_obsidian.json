@@ -15,20 +15,20 @@
   "type": "slag:alloying",
   "ingredients": [
     {
-      "amount": 72,
+      "amount": 8,
       "tag": "c:molten/obsidian"
     },
     {
-      "amount": 72,
+      "amount": 8,
       "tag": "c:molten/diamond"
     },
     {
-      "amount": 72,
+      "amount": 8,
       "tag": "c:molten/osmium"
     }
   ],
   "result": {
-    "amount": 72,
+    "amount": 8,
     "id": "slagcompat:molten_refined_obsidian"
   }
 }
