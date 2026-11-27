@@ -9,14 +9,14 @@ Mod Compatibility
 =======
 Materials
 -------
-| **Mod**                 | **Materials**                                                   | **Traits**                                              | **Status**  |
-|-------------------------|-----------------------------------------------------------------|---------------------------------------------------------|-------------|
-| Allthemodium            | Allthemodium, Vibranium, Unobtainium                            | Unbreakable                                             | In Progress |
-| Eternal Starlight       | Deepsilver, Starlit Diamond, Aethersent, Golem Steel, Unrealium |                                                         | In Progress |
-| Ice and Fire: CE        | Fire Dragonsteel, Ice Dragonsteel, Lightning Dragonsteel        | Dragonslayer, Fire Imbued, Ice Imbued, Lightning Imbued | In Progress |
-| Iron's Spellbooks       | Arcane, Mithril, Pyrium                                         |                                                         | In Progress |
-| Mekanism                | Refined Obsidian, Refined Glowstone                             |                                                         | In Progress |
-| Twilight Forest         | Ironwood, Steeleaf, Knightmetal, Fiery                          | Igniting, Auto-smelting                                 | In Progress |
+| **Mod**                 | **Materials**                                                                                                                           | **Traits**                                              | **Status**  |
+|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|-------------|
+| Allthemodium            | Allthemodium, Vibranium, Unobtainium                                                                                                    | Unbreakable                                             | In Progress |
+| Eternal Starlight       | Deepsilver, Glacite, Thermal Springstone, Malarite, Starlit Diamond, Starfire, Flowglaze, Aramamber, Aethersent, Golem Steel, Unrealium |                                                         | In Progress |
+| Ice and Fire: CE        | Fire Dragonsteel, Ice Dragonsteel, Lightning Dragonsteel                                                                                | Dragonslayer, Fire Imbued, Ice Imbued, Lightning Imbued | In Progress |
+| Iron's Spellbooks       | Arcane, Mithril, Pyrium                                                                                                                 |                                                         | In Progress |
+| Mekanism                | Refined Obsidian, Refined Glowstone                                                                                                     |                                                         | In Progress |
+| Twilight Forest         | Ironwood, Steeleaf, Knightmetal, Fiery                                                                                                  | Igniting, Auto-smelting                                 | In Progress |
 
 Traits
 -------
