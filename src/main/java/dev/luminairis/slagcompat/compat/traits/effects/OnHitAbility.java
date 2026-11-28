@@ -2,20 +2,28 @@ package dev.luminairis.slagcompat.compat.traits.effects;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.lopyluna.slag.content.traits.Trait;
 import dev.lopyluna.slag.content.traits.TraitEffect;
 import dev.lopyluna.slag.content.traits.Traits;
-import net.minecraft.util.StringRepresentable;
+import dev.luminairis.slagcompat.SlagCompat;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import javax.annotation.Nonnull;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public record OnHitAbility(HitAbility onHitAbility) implements TraitEffect {
-    public static final MapCodec<OnHitAbility> CODEC = HitAbility.CODEC.fieldOf("ability").xmap(OnHitAbility::new, OnHitAbility::onHitAbility);
+public record OnHitAbility(String abilityKey, List<String> args) implements TraitEffect {
+    public static final MapCodec<OnHitAbility> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+        Codec.STRING.fieldOf("ability_key").forGetter(OnHitAbility::abilityKey),
+        Codec.STRING.listOf().fieldOf("args").forGetter(OnHitAbility::args)
+    ).apply(instance, OnHitAbility::new));
 
-    private static final Map<HitAbility, Operation> OPERATION_MAP = new HashMap<>();
+    private static final Map<String, Operation> OPERATION_MAP = new HashMap<>();
+
+    public OnHitAbility(String abilityKey) {
+        this(abilityKey, List.of());
+    }
 
     @Override
     public MapCodec<? extends TraitEffect> codec() {
@@ -29,43 +37,24 @@ public record OnHitAbility(HitAbility onHitAbility) implements TraitEffect {
 
     @Override
     public void onHurtEnemy(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        getOperation(onHitAbility).execute(stack, target, attacker);
-    }
-
-    public static void registerOperation(HitAbility effect, Operation operation) {
-        OPERATION_MAP.put(effect, operation);
-    }
-
-    private Operation getOperation(HitAbility effect) {
-        return OPERATION_MAP.get(effect);
-    }
-
-    public enum HitAbility implements StringRepresentable {
-        // GENERAL
-        IGNITING("igniting"),
-        // ICE AND FIRE
-        FIRE_IMBUED("fire_imbued"),
-        ICE_IMBUED("ice_imbued"),
-        LIGHTNING_IMBUED("lightning_imbued"),
-        // IRONS SPELLBOOKS
-        HAVOC("havoc");
-
-        public static final Codec<HitAbility> CODEC = StringRepresentable.fromEnum(HitAbility::values);
-
-        private final String name;
-
-        HitAbility(String name) {
-            this.name = name;
+        Operation o = getOperation(abilityKey);
+        if (o != null) {
+            o.execute(stack, target, attacker, args);
+        } else {
+            SlagCompat.LOGGER.warn("No registered OnHitAbility operation for key: " + abilityKey);
         }
+    }
 
-        @Override
-        public @Nonnull String getSerializedName() {
-            return name;
-        }
+    public static void registerOperation(String abilityKey, Operation operation) {
+        OPERATION_MAP.put(abilityKey, operation);
+    }
+
+    private Operation getOperation(String abilityKey) {
+        return OPERATION_MAP.get(abilityKey);
     }
 
     @FunctionalInterface
     public interface Operation {
-        void execute(ItemStack stack, LivingEntity target, LivingEntity attacker);
+        void execute(ItemStack stack, LivingEntity target, LivingEntity attacker, List<String> args);
     }
 }

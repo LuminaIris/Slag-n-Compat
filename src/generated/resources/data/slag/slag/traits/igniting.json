@@ -3,7 +3,10 @@
   "effects": [
     {
       "type": "slagcompat:on_hit_ability",
-      "ability": "igniting"
+      "ability_key": "slagcompat:igniting",
+      "args": [
+        "4"
+      ]
     }
   ],
   "id": "slag:igniting",

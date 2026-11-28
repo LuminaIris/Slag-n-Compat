@@ -9,7 +9,12 @@
   "effects": [
     {
       "type": "slagcompat:on_hit_ability",
-      "ability": "havoc"
+      "ability_key": "slagcompat:havoc",
+      "args": [
+        "3",
+        "13",
+        "5"
+      ]
     }
   ],
   "id": "slag:havoc",

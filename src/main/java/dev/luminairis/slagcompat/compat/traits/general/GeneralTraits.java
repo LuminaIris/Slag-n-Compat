@@ -13,12 +13,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Unbreakable;
+import java.util.List;
 import java.util.Optional;
 
 @SuppressWarnings("unused")
 public class GeneralTraits extends CompatTrait {
     public static final TraitType IGNITING = register(new TraitType.Builder("igniting").color(0xF23800)
-            .effect(new OnHitAbility(OnHitAbility.HitAbility.IGNITING)));
+            .effect(new OnHitAbility("slagcompat:igniting", List.of("4"))));
 
     public static final TraitType ARMORSLAYER = register(new TraitType.Builder("armorslayer").color(0xC9D6C5)
             .effect(new BonusDamageEffect(Optional.empty(), Attributes.ARMOR.unwrapKey(), Optional.of(0.4f), Optional.of(AttributeTarget.TARGET), Optional.empty())));
@@ -27,11 +28,18 @@ public class GeneralTraits extends CompatTrait {
             .effect(new ComponentsEffect(DataComponentPatch.builder().set(DataComponents.UNBREAKABLE, new Unbreakable(false)).build())));
 
     public static void register() {
-        OnHitAbility.registerOperation(OnHitAbility.HitAbility.IGNITING, GeneralTraits::igniteTarget);
+        OnHitAbility.registerOperation("slagcompat:igniting", GeneralTraits::igniteTarget);
         SlagCompat.LOGGER.info("Registering general compat traits");
     }
 
-    public static void igniteTarget(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        target.igniteForSeconds(4);
+    private static void igniteTarget(ItemStack stack, LivingEntity target, LivingEntity attacker, List<String> args) {
+        float duration;
+        try {
+            duration = Float.parseFloat(args.getFirst());
+        } catch (NumberFormatException e) {
+            SlagCompat.LOGGER.error("Cannot run onHitAbility 'igniteTarget', incorrect args\n{}", String.valueOf(e));
+            return;
+        }
+        target.igniteForSeconds(duration);
     }
 }

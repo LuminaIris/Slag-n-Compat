@@ -5,5 +5,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
 public interface IDamageEffect {
-    float calculateDamage(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker);
+    float calculateBonusDamage(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker);
+    float calculateDamageMultiplier(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker);
 }

@@ -22,12 +22,15 @@ public class DamageTraitEvents {
         if (!traits.tool) return;
 
         float bonusDamageFromTraits = 0f;
+        float damageMultiplierFromTraits = 1f;
         for (var hook : traits.hurtEnemy) {
             if (hook.effect() instanceof IDamageEffect e) {
-                float dmg = e.calculateDamage(hook.trait(), stack, event.getEntity(), attacker);
+                float dmg = e.calculateBonusDamage(hook.trait(), stack, event.getEntity(), attacker);
                 bonusDamageFromTraits += dmg;
+                float mult = e.calculateDamageMultiplier(hook.trait(), stack, event.getEntity(), attacker);
+                damageMultiplierFromTraits *= mult;
             }
         }
-        event.setAmount(event.getAmount() + bonusDamageFromTraits);
+        event.setAmount((event.getAmount() + bonusDamageFromTraits) * bonusDamageFromTraits);
     }
 }

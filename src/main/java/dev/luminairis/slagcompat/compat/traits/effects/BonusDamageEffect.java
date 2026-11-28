@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@SuppressWarnings("unused")
 public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKey<Attribute>> attributeKey, Optional<Float> attributePercentage, Optional<AttributeTarget> attributeTarget, Optional<List<TagKey<EntityType<?>>>> targetTypes) implements TraitEffect, IDamageEffect {
     public static final MapCodec<BonusDamageEffect> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.FLOAT.optionalFieldOf("bonus_damage").forGetter(BonusDamageEffect::bonusDamage),
@@ -29,6 +30,25 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
             AttributeTarget.CODEC.optionalFieldOf("attribute_target").forGetter(BonusDamageEffect::attributeTarget),
             TagKey.codec(Registries.ENTITY_TYPE).listOf().optionalFieldOf("target_types").forGetter(BonusDamageEffect::targetTypes)
     ).apply(instance, BonusDamageEffect::new));
+
+    public BonusDamageEffect(float bonusDamage) {
+        this(Optional.of(bonusDamage), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
+    public BonusDamageEffect(float bonusDamage, List<TagKey<EntityType<?>>> targetTypes) {
+        this(Optional.of(bonusDamage), Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(targetTypes));
+    }
+    public BonusDamageEffect(ResourceKey<Attribute> attributeKey, float attributePercentage, AttributeTarget attributeTarget) {
+        this(Optional.empty(), Optional.of(attributeKey), Optional.of(attributePercentage), Optional.of(attributeTarget), Optional.empty());
+    }
+    public BonusDamageEffect(ResourceKey<Attribute> attributeKey, float attributePercentage, AttributeTarget attributeTarget, List<TagKey<EntityType<?>>> targetTypes) {
+        this(Optional.empty(), Optional.of(attributeKey), Optional.of(attributePercentage), Optional.of(attributeTarget), Optional.of(targetTypes));
+    }
+    public BonusDamageEffect(float bonusDamage, ResourceKey<Attribute> attributeKey, float attributePercentage, AttributeTarget attributeTarget) {
+        this(Optional.of(bonusDamage), Optional.of(attributeKey), Optional.of(attributePercentage), Optional.of(attributeTarget), Optional.empty());
+    }
+    public BonusDamageEffect(float bonusDamage, ResourceKey<Attribute> attributeKey, float attributePercentage, AttributeTarget attributeTarget, List<TagKey<EntityType<?>>> targetTypes) {
+        this(Optional.of(bonusDamage), Optional.of(attributeKey), Optional.of(attributePercentage), Optional.of(attributeTarget), Optional.of(targetTypes));
+    }
 
     @Override
     public MapCodec<? extends TraitEffect> codec() {
@@ -41,7 +61,7 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
     }
 
     @Override
-    public float calculateDamage(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public float calculateBonusDamage(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (attacker instanceof Player player && player.getAttackStrengthScale(0) != 1.0F) return 0f;
         if (targetTypes.isPresent()) {
             for (TagKey<EntityType<?>> tag : targetTypes.get()) {
@@ -73,6 +93,11 @@ public record BonusDamageEffect(Optional<Float> bonusDamage, Optional<ResourceKe
             return totalDmg;
         }
         return 0f;
+    }
+
+    @Override
+    public float calculateDamageMultiplier(Trait trait, ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        return 1f;
     }
 
     public enum AttributeTarget implements StringRepresentable {
