@@ -31,6 +31,6 @@ public class DamageTraitEvents {
                 damageMultiplierFromTraits *= mult;
             }
         }
-        event.setAmount((event.getAmount() + bonusDamageFromTraits) * bonusDamageFromTraits);
+        event.setAmount((event.getAmount() + bonusDamageFromTraits) * damageMultiplierFromTraits);
     }
 }

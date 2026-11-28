@@ -9,9 +9,7 @@ import dev.luminairis.slagcompat.compat.traits.effects.BonusDamageEffect;
 import dev.luminairis.slagcompat.compat.traits.effects.OnHitAbility;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-
 import java.util.List;
-import java.util.Optional;
 
 @SuppressWarnings("unused")
 public class IceAndFireTraits extends CompatTrait {
