@@ -1,3 +1,16 @@
+[input]
+# all the different types of modular tools, options appear in the selection menu for tool type
+tool_types = ["Axe", "Boots", "Chestplate", "Graip", "Hammer", "Helmet", "Hoe", "Knife", "Leggings", "Mallet", "Mattock", "Maul", "Paxel", "Pickaxe", "Prybar", "Scythe", "Shovel", "Sword"]
+
+# all the different armor layers, options appear in the selection menu for armor type
+armor_types = ["layer_1", "layer_2"]
+
+# all the different types of fluid images, options appear in the selection menu for fluid type
+fluid_types = ["Still", "Flow", "Bucket"]
+
+# all the different texture styles for tools and armor
+texture_styles = ["Base", "Metal", "Shiny", "Soft"]
+
 [output]
 # the save location for tool color palettes, relative to this file
 tool_palette_save_location = "../../src/main/resources/assets/slag/textures/color_palettes"

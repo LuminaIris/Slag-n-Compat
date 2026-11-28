@@ -3,7 +3,6 @@ package dev.luminairis.slagcompat;
 import dev.lopyluna.slag.content.utils.Registration;
 import dev.luminairis.slagcompat.compat.AllCompatCreativeTabs;
 import dev.luminairis.slagcompat.compat.AllCompatLangs;
-import dev.luminairis.slagcompat.compat.AllCompatTags;
 import dev.luminairis.slagcompat.compat.fluids.AllCompatFluids;
 import dev.luminairis.slagcompat.compat.mobeffect.AllCompatMobEffects;
 import dev.luminairis.slagcompat.compat.traits.effects.AllCompatTraitEffects;
@@ -26,7 +25,6 @@ public class SlagCompat {
 
     public SlagCompat(IEventBus modEventBus, ModContainer modContainer) {
         REG.registerEventListeners(modEventBus);
-//        AllCompatTags.addGenerators();
         AllCompatTraitEffects.register(modEventBus);
         AllCompatFluids.register();
         AllCompatMaterials.register();

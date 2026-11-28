@@ -49,10 +49,10 @@ selected_color: tuple[int, int, int] = (255, 255, 255)
 
 # constants
 top_height = 0.13
-tool_types = ["Axe", "Boots", "Chestplate", "Graip", "Hammer", "Helmet", "Hoe", "Knife", "Leggings", "Mallet", "Mattock", "Maul", "Paxel", "Pickaxe", "Prybar", "Scythe", "Shovel", "Sword"]
-armor_types = ["layer_1", "layer_2"]
-fluid_types = ["Still", "Flow", "Bucket"]
-texture_styles = ["Base", "Metal", "Shiny", "Soft"]
+tool_types: list[str] = []
+armor_types: list[str] = []
+fluid_types: list[str] = []
+texture_styles: list[str] = []
 default_palettes = {
     "Tool": [(255, 255, 255), (241, 241, 241), (228, 228, 228), (205, 205, 205), (180, 180, 180), (151, 151, 151), (108, 108, 108), (77, 77, 77)],
     "Armor": [(254, 254, 254), (245, 245, 245), (234, 234, 234), (221, 221, 221), (203, 203, 203), (183, 183, 183), (161, 161, 161), (140, 140, 140), (116, 116, 116)],
@@ -190,6 +190,8 @@ def create_palette_builder(parent: tk.Frame) -> tk.Frame:
     preview_frame.place(relx=0.0, rely=0.1, relheight=0.9, relwidth=0.5)
     reference_frame.place(relx=0.5, rely=0.1, relheight=0.9, relwidth=0.5)
 
+    global selected_style
+    selected_style = 0
     build_palette_and_preview(palette_frame, preview_frame, palette_type_dropdown.get())
     build_reference_frame(reference_frame)
 
@@ -269,9 +271,8 @@ def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, 
 
         style_dropdown = ttk.Combobox(preview_frame, name="style_dropdown", values=texture_styles, state="readonly")
         style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(image_frame, palette_type, style_dropdown.get()))
-        style_dropdown.set("Base")
+        style_dropdown.set(texture_styles[selected_style])
         style_dropdown.place(relx=0.3, rely=0.93, relwidth=0.2, relheight=0.05)
-        selected_style = texture_styles.index(style_dropdown.get())
     elif palette_type == "Armor":
         # armor has layer and style type
         layer_dropdown = ttk.Combobox(preview_frame, name="layer_dropdown", values=armor_types, state="readonly")
@@ -282,9 +283,8 @@ def build_palette_and_preview(palette_frame: tk.Frame, preview_frame: tk.Frame, 
 
         style_dropdown = ttk.Combobox(preview_frame, name="style_dropdown", values=texture_styles, state="readonly")
         style_dropdown.bind("<<ComboboxSelected>>", lambda e: set_style(image_frame, palette_type, style_dropdown.get()))
-        style_dropdown.set("Base")
+        style_dropdown.set(texture_styles[selected_style])
         style_dropdown.place(relx=0.3, rely=0.93, relwidth=0.2, relheight=0.05)
-        selected_style = texture_styles.index(style_dropdown.get())
     elif palette_type == "Fluid":
         # fluid has preview type and frame change buttons
         fluid_dropdown = ttk.Combobox(preview_frame, name="tool_dropdown", values=fluid_types, state="readonly")
@@ -563,7 +563,7 @@ def replace_and_save(image: Image.Image, save_path: Path, mapping: Mapping, pale
                 image.putpixel((x, y), (r, g, b, a))
             else:
                 index = mapping.map((r, g, b))
-                if (index == -1):
+                if index == -1:
                     image.putpixel((x, y), (r, g, b, a))
                 else:
                     r_f, g_f, b_f = palettes[palette_type][index]
@@ -572,6 +572,10 @@ def replace_and_save(image: Image.Image, save_path: Path, mapping: Mapping, pale
 
 
 def main():
+    global tool_types
+    global armor_types
+    global fluid_types
+    global texture_styles
     global tool_palette_save_location
     global armor_palette_save_location
     global fluid_texture_save_location
@@ -581,6 +585,10 @@ def main():
     global mod_id
     with open("config.toml", "rb") as f:
         config = tomllib.load(f)
+        tool_types = config["input"]["tool_types"]
+        armor_types = config["input"]["armor_types"]
+        fluid_types = config["input"]["fluid_types"]
+        texture_styles = config["input"]["texture_styles"]
         tool_palette_save_location = config["output"]["tool_palette_save_location"]
         armor_palette_save_location = config["output"]["armor_palette_save_location"]
         fluid_texture_save_location = config["output"]["fluid_texture_save_location"]
